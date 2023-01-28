@@ -1,0 +1,20 @@
+{
+    "files.associations": {
+        "*.sql": "jinja-sql",
+        "*.sqlfluff": "text"
+    },
+    "sqlfluff.executablePath": "venv/bin/sqlfluff",
+    "files.autoSave": "afterDelay",
+    "files.trimTrailingWhitespace": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "workbench.colorCustomizations": {
+        "list.errorForeground": "#e54135",
+        "gitDecoration.modifiedResourceForeground": "#32bed1",
+        "gitDecoration.untrackedResourceForeground": "#7dd47a"
+    },
+    "workbench.colorTheme": "Darcula from Pycharm (Dark)",
+    "[jinja-sql]": {
+        "editor.defaultFormatter": "dorzey.vscode-sqlfluff"
+    }
+}

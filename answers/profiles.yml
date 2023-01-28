@@ -1,0 +1,12 @@
+answers: # this needs to match the profile: in your dbt_project.yml file
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: crested-unity-321617 # Replace this with your project id
+      dataset: dbt_test # Replace this with dbt_your_name, e.g. dbt_bob
+      threads: 4
+      timeout_seconds: 300
+      location: US
+      priority: interactive
