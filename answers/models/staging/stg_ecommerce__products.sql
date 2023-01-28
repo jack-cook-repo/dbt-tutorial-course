@@ -5,14 +5,17 @@ WITH source AS (
 )
 
 SELECT
+    -- IDs
     id AS product_id,
+    distribution_center_id,
+
+    -- Other columns
     cost,
     category,
     name,
     brand,
     retail_price,
     department,
-    sku,
-    distribution_center_id
+    sku
 
 FROM source

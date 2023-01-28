@@ -5,14 +5,19 @@ WITH source AS (
 )
 
 SELECT
+    -- IDs
     order_id,
     user_id,
-    status,
-    gender,
+
+    -- Timestamps
     created_at,
     returned_at,
-    shipped_at,
     delivered_at,
-    num_of_item
+    shipped_at,
+
+    -- Other columns
+    status,
+    gender AS customer_gender,
+    num_of_item AS num_items_ordered
 
 FROM source

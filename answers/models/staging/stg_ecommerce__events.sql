@@ -5,11 +5,16 @@ WITH source AS (
 )
 
 SELECT
+    -- IDs
     id AS event_id,
     user_id,
-    sequence_number,
     session_id,
+
+    -- Timestamps
     created_at,
+
+    -- Other columns
+    sequence_number,
     ip_address,
     city,
     state,

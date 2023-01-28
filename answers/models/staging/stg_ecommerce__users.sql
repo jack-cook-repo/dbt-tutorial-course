@@ -5,7 +5,13 @@ WITH source AS (
 )
 
 SELECT
+    -- IDs
     id AS user_id,
+
+    -- Timestamps
+    created_at,
+
+    -- Other columns
     CONCAT(first_name, ' ', last_name) AS full_name,
     email,
     age,
@@ -17,7 +23,6 @@ SELECT
     country,
     latitude,
     longitude,
-    traffic_source,
-    created_at
+    traffic_source
 
 FROM source
