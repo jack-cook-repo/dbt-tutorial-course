@@ -1,20 +1,27 @@
 {
+    // Associated the right file types with the right VSCode extensions
     "files.associations": {
         "*.sql": "jinja-sql",
         "*.sqlfluff": "text"
     },
+
+    // Tells SQLfluff extension where SQLfluff is installed, and to run it when we type
     "sqlfluff.executablePath": "venv/bin/sqlfluff",
-    "files.autoSave": "afterDelay",
+    "sqlfluff.linter.run": "onType",
+    // Sets SQLfluff as VSCode's default formatter
+    "[jinja-sql]": {
+        "editor.defaultFormatter": "dorzey.vscode-sqlfluff"
+    },
+
+    // Automatically trimming whitespace is quite helpful
     "files.trimTrailingWhitespace": true,
-    "git.confirmSync": false,
-    "git.enableSmartCommit": true,
+
+    // Personal preference: makes error / changed / new files different colours
     "workbench.colorCustomizations": {
         "list.errorForeground": "#e54135",
         "gitDecoration.modifiedResourceForeground": "#32bed1",
         "gitDecoration.untrackedResourceForeground": "#7dd47a"
     },
+    // Personal preference as a previous Pycharm user!
     "workbench.colorTheme": "Darcula from Pycharm (Dark)",
-    "[jinja-sql]": {
-        "editor.defaultFormatter": "dorzey.vscode-sqlfluff"
-    }
 }

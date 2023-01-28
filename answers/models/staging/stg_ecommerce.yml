@@ -1,0 +1,61 @@
+version: 2
+
+models:
+
+  - name: stg_ecommerce__distribution_centers
+    description: ""
+    columns:
+      - name: distribution_center_id
+        description: ""
+
+      - name: name
+        description: ""
+
+      - name: latitude
+        description: ""
+
+      - name: longitude
+        description: ""
+
+
+  - name: stg_ecommerce__events
+    description: ""
+    columns:
+      - name: event_id
+        description: ""
+
+      - name: user_id
+        description: ""
+
+      - name: sequence_number
+        description: ""
+
+      - name: session_id
+        description: ""
+
+      - name: created_at
+        description: ""
+
+      - name: ip_address
+        description: ""
+
+      - name: city
+        description: ""
+
+      - name: state
+        description: ""
+
+      - name: postal_code
+        description: ""
+
+      - name: browser
+        description: ""
+
+      - name: traffic_source
+        description: ""
+
+      - name: uri
+        description: ""
+
+      - name: event_type
+        description: ""

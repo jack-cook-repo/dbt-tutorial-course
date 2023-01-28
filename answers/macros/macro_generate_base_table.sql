@@ -16,11 +16,9 @@
 {%- endif %}
 
 WITH source AS (
-
     SELECT *
 
     FROM {% raw %}{{ source({% endraw %}'{{ source_name }}', '{{ table_name }}'{% raw %}) }}{% endraw %}
-
 )
 
 SELECT
@@ -36,7 +34,6 @@ SELECT
 {%- endfor %}
 
 FROM source
-
 
 {% endset %}
 

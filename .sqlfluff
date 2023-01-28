@@ -1,6 +1,17 @@
+# Want to learn more? See https://docs.sqlfluff.com/en/stable/
+
+#########################
+# Minimum config needed #
+#########################
+
 [sqlfluff]
 templater = jinja
 dialect = bigquery
+
+################################################
+# Optional config based on personal preference #
+################################################
+
 exclude_rules = L003, L029, L034, L035, L046, L054, L058
 # Why I exclude these rules
 # L003: Can't indent multiline comments

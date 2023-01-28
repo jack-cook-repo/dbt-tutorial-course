@@ -7,7 +7,8 @@
 		"innoverio.vscode-dbt-power-user",
 		"dorzey.vscode-sqlfluff",
 		"samuelcolvin.jinjahtml",
-		"maciejdems.add-to-gitignore"
+		"maciejdems.add-to-gitignore",
+		"redhat.vscode-yaml"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": [
