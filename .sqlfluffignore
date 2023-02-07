@@ -1,2 +1,6 @@
 */macros/
 */tests/
+*/target/
+/answers/target/
+/answers/macros/
+/answers/tests/

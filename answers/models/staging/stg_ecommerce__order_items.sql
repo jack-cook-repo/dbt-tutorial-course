@@ -20,6 +20,6 @@ SELECT
 
     -- Other columns
     status,
-    sale_price
+    sale_price AS item_sale_price
 
 FROM source

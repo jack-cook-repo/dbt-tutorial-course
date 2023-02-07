@@ -17,7 +17,7 @@ SELECT
 
     -- Other columns
     status,
-    gender AS customer_gender,
+    gender,
     num_of_item AS num_items_ordered
 
 FROM source

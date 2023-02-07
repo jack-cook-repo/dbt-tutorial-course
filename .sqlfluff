@@ -12,11 +12,11 @@ dialect = bigquery
 # Optional config based on personal preference #
 ################################################
 
-exclude_rules = L003, L029, L034, L035, L046, L054, L058
+exclude_rules = L003, L029, L032, L034, L035, L046, L054, L058
 # Why I exclude these rules
 # L003: Can't indent multiline comments
 # L029: Can't "date" as a column name
-# L029: Can't use USING for joins
+# L032: Can't use USING for joins
 # L034: Reorders columns which can cause weird behaviours with UNION ALL statements
 # L035: Can't use ELSE NULL in case statements
 # L046: Can't use Jinja tags to complete column names (e.g. has_bought_{{item_category}})
