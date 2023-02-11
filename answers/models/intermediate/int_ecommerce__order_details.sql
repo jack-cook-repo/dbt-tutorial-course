@@ -27,7 +27,8 @@ products AS (
         category AS product_category,
         name AS product_name,
         cost AS product_cost,
-        retail_price AS product_retail_price
+        retail_price AS product_retail_price,
+        department AS product_department
 
     FROM {{ ref('stg_ecommerce__products') }}
 )
@@ -54,7 +55,8 @@ SELECT
     products.product_category,
     products.product_name,
     products.product_cost,
-    products.product_retail_price
+    products.product_retail_price,
+    products.product_department
 
 FROM order_items
 LEFT JOIN orders ON order_items.order_id = orders.order_id
