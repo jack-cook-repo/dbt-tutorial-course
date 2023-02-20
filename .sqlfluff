@@ -5,8 +5,9 @@
 #########################
 
 [sqlfluff]
-templater = jinja
+templater = dbt
 dialect = bigquery
+max_line_length = 200
 
 ################################################
 # Optional config based on personal preference #
@@ -27,10 +28,6 @@ exclude_rules = L003, L029, L032, L034, L035, L046, L054, L058
 [sqlfluff:indentation]
 indented_on_contents = False
 
-# Make max line length longer
-[sqlfluff:rules]
-max_line_length = 200
-
 # Capitalise keywords
 [sqlfluff:rules:L010]
 capitalisation_policy = upper
@@ -46,3 +43,4 @@ apply_dbt_builtins = True
 dbt_ref = {% macro ref(model_ref) %}{{model_ref}}{% endmacro %}
 dbt_source = {% macro source(source_name, table) %}{{source_name}}_{{table}}{% endmacro %}
 dbt_var = {% macro var(variable, default='') %}item{% endmacro %}
+dbt_target = {{ target }}

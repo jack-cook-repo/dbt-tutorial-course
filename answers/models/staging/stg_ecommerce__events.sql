@@ -29,8 +29,11 @@ SELECT
     postal_code,
     browser,
     traffic_source,
-    uri,
-    event_type
+    uri AS web_link,
+    event_type,
+    {# Look in macros/macro_get_brand_name.sql to see how this function is defined #}
+    {{ target.schema }}.get_brand_name(uri) AS brand_name
+    
 
 FROM source
 

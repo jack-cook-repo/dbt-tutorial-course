@@ -5,9 +5,9 @@ order_item_measures AS (
     SELECT
         order_id,
         SUM(item_sale_price) AS total_sale_price,
-        SUM(product_cost) AS total_product_cost,
-        SUM(item_sale_price - product_cost) AS total_profit,
-        SUM(product_retail_price - item_sale_price) AS total_discount,
+        SUM(product_cost) AS total_cost,
+        SUM(item_profit) AS total_profit,
+        SUM(item_discount) AS total_discount,
 
         {# This is overkill, but a nice way to show how loops work with dbt Jinja templating #}
         {%- set departments = ['Men', 'Women'] -%}
@@ -49,8 +49,9 @@ SELECT
     om.total_discount,
 
     -- Columns from our templated Jinja statement
-    om.total_sold_menswear,
-    om.total_sold_womenswear
+    {%- for department_name in departments %}
+    om.total_sold_{{department_name.lower()}}swear{% if not loop.last %},{% endif -%}
+    {%- endfor %}
 
 FROM order_dimensions AS od
 LEFT JOIN order_item_measures AS om

@@ -56,7 +56,11 @@ SELECT
     products.product_name,
     products.product_cost,
     products.product_retail_price,
-    products.product_department
+    products.product_department,
+
+    -- Calculated fields
+    order_items.item_sale_price - products.product_cost AS item_profit,
+    products.product_retail_price - order_items.item_sale_price AS item_discount
 
 FROM order_items
 LEFT JOIN orders ON order_items.order_id = orders.order_id
