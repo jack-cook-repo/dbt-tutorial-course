@@ -10,7 +10,6 @@ SELECT
 	order_id,
 	user_id,
 	product_id,
-	inventory_item_id,
 
 	-- Timestamps
 	created_at,
@@ -21,5 +20,10 @@ SELECT
 	-- Other columns
 	status,
 	sale_price AS item_sale_price
+
+	{# Unused columns:
+		- inventory_item_id
+		- gender
+	#}
 
 FROM source
