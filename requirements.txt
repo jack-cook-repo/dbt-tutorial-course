@@ -1,6 +1,4 @@
 dbt-bigquery==1.4.0
-sqlfluff==2.0.0a4
-sqlfluff-templater-dbt==2.0.0a4
 google-api-core==2.11.0
 google-auth==2.16.0
 google-cloud-bigquery==3.5.0
