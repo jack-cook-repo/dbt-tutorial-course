@@ -1,7 +1,7 @@
 answers: # this needs to match the profile: in your dbt_project.yml file
-  target: dev
+  target: answers
   outputs:
-    dev:
+    answers:
       type: bigquery
       method: oauth
       project: crested-unity-321617 # Replace this with your project id

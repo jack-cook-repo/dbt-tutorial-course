@@ -24,6 +24,8 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+# At the start of any dbt process, this will run the get_brand_name() macro in macros/macro_get_brand_name.sql
+# which will create a User Defined Function (UDF) in our schema in BigQuery
 on-run-start:
   - "{{ get_brand_name() }}"
 
