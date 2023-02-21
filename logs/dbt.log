@@ -1,0 +1,9 @@
+
+
+============================== 2023-01-25 20:43:12.318067 | 2dd5d99c-8a6d-4b54-bb8a-f7d13367afc8 ==============================
+20:43:12.318067 [info ] [MainThread]: Running with dbt=1.0.4
+20:43:12.319191 [debug] [MainThread]: running dbt with arguments Namespace(record_timing_info=None, debug=None, log_format=None, write_json=None, use_colors=None, printer_width=None, warn_error=None, version_check=None, partial_parse=None, single_threaded=False, use_experimental_parser=None, static_parser=None, profiles_dir='/Users/jackcook/.dbt', send_anonymous_usage_stats=None, fail_fast=None, event_buffer_size=None, project_dir=None, profile=None, target=None, vars='{}', log_cache_events=False, project_name='answers', skip_profile_setup=False, defer=None, state=None, cls=<class 'dbt.task.init.InitTask'>, which='init', rpc_method=None)
+20:43:12.319421 [debug] [MainThread]: Tracking: tracking
+20:43:12.368705 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb4bf4e63a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb4bf4a1dc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb4bc43f460>]}
+20:43:12.371235 [debug] [MainThread]: Starter project path: /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/dbt/include/starter_project
+13:59:03.228919 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb4bf4c8f70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb4bf4c8b20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb4bf4c8970>]}

@@ -1,0 +1,12 @@
+dbt-bigquery==1.4.0
+sqlfluff==2.0.0a4
+sqlfluff-templater-dbt==2.0.0a4
+google-api-core==2.11.0
+google-auth==2.16.0
+google-cloud-bigquery==3.5.0
+google-cloud-core==2.3.2
+google-cloud-dataproc==5.3.0
+google-cloud-storage==2.7.0
+google-crc32c==1.5.0
+google-resumable-media==2.4.1
+googleapis-common-protos==1.58.0

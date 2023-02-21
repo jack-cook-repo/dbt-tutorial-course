@@ -1,0 +1,46 @@
+# Want to learn more? See https://docs.sqlfluff.com/en/stable/
+
+#########################
+# Minimum config needed #
+#########################
+
+[sqlfluff]
+templater = dbt
+dialect = bigquery
+max_line_length = 200
+
+################################################
+# Optional config based on personal preference #
+################################################
+
+exclude_rules = L003, L029, L032, L034, L035, L046, L054, L058
+# Why I exclude these rules
+# L003: Can't indent multiline comments
+# L029: Can't "date" as a column name
+# L032: Can't use USING for joins
+# L034: Reorders columns which can cause weird behaviours with UNION ALL statements
+# L035: Can't use ELSE NULL in case statements
+# L046: Can't use Jinja tags to complete column names (e.g. has_bought_{{item_category}})
+# L054: Can't use GROUP BY 1, 2 and GROUP BY col_1, col_2 in the same script
+# L058: nested case statements not allowed
+
+# Keep AND clauses in line with ON clauses for joins
+[sqlfluff:indentation]
+indented_on_contents = False
+
+# Capitalise keywords
+[sqlfluff:rules:L010]
+capitalisation_policy = upper
+
+# Ignore comments when calculating max_line_length
+[sqlfluff:rules:L016]
+ignore_comment_clauses = True
+
+[sqlfluff:templater:jinja]
+apply_dbt_builtins = True
+
+[sqlfluff:templater:jinja:macros]
+dbt_ref = {% macro ref(model_ref) %}{{model_ref}}{% endmacro %}
+dbt_source = {% macro source(source_name, table) %}{{source_name}}_{{table}}{% endmacro %}
+dbt_var = {% macro var(variable, default='') %}item{% endmacro %}
+dbt_target = {{ target }}
