@@ -27,5 +27,4 @@ SELECT
 	MIN(created_at) AS first_order_created_at
 
 FROM {{ ref('stg_ecommerce__orders') }}
-WHERE shipped_at IS NOT NULL
 GROUP BY 1

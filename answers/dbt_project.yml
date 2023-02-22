@@ -37,5 +37,16 @@ on-run-start:
 # using the `{{ config(...) }}` macro.
 models:
   answers:
-    # Config indicated by + and applies to all files under models/example/
-    +materialized: table
+    # Config indicated by "+"" and applies to all files under models/example/
+    # It would still work without the "+", but it's useful to distinguish from a resource path
+    +materialized: table # Default to table materialisation
+    +persist_docs: # Writes all of our column descriptions into BigQuery!
+      relation: true
+      columns: true
+    # Table deletes 168 hours (7 days) after creation
+    # Note, for incremental models this does not reset each run!
+    +hours_to_expiration: 168
+
+tests:
+  answers:
+    +severity: warn

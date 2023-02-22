@@ -33,8 +33,8 @@ models:
           - not_null
           - accepted_values:
               values:
-                - "Menswear"
-                - "Womenswear"
+                - "Men"
+                - "Women"
               # quote defaults to true, but this just shows how you could set it to
               # false if you wanted to have non-string values (e.g. numbers or a TRUE/FALSE column)
               quote: true
