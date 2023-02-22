@@ -6,7 +6,7 @@
 		partition_by={
 			"field": "created_at",
 			"data_type": "timestamp",
-			"granularity": "hour"
+			"granularity": "day"
 		}
 	)
 }}
