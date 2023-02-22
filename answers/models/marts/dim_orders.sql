@@ -5,7 +5,7 @@ order_item_measures AS (
     SELECT
         order_id,
         SUM(item_sale_price) AS total_sale_price,
-        SUM(product_cost) AS total_cost,
+        SUM(product_cost) AS total_product_cost,
         SUM(item_profit) AS total_profit,
         SUM(item_discount) AS total_discount,
 

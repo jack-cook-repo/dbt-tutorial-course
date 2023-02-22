@@ -20,7 +20,7 @@ models:
           - not_null
 
       # The "&" is a YML anchor which I can reference later in the file
-      - name: &user_id
+      - name: user_id
         description: "Unique identifier for a user"
         tests:
           - not_null
