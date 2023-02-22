@@ -11,7 +11,9 @@ models:
     # to add your own tests here!
       - name: order_id
         tests:
-          - not_null:
+          # Generic test that we define in tests/generic/test_primary_key.sql
+          # Takes arguments for model & column_name, both of which are automatically passed to it
+          - primary_key:
               severity: error
           - unique:
               severity: error
