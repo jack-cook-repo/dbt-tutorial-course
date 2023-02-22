@@ -11,8 +11,10 @@ models:
     columns:
       - name: order_id
         tests:
-          - not_null
-          - unique
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
 
       - name: user_id
         tests:
@@ -30,7 +32,7 @@ models:
               where: "status = 'Returned'"
           - dbt_utils.expression_is_true:
               expression: ">= delivered_at"
-              condition: "delivered_at IS NOT NULL AND returned_at IS NOT NULL"
+              where: "delivered_at IS NOT NULL AND returned_at IS NOT NULL"
 
       - name: delivered_at
         description: "When the order was delivered"
@@ -39,7 +41,7 @@ models:
               where: "returned_at IS NOT NULL OR status = 'Complete'"
           - dbt_utils.expression_is_true:
               expression: ">= shipped_at"
-              condition: "delivered_at IS NOT NULL AND shipped_at IS NOT NULL"
+              where: "delivered_at IS NOT NULL AND shipped_at IS NOT NULL"
 
       - name: shipped_at
         description: "When the order was shipped"
@@ -48,10 +50,12 @@ models:
               where: "delivered_at IS NOT NULL OR status = 'Shipped'"
           - dbt_utils.expression_is_true:
               expression: ">= created_at"
-              condition: "shipped_at IS NOT NULL"
+              where: "shipped_at IS NOT NULL"
 
       - name: status
-        description: "Order status"
+        # Look in documents/ecommerce/doc_ecommerce__status.md for this definition
+        # We can reuse this definition in any column
+        description: "{{ doc('status') }}"
         tests:
           - not_null
           - accepted_values:
@@ -61,11 +65,6 @@ models:
                 - Shipped
                 - Complete
                 - Returned
-
-      - name: gender
-        description: "Customer gender"
-        tests:
-          - not_null
 
       - name: num_items_ordered
         description: "Number of items in the order"

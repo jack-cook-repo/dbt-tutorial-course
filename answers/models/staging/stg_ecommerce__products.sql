@@ -10,17 +10,16 @@ SELECT
 
 	-- Other columns
 	cost,
-	name,
 	retail_price,
-	department,
-	sku
+	department
 
-	{# Unused columns:
+	{#- Unused columns:
 		- distribution_center_id
 		- inventory_item_id
 		- category
 		- brand
+		- sku
+		- name
 	#}
-	--,
 
 FROM source

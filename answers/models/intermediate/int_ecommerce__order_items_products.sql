@@ -1,13 +1,4 @@
-WITH order_items AS (
-	SELECT
-		order_id,
-		product_id,
-		item_sale_price
-
-	FROM {{ ref('stg_ecommerce__order_items') }}
-),
-
-products AS (
+WITH products AS (
 	SELECT
 		product_id,
 		department AS product_department,
@@ -20,7 +11,9 @@ products AS (
 SELECT
 
 	-- IDs
+	order_items.order_item_id,
 	order_items.order_id,
+	order_items.user_id,
 	order_items.product_id,
 
 	-- Order item data
@@ -35,5 +28,5 @@ SELECT
 	order_items.item_sale_price - products.product_cost AS item_profit,
 	products.product_retail_price - order_items.item_sale_price AS item_discount
 
-FROM order_items
+FROM FROM {{ ref('stg_ecommerce__order_items') }} AS order_items
 LEFT JOIN products ON order_items.product_id = products.product_id
