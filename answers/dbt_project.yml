@@ -24,6 +24,10 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+# At the start of any dbt process, this will run the get_brand_name() macro in macros/macro_get_brand_name.sql
+# which will create a User Defined Function (UDF) in our schema in BigQuery
+on-run-start:
+  - "{{ get_brand_name() }}"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -33,5 +37,16 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   answers:
-    # Config indicated by + and applies to all files under models/example/
-    +materialized: table
+    # Config indicated by "+"" and applies to all files under models/example/
+    # It would still work without the "+", but it's useful to distinguish from a resource path
+    +materialized: table # Default to table materialisation
+    +persist_docs: # Writes all of our column descriptions into BigQuery!
+      relation: true
+      columns: true
+    # Table deletes 168 hours (7 days) after creation
+    # Note, for incremental models this does not reset each run!
+    +hours_to_expiration: 168
+
+tests:
+  answers:
+    +severity: warn

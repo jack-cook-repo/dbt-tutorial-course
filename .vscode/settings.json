@@ -5,12 +5,10 @@
         "*.sqlfluff": "text"
     },
 
-    // Tells SQLfluff extension where SQLfluff is installed, and to run it when we type
-    "sqlfluff.executablePath": "venv/bin/sqlfluff",
-    "sqlfluff.linter.run": "onType",
-    // Sets SQLfluff as VSCode's default formatter
-    "[jinja-sql]": {
-        "editor.defaultFormatter": "dorzey.vscode-sqlfluff"
+    // CRUCIAL - you need to change this to terminal.integrated.env.[osx|windows|linux] depdning on your system
+    // and point it to the folder where your profiles directory is stored!
+    "terminal.integrated.env.osx": {
+        "DBT_PROFILES_DIR": "."
     },
 
     // Automatically trimming whitespace is quite helpful
@@ -22,6 +20,11 @@
         "gitDecoration.modifiedResourceForeground": "#32bed1",
         "gitDecoration.untrackedResourceForeground": "#7dd47a"
     },
+
     // Personal preference as a previous Pycharm user!
     "workbench.colorTheme": "Darcula from Pycharm (Dark)",
+
+	// Personal preference to use tabs over spaces, feel free to remove or override
+	"editor.insertSpaces": false,
+    "editor.detectIndentation": false
 }

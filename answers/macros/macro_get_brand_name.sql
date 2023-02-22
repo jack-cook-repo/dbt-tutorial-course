@@ -18,7 +18,7 @@
         2. ".+" will, again, match ANYTHING after "brand/"
 #}
 {% macro get_brand_name() %}
-    CREATE FUNCTION {{ target.schema }}.get_brand_name(web_link STRING)
+    CREATE OR REPLACE FUNCTION {{ target.schema }}.get_brand_name(web_link STRING)
     RETURNS STRING
     AS (
         REGEXP_EXTRACT(web_link, r'.+/brand/(.+)')
