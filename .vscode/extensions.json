@@ -5,7 +5,6 @@
 	// List of extensions which should be recommended for users of this workspace.
 	"recommendations": [
 		"innoverio.vscode-dbt-power-user",
-		"dorzey.vscode-sqlfluff",
 		"samuelcolvin.jinjahtml",
 		"maciejdems.add-to-gitignore",
 		"redhat.vscode-yaml"
