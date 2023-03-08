@@ -28,7 +28,13 @@ Your (forked) repo should have an untouched `/answers` folder, and use the `/you
 
 ### What if I need to rebase?
 
-If I update this repo
+If I update this repository, and you want to rebase (update) your forked repository with my changes, then you'll need to do the following in VSCode:
+1. Change onto your "main" branch, and make sure you don't have any pending changes (commits)
+2. Run `git remote add upstream https://github.com/jack-cook-repo/dbt-tutorial-course.git`, this will point your local repository at this one and call it "upstream"
+3. Run `git rebase upstream/main`, this will bring any changes from my repository into your local repository
+4. Run `git push origin main --force`, this will update your "main" branch on GitHub with your local changes
+
+So in summary, this process copies changes from this repository to your local repository, then pushes those changes to your forked repository on GitHub
 
 https://medium.com/@topspinj/how-to-git-rebase-into-a-forked-repo-c9f05e821c8a
 
