@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: int_ecommerce__order_items_products
+    description: "Order item data joined to product data"
+    columns:
+      - name: order_item_id
+        tests:
+          - not_null
+          - unique
+
+      - name: order_id
+        tests:
+          - not_null
+
+      # The "&" is a YML anchor which you can reference later in the file
+      - &user_id
+        name: user_id
+        description: "Unique identifier for a user"
+        tests:
+          - not_null
+
+      - name: product_id
+        tests:
+          - not_null
+
+      - name: item_sale_price
+        description: "How much the item sold for"
+        tests:
+          - not_null
+
+      - name: product_department
+        description: "Whether the item is Menswear or Womenswear"
+        tests:
+          - not_null
+
+      - name: product_cost
+        description: "How much the product cost the business to purchase"
+        tests:
+          - not_null
+
+      - name: product_retail_price
+        description: "How much the product retails for on the online store"
+        tests:
+          - not_null
+
+      - name: item_profit
+        description: "item_sale_price minus product_cost"
+        tests:
+          - not_null
+
+      - name: item_discount
+        description: "product_retail_price minus item_sale_price"
+        tests:
+          - not_null
