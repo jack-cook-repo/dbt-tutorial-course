@@ -6,8 +6,10 @@ models:
     columns:
       - name: product_id
         tests:
-          - not_null
-          - unique
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
 
       - name: cost
         description: "How much the product cost the business to purchase"
