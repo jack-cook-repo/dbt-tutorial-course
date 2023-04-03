@@ -1,0 +1,27 @@
+version: 2
+
+seeds:
+  - name: seed_distribution_centers_new
+    description: "Distribution centers not yet loaded into our data warehouse"
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal:
+          value: 2
+
+    columns:
+      - name: id
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+      - name: name
+        description: "Distribution center name"
+      - name: latitude
+      - name: longitude
+
+    config:
+      column_types:
+        id: INTEGER
+        name: STRING
+        latitude: FLOAT
+        longitude: FLOAT
