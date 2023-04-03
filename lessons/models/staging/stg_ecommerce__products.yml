@@ -23,10 +23,7 @@ models:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
           - dbt_utils.expression_is_true:
-              name: retail_price_greater_than_cost
               expression: ">= cost"
-              where: "retail_price IS NOT NULL"
-
 
       - name: department
         description: "Whether the item is Menswear or Womenswear"
