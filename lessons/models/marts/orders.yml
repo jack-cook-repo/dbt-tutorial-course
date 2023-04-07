@@ -68,3 +68,11 @@ models:
           - not_null
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
+
+      # Column from int_ecommerce__first_order_created
+      - name: days_since_first_order
+        description: "How many days there were between a user's first order and this one"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
