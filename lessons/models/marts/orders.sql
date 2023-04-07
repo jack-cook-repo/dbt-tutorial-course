@@ -7,7 +7,11 @@ order_item_measures AS (
 		SUM(item_sale_price) AS total_sale_price,
 		SUM(product_cost) AS total_product_cost,
 		SUM(item_profit) AS total_profit,
-		SUM(item_discount) AS total_discount
+		SUM(item_discount) AS total_discount,
+
+		{% for department in dbt_utils.get_column_values(table=ref('int_ecommerce__order_items_products'), column='product_department') %}
+		SUM(IF(product_department = '{{ department }}', item_sale_price, 0)) AS total_sold_{{ department.lower() }}swear{{ "," if not loop.last }}
+		{%- endfor %}
 
 	FROM {{ ref('int_ecommerce__order_items_products') }}
 	GROUP BY 1
@@ -27,6 +31,9 @@ SELECT
 	om.total_profit,
 	om.total_discount,
 
+	{% for department in departments %}
+	total_sold_{{ department.lower() }}swear{{ "," if not loop.last }}
+	{%- endfor %}
 	-- In practise we'd calculate this column in the model itself, but it's
 	-- a good way to demonstrate how to use an ephemeral materialisation
 	TIMESTAMP_DIFF(od.created_at, user_data.first_order_created_at, DAY) AS days_since_first_order
