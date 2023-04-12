@@ -7,12 +7,12 @@ This repository (repo) contains the structure you'll need to get started on the 
 ---
 
 ## The structure
-This repo has 3 main areas:
+This repo has 2 main areas:
 1. **The top level** - everything you can see without clicking into a folder. This contains things that are used both in the model answers and in your lessons - such as the python packages you'll need and VSCode configuration.
 
 2. **The answers folder**. This is how your project should look like at the end of the course. Feel free to use this for reference throughout the lessons if you're stuck, but remember - this will contain the final versions of everything so it may be several lessons ahead!
 
-3. **The your_project folder**. This is blank as it's meant to be for all of your working!
+In the course, you'll be creating a 3rd area - `/lessons` - that will, by the end of the course, be (nearly) identical to the answers folder
 
 ---
 ## A note on forking vs. cloning
@@ -24,18 +24,14 @@ Both of these would clutter up this repo, instead - you should [fork the repo](h
 
 Forking the repo means that you get your own copy of this repository, can makes changes locally, and push them to your own master branch.
 
-Your (forked) repo should have an untouched `/answers` folder, and use the `/your_project` folder for all of your work when following along with the course.
+Your (forked) repo should have an untouched `/answers` folder, and use the `/lessons` folder for all of your work when following along with the course.
 
-### What if I need to rebase?
+### What if the repository gets updated after I've forked it?
 
-If I update this repository, and you want to rebase (update) your forked repository with my changes, then you'll need to do the following in VSCode:
-1. Change onto your "main" branch, and make sure you don't have any pending changes (commits)
-2. Run `git remote add upstream https://github.com/jack-cook-repo/dbt-tutorial-course.git`, this will point your local repository at this one and call it "upstream"
-3. Run `git rebase upstream/main`, this will bring any changes from my repository into your local repository
-4. Run `git push origin main --force`, this will update your "main" branch on GitHub with your local changes
+If I update this repository, and you want to update your forked repository with my changes, then you'll want to [follow these steps to sync my changes to your repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork).
 
-So in summary, this process copies changes from this repository to your local repository, then pushes those changes to your forked repository on GitHub
+3 things that are really important here:
+1. Do all of your work in a separate `/lessons` folder. If you make all of your changes in a brand new folder that isn't in this repository, then when you sync my changes to your forked repository it won't have any conflicts!
+2. Linked the above, don't make changes to the `/answers` folder - or if you do, make sure you delete them afterwards. If I update the repository it's very likely I'll be updating this folder and it'll make things a lot harder for you!
+3. **If you've made changes, and you sync your fork with my changes, don't discard your commits!** This will get rid of all of your progress. I'd advise creating a new branch before syncing in case this happens
 
-https://medium.com/@topspinj/how-to-git-rebase-into-a-forked-repo-c9f05e821c8a
-
-https://console.cloud.google.com/storage/browser/thelook_ecommerce_backup
