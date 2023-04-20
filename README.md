@@ -2,7 +2,7 @@
 
 Welcome to my course!
 
-This repository (repo) contains the structure you'll need to get started on the dbt course (link here).
+This repository (repo) contains the structure you'll need to get started on the dbt course ([link here](https://www.udemy.com/course/mastering-dbt-data-build-tool-bootcamp/)).
 
 ---
 
