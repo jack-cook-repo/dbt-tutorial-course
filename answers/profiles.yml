@@ -1,7 +1,7 @@
 answers:
   outputs:
     dev:
-      dataset: dbt_carlos
+      dataset: dbt_test
       job_execution_timeout_seconds: 300
       job_retries: 1
       location: US
@@ -20,5 +20,5 @@ answers:
       priority: interactive
       project: daring-charmer-384315
       threads: 60
-      type: bigquery      
+      type: bigquery
   target: dev
