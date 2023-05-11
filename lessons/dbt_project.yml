@@ -37,6 +37,12 @@ models:
     +persist_docs: # writes column descriptions into BigQuery
       relation: true
       columns: true
+    # Table deletes 168 hours (7 days) after creation
+    +hours_to_expiration: 168
+
+tests:
+  lessons:
+    +severity: warn # All tests in our lesson project default to warn
 
 
 
