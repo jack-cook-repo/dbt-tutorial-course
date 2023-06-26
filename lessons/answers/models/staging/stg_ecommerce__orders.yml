@@ -1,0 +1,69 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__orders
+    columns:
+      - name: order_id
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+
+      - name: user_id
+        tests:
+          - not_null
+
+      - name: created_at
+        description: "When the order was created"
+        tests:
+          - not_null
+
+      - name: returned_at
+        description: "When the order was returned"
+        tests:
+          - not_null:
+              where: "status = 'Returned'"
+          - dbt_utils.expression_is_true:
+              expression: ">= delivered_at"
+              where: "delivered_at IS NOT NULL AND returned_at IS NOT NULL"
+
+      - name: delivered_at
+        description: "When the order was delivered"
+        tests:
+          - not_null:
+              where: "returned_at IS NOT NULL OR status = 'Complete'"
+          - dbt_utils.expression_is_true:
+              expression: ">= shipped_at"
+              where: "delivered_at IS NOT NULL AND shipped_at IS NOT NULL"
+
+      - name: shipped_at
+        description: "When the order was shipped"
+        tests:
+          - not_null:
+              where: "delivered_at IS NOT NULL OR status = 'Shipped'"
+          - dbt_utils.expression_is_true:
+              expression: ">= created_at"
+              where: "shipped_at IS NOT NULL"
+
+      - name: status
+        # Look in documents/ecommerce/doc_ecommerce__status.md for this definition
+        # We can reuse this definition in any column
+        description: "{{ doc('status') }}"
+        tests:
+          - not_null
+          - accepted_values:
+              name: unexpected_order_status # We can name our tests to make it easier to give more meaningful errors
+              values:
+                - Processing
+                - Cancelled
+                - Shipped
+                - Complete
+                - Returned
+
+      - name: num_items_ordered
+        description: "Number of items in the order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0

@@ -1,0 +1,98 @@
+version: 2
+
+models:
+  - name: dim_orders
+    description: "Table of order level information"
+    columns:
+
+    # Columns from stg_ecommerce__orders
+    # We don't test these columns, other than the primary key,
+    # as we've already tested them in the staging model. But feel free
+    # to add your own tests here!
+      - name: order_id
+        tests:
+          # Generic test that we define in tests/generic/test_primary_key.sql
+          # Takes arguments for model & column_name, both of which are automatically passed to it
+          - primary_key:
+              severity: error
+          - unique:
+              severity: error
+          - relationships:
+              to: ref('stg_ecommerce__orders')
+              field: order_id
+              severity: error
+
+      - name: order_created_at
+        description: "When the order was created"
+
+      - name: order_returned_at
+        description: "When the order was returned"
+
+      - name: order_delivered_at
+        description: "When the order was delivered"
+
+      - name: order_shipped_at
+        description: "When the order was shipped"
+
+      - name: order_status
+        # Best practice would be to use doc() references for all common columns
+        # However, for simplicity in this project we just use one
+        description: "{{ doc('status') }}"
+
+      - name: num_items_ordered
+        description: "Number of items in the order"
+
+
+    # Columns from int_ecommerce__order_items_product
+    # We should test these columns as they're new
+      - name: total_sale_price
+        description: "Sum of item_sale_price for the whole order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+          - dbt_utils.expression_is_true:
+              expression: "= total_sold_menswear + total_sold_womenswear"
+
+      - name: total_product_cost
+        description: "Sum of product_cost for the whole order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: total_profit
+        description: "Sum of (item_sale_price - product_cost) for the whole order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: total_discount
+        description: "Sum of (product_retail_price - item_sale_price) for the whole order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: total_sold_menswear
+        description: "Sum of item_sale_price for items in the Menswear department for this order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: total_sold_womenswear
+        description: "Sum of item_sale_price for items in the Womenswear department for this order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+    # Column from int_ecommerce__first_order_created
+      - name: days_since_first_order
+        description: "How many days there were between a user's first order and this one"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
