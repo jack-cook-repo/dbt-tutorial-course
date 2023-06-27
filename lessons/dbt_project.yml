@@ -24,7 +24,12 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+# Configuring models
+# Full documentation: https://docs.getdbt.com
 
 models:
   lessons:
-    materialized: table
+    +materialized: table
+    +persist_docs:
+      relation: true
+      columns: true
