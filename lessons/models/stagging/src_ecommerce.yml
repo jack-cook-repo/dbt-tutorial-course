@@ -1,0 +1,12 @@
+# Needed for every dbt yml file - https://docs.getdbt.com/faqs/project/why-version-2
+version: 2
+
+sources:
+  - name: thelook_ecommerce
+    database: bigquery-public-data
+    tables:
+      - name: inventory_items
+      - name: order_items
+      - name: orders
+      - name: products
+      - name: users
