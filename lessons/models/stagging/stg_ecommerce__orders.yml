@@ -11,12 +11,12 @@ models:
           - unique
 
       - name: user_id
-        description: ""
+        description: "the identification of the user"
         test:
           - not_null
 
       - name: status
-        description: ""
+        description: "shipment status"
         tests:
           - not_null
           - accepted_values:

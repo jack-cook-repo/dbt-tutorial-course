@@ -36,3 +36,6 @@ models:
     # Config indicated by "+"" and applies to all files under models/example/
     # It would still work without the "+", but it's useful to distinguish from a resource path
     +materialized: table # Default to table materialisation
+    +persist_docs:
+      relation: true
+      columns: true
