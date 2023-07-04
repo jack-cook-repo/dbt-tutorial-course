@@ -6,12 +6,10 @@ WITH source AS (
 SELECT
 	-- IDs
 	id AS product_id,
-
 	-- Other columns
 	cost,
 	retail_price,
 	department
-
 	{#- Unused columns:
 		- distribution_center_id
 		- inventory_item_id
@@ -20,5 +18,4 @@ SELECT
 		- sku
 		- name
 	#}
-
 FROM source
