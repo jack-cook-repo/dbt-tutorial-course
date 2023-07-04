@@ -30,10 +30,15 @@ models:
         description: ""
 
       - name: created_at
-        description: ""
+        description: "When the order was created"
+        test:
+          - not_null
 
       - name: returned_at
-        description: ""
+        description: "When the order was returned"
+        tests:
+          - not_null:
+              where: "status = 'Returned'"
 
       - name: shipped_at
         description: ""
