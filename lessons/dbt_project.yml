@@ -33,4 +33,4 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   lessons:
-    +materialized: table
+    +materialized: table # Default to table materialisation
