@@ -6,15 +6,29 @@ models:
     columns:
       - name: order_item_id
         description: ""
+        tests:
+          - not_null
 
       - name: order_id
         description: ""
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__orders')
+              field: order_id
 
       - name: user_id
         description: ""
+        tests:
+          - not_null
 
       - name: product_id
         description: ""
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__products')
+              field: product_id
 
       - name: inventory_item_id
         description: ""
@@ -34,5 +48,9 @@ models:
       - name: returned_at
         description: ""
 
-      - name: sale_price
-        description: ""
+      - name: item_sale_price
+        description: "How much the item sold for"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
