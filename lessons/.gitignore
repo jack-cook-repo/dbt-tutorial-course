@@ -1,4 +1,5 @@
 target/
+answers/
 dbt_packages/
 logs/
 /venv
