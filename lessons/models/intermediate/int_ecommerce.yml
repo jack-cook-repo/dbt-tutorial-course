@@ -1,0 +1,66 @@
+version: 2
+
+# An example of putting 2 models in the same YML file
+# This has some advantages in being able to use YML anchors (more on that below) that let you
+# reuse descriptions, names, tests etc. across multiple models, whereas
+# dbt document blocks https://docs.getdbt.com/docs/collaborate/documentation#using-docs-blocks
+# can only be used for descriptions.
+# However, a disadvantage is that YML anchors can't be reused across files.
+
+models:
+  - name: int_ecommerce__order_items_products
+    description: "Order item data joined to product data"
+    columns:
+      - name: order_item_id
+        tests:
+          - primary_key:
+              severity: error
+
+      - name: order_id
+        tests:
+          - not_null
+
+      # The "&" is a YML anchor which you can reference later in the file
+      - &user_id
+        name: user_id
+        description: "Unique identifier for a user"
+        tests:
+          - not_null
+
+      - name: product_id
+        tests:
+          - not_null
+
+      - name: item_sale_price
+        description: "How much the item sold for"
+        tests:
+          - not_null
+
+      - name: product_department
+        description: "Whether the item is Menswear or Womenswear"
+        tests:
+          - not_null
+
+      - name: product_cost
+        description: "How much the product cost the business to purchase"
+        tests:
+          - not_null
+
+      - name: product_retail_price
+        description: "How much the product retails for on the online store"
+        tests:
+          - not_null
+
+      - name: item_profit
+        description: "item_sale_price minus product_cost"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "= (item_sale_price - product_cost)"
+
+      - name: item_discount
+        description: "product_retail_price minus item_sale_price"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "= (product_retail_price - item_sale_price)"

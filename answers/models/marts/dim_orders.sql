@@ -1,5 +1,4 @@
 WITH
-
 -- Aggregate measures
 order_item_measures AS (
 	SELECT
