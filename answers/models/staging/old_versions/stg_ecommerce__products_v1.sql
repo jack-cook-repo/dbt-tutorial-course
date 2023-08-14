@@ -11,13 +11,13 @@ SELECT
 	-- Other columns
 	cost,
 	retail_price,
-	department,
-	brand -- new column added in v2
+	department
 
 	{#- Unused columns:
-		- inventory_item_id
 		- distribution_center_id
+		- inventory_item_id
 		- category
+		- brand
 		- sku
 		- name
 	#}
