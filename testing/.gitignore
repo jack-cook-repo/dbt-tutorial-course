@@ -3,4 +3,5 @@ target/
 dbt_packages/
 logs/
 venv/
-myvenv/
+myvenv/ 
+
