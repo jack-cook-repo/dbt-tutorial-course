@@ -1,0 +1,715 @@
+ .../Lib/site-packages/_distutils_hack/__init__.py  |  222 [32m+[m
+ .../__pycache__/__init__.cpython-310.pyc           |  Bin [31m0[m -> [32m7612[m bytes
+ .../__pycache__/override.cpython-310.pyc           |  Bin [31m0[m -> [32m265[m bytes
+ .../Lib/site-packages/_distutils_hack/override.py  |    1 [32m+[m
+ .../Lib/site-packages/distutils-precedence.pth     |    1 [32m+[m
+ .../site-packages/pip-23.0.1.dist-info/INSTALLER   |    1 [32m+[m
+ .../site-packages/pip-23.0.1.dist-info/LICENSE.txt |   20 [32m+[m
+ .../site-packages/pip-23.0.1.dist-info/METADATA    |   88 [32m+[m
+ .../Lib/site-packages/pip-23.0.1.dist-info/RECORD  | 1002 [32m+++[m
+ .../site-packages/pip-23.0.1.dist-info/REQUESTED   |    0
+ .../Lib/site-packages/pip-23.0.1.dist-info/WHEEL   |    5 [32m+[m
+ .../pip-23.0.1.dist-info/entry_points.txt          |    4 [32m+[m
+ .../pip-23.0.1.dist-info/top_level.txt             |    1 [32m+[m
+ answers/venv/Lib/site-packages/pip/__init__.py     |   13 [32m+[m
+ answers/venv/Lib/site-packages/pip/__main__.py     |   31 [32m+[m
+ .../venv/Lib/site-packages/pip/__pip-runner__.py   |   50 [32m+[m
+ .../pip/__pycache__/__init__.cpython-310.pyc       |  Bin [31m0[m -> [32m658[m bytes
+ .../pip/__pycache__/__main__.cpython-310.pyc       |  Bin [31m0[m -> [32m620[m bytes
+ .../pip/__pycache__/__pip-runner__.cpython-310.pyc |  Bin [31m0[m -> [32m1656[m bytes
+ .../Lib/site-packages/pip/_internal/__init__.py    |   19 [32m+[m
+ .../_internal/__pycache__/__init__.cpython-310.pyc |  Bin [31m0[m -> [32m779[m bytes
+ .../__pycache__/build_env.cpython-310.pyc          |  Bin [31m0[m -> [32m9737[m bytes
+ .../_internal/__pycache__/cache.cpython-310.pyc    |  Bin [31m0[m -> [32m9291[m bytes
+ .../__pycache__/configuration.cpython-310.pyc      |  Bin [31m0[m -> [32m11239[m bytes
+ .../__pycache__/exceptions.cpython-310.pyc         |  Bin [31m0[m -> [32m25964[m bytes
+ .../pip/_internal/__pycache__/main.cpython-310.pyc |  Bin [31m0[m -> [32m644[m bytes
+ .../__pycache__/pyproject.cpython-310.pyc          |  Bin [31m0[m -> [32m3646[m bytes
+ .../self_outdated_check.cpython-310.pyc            |  Bin [31m0[m -> [32m6668[m bytes
+ .../__pycache__/wheel_builder.cpython-310.pyc      |  Bin [31m0[m -> [32m9156[m bytes
+ .../Lib/site-packages/pip/_internal/build_env.py   |  311 [32m+[m
+ .../venv/Lib/site-packages/pip/_internal/cache.py  |  293 [32m+[m
+ .../site-packages/pip/_internal/cli/__init__.py    |    4 [32m+[m
+ .../cli/__pycache__/__init__.cpython-310.pyc       |  Bin [31m0[m -> [32m299[m bytes
+ .../cli/__pycache__/autocompletion.cpython-310.pyc |  Bin [31m0[m -> [32m5332[m bytes
+ .../cli/__pycache__/base_command.cpython-310.pyc   |  Bin [31m0[m -> [32m6157[m bytes
+ .../cli/__pycache__/cmdoptions.cpython-310.pyc     |  Bin [31m0[m -> [32m23058[m bytes
+ .../__pycache__/command_context.cpython-310.pyc    |  Bin [31m0[m -> [32m1339[m bytes
+ .../_internal/cli/__pycache__/main.cpython-310.pyc |  Bin [31m0[m -> [32m1397[m bytes
+ .../cli/__pycache__/main_parser.cpython-310.pyc    |  Bin [31m0[m -> [32m3022[m bytes
+ .../cli/__pycache__/parser.cpython-310.pyc         |  Bin [31m0[m -> [32m9981[m bytes
+ .../cli/__pycache__/progress_bars.cpython-310.pyc  |  Bin [31m0[m -> [32m1923[m bytes
+ .../cli/__pycache__/req_command.cpython-310.pyc    |  Bin [31m0[m -> [32m13118[m bytes
+ .../cli/__pycache__/spinners.cpython-310.pyc       |  Bin [31m0[m -> [32m4989[m bytes
+ .../cli/__pycache__/status_codes.cpython-310.pyc   |  Bin [31m0[m -> [32m378[m bytes
+ .../pip/_internal/cli/autocompletion.py            |  171 [32m+[m
+ .../pip/_internal/cli/base_command.py              |  216 [32m+[m
+ .../site-packages/pip/_internal/cli/cmdoptions.py  | 1055 [32m+++[m
+ .../pip/_internal/cli/command_context.py           |   27 [32m+[m
+ .../Lib/site-packages/pip/_internal/cli/main.py    |   70 [32m+[m
+ .../site-packages/pip/_internal/cli/main_parser.py |  134 [32m+[m
+ .../Lib/site-packages/pip/_internal/cli/parser.py  |  294 [32m+[m
+ .../pip/_internal/cli/progress_bars.py             |   68 [32m+[m
+ .../site-packages/pip/_internal/cli/req_command.py |  502 [32m++[m
+ .../site-packages/pip/_internal/cli/spinners.py    |  159 [32m+[m
+ .../pip/_internal/cli/status_codes.py              |    6 [32m+[m
+ .../pip/_internal/commands/__init__.py             |  132 [32m+[m
+ .../commands/__pycache__/__init__.cpython-310.pyc  |  Bin [31m0[m -> [32m3278[m bytes
+ .../commands/__pycache__/cache.cpython-310.pyc     |  Bin [31m0[m -> [32m6261[m bytes
+ .../commands/__pycache__/check.cpython-310.pyc     |  Bin [31m0[m -> [32m1596[m bytes
+ .../__pycache__/completion.cpython-310.pyc         |  Bin [31m0[m -> [32m4187[m bytes
+ .../__pycache__/configuration.cpython-310.pyc      |  Bin [31m0[m -> [32m8965[m bytes
+ .../commands/__pycache__/debug.cpython-310.pyc     |  Bin [31m0[m -> [32m6706[m bytes
+ .../commands/__pycache__/download.cpython-310.pyc  |  Bin [31m0[m -> [32m4236[m bytes
+ .../commands/__pycache__/freeze.cpython-310.pyc    |  Bin [31m0[m -> [32m2661[m bytes
+ .../commands/__pycache__/hash.cpython-310.pyc      |  Bin [31m0[m -> [32m2175[m bytes
+ .../commands/__pycache__/help.cpython-310.pyc      |  Bin [31m0[m -> [32m1336[m bytes
+ .../commands/__pycache__/index.cpython-310.pyc     |  Bin [31m0[m -> [32m4613[m bytes
+ .../commands/__pycache__/inspect.cpython-310.pyc   |  Bin [31m0[m -> [32m2996[m bytes
+ .../commands/__pycache__/install.cpython-310.pyc   |  Bin [31m0[m -> [32m20241[m bytes
+ .../commands/__pycache__/list.cpython-310.pyc      |  Bin [31m0[m -> [32m10323[m bytes
+ .../commands/__pycache__/search.cpython-310.pyc    |  Bin [31m0[m -> [32m5389[m bytes
+ .../commands/__pycache__/show.cpython-310.pyc      |  Bin [31m0[m -> [32m6550[m bytes
+ .../commands/__pycache__/uninstall.cpython-310.pyc |  Bin [31m0[m -> [32m3357[m bytes
+ .../commands/__pycache__/wheel.cpython-310.pyc     |  Bin [31m0[m -> [32m5432[m bytes
+ .../site-packages/pip/_internal/commands/cache.py  |  223 [32m+[m
+ .../site-packages/pip/_internal/commands/check.py  |   53 [32m+[m
+ .../pip/_internal/commands/completion.py           |  126 [32m+[m
+ .../pip/_internal/commands/configuration.py        |  282 [32m+[m
+ .../site-packages/pip/_internal/commands/debug.py  |  199 [32m+[m
+ .../pip/_internal/commands/download.py             |  149 [32m+[m
+ .../site-packages/pip/_internal/commands/freeze.py |   97 [32m+[m
+ .../site-packages/pip/_internal/commands/hash.py   |   59 [32m+[m
+ .../site-packages/pip/_internal/commands/help.py   |   41 [32m+[m
+ .../site-packages/pip/_internal/commands/index.py  |  139 [32m+[m
+ .../pip/_internal/commands/inspect.py              |   92 [32m+[m
+ .../pip/_internal/commands/install.py              |  873 [32m++[m
+ .../site-packages/pip/_internal/commands/list.py   |  365 [32m+[m
+ .../site-packages/pip/_internal/commands/search.py |  174 [32m+[m
+ .../site-packages/pip/_internal/commands/show.py   |  189 [32m+[m
+ .../pip/_internal/commands/uninstall.py            |  113 [32m+[m
+ .../site-packages/pip/_internal/commands/wheel.py  |  203 [32m+[m
+ .../site-packages/pip/_internal/configuration.py   |  374 [32m+[m
+ .../pip/_internal/distributions/__init__.py        |   21 [32m+[m
+ .../__pycache__/__init__.cpython-310.pyc           |  Bin [31m0[m -> [32m826[m bytes
+ .../distributions/__pycache__/base.cpython-310.pyc |  Bin [31m0[m -> [32m1914[m bytes
+ .../__pycache__/installed.cpython-310.pyc          |  Bin [31m0[m -> [32m1291[m bytes
+ .../__pycache__/sdist.cpython-310.pyc              |  Bin [31m0[m -> [32m5022[m bytes
+ .../__pycache__/wheel.cpython-310.pyc              |  Bin [31m0[m -> [32m1658[m bytes
+ .../pip/_internal/distributions/base.py            |   39 [32m+[m
+ .../pip/_internal/distributions/installed.py       |   23 [32m+[m
+ .../pip/_internal/distributions/sdist.py           |  150 [32m+[m
+ .../pip/_internal/distributions/wheel.py           |   34 [32m+[m
+ .../Lib/site-packages/pip/_internal/exceptions.py  |  747 [32m++[m
+ .../site-packages/pip/_internal/index/__init__.py  |    2 [32m+[m
+ .../index/__pycache__/__init__.cpython-310.pyc     |  Bin [31m0[m -> [32m253[m bytes
+ .../index/__pycache__/collector.cpython-310.pyc    |  Bin [31m0[m -> [32m15320[m bytes
+ .../__pycache__/package_finder.cpython-310.pyc     |  Bin [31m0[m -> [32m29480[m bytes
+ .../index/__pycache__/sources.cpython-310.pyc      |  Bin [31m0[m -> [32m7146[m bytes
+ .../site-packages/pip/_internal/index/collector.py |  505 [32m++[m
+ .../pip/_internal/index/package_finder.py          | 1029 [32m+++[m
+ .../site-packages/pip/_internal/index/sources.py   |  224 [32m+[m
+ .../pip/_internal/locations/__init__.py            |  467 [32m++[m
+ .../locations/__pycache__/__init__.cpython-310.pyc |  Bin [31m0[m -> [32m11055[m bytes
+ .../__pycache__/_distutils.cpython-310.pyc         |  Bin [31m0[m -> [32m4628[m bytes
+ .../__pycache__/_sysconfig.cpython-310.pyc         |  Bin [31m0[m -> [32m6019[m bytes
+ .../locations/__pycache__/base.cpython-310.pyc     |  Bin [31m0[m -> [32m2423[m bytes
+ .../pip/_internal/locations/_distutils.py          |  173 [32m+[m
+ .../pip/_internal/locations/_sysconfig.py          |  213 [32m+[m
+ .../site-packages/pip/_internal/locations/base.py  |   81 [32m+[m
+ .../venv/Lib/site-packages/pip/_internal/main.py   |   12 [32m+[m
+ .../pip/_internal/metadata/__init__.py             |  127 [32m+[m
+ .../metadata/__pycache__/__init__.cpython-310.pyc  |  Bin [31m0[m -> [32m4757[m bytes
+ .../metadata/__pycache__/_json.cpython-310.pyc     |  Bin [31m0[m -> [32m2213[m bytes
+ .../metadata/__pycache__/base.cpython-310.pyc      |  Bin [31m0[m -> [32m26691[m bytes
+ .../__pycache__/pkg_resources.cpython-310.pyc      |  Bin [31m0[m -> [32m10195[m bytes
+ .../site-packages/pip/_internal/metadata/_json.py  |   84 [32m+[m
+ .../site-packages/pip/_internal/metadata/base.py   |  688 [32m++[m
+ .../pip/_internal/metadata/importlib/__init__.py   |    4 [32m+[m
+ .../importlib/__pycache__/__init__.cpython-310.pyc |  Bin [31m0[m -> [32m344[m bytes
+ .../importlib/__pycache__/_compat.cpython-310.pyc  |  Bin [31m0[m -> [32m2776[m bytes
+ .../importlib/__pycache__/_dists.cpython-310.pyc   |  Bin [31m0[m -> [32m8934[m bytes
+ .../importlib/__pycache__/_envs.cpython-310.pyc    |  Bin [31m0[m -> [32m7730[m bytes
+ .../pip/_internal/metadata/importlib/_compat.py    |   55 [32m+[m
+ .../pip/_internal/metadata/importlib/_dists.py     |  224 [32m+[m
+ .../pip/_internal/metadata/importlib/_envs.py      |  188 [32m+[m
+ .../pip/_internal/metadata/pkg_resources.py        |  270 [32m+[m
+ .../site-packages/pip/_internal/models/__init__.py |    2 [32m+[m
+ .../models/__pycache__/__init__.cpython-310.pyc    |  Bin [31m0[m -> [32m287[m bytes
+ .../models/__pycache__/candidate.cpython-310.pyc   |  Bin [31m0[m -> [32m1439[m bytes
+ .../models/__pycache__/direct_url.cpython-310.pyc  |  Bin [31m0[m -> [32m7443[m bytes
+ .../__pycache__/format_control.cpython-310.pyc     |  Bin [31m0[m -> [32m2764[m bytes
+ .../models/__pycache__/index.cpython-310.pyc       |  Bin [31m0[m -> [32m1256[m bytes
+ .../installation_report.cpython-310.pyc            |  Bin [31m0[m -> [32m1766[m bytes
+ .../models/__pycache__/link.cpython-310.pyc        |  Bin [31m0[m -> [32m16884[m bytes
+ .../models/__pycache__/scheme.cpython-310.pyc      |  Bin [31m0[m -> [32m1055[m bytes
+ .../__pycache__/search_scope.cpython-310.pyc       |  Bin [31m0[m -> [32m3574[m bytes
+ .../__pycache__/selection_prefs.cpython-310.pyc    |  Bin [31m0[m -> [32m1717[m bytes
+ .../__pycache__/target_python.cpython-310.pyc      |  Bin [31m0[m -> [32m3468[m bytes
+ .../models/__pycache__/wheel.cpython-310.pyc       |  Bin [31m0[m -> [32m4487[m bytes
+ .../pip/_internal/models/candidate.py              |   34 [32m+[m
+ .../pip/_internal/models/direct_url.py             |  228 [32m+[m
+ .../pip/_internal/models/format_control.py         |   80 [32m+[m
+ .../site-packages/pip/_internal/models/index.py    |   28 [32m+[m
+ .../pip/_internal/models/installation_report.py    |   53 [32m+[m
+ .../Lib/site-packages/pip/_internal/models/link.py |  524 [32m++[m
+ .../site-packages/pip/_internal/models/scheme.py   |   31 [32m+[m
+ .../pip/_internal/models/search_scope.py           |  133 [32m+[m
+ .../pip/_internal/models/selection_prefs.py        |   51 [32m+[m
+ .../pip/_internal/models/target_python.py          |  110 [32m+[m
+ .../site-packages/pip/_internal/models/wheel.py    |   92 [32m+[m
+ .../pip/_internal/network/__init__.py              |    2 [32m+[m
+ .../network/__pycache__/__init__.cpython-310.pyc   |  Bin [31m0[m -> [32m275[m bytes
+ .../network/__pycache__/auth.cpython-310.pyc       |  Bin [31m0[m -> [32m12011[m bytes
+ .../network/__pycache__/cache.cpython-310.pyc      |  Bin [31m0[m -> [32m2962[m bytes
+ .../network/__pycache__/download.cpython-310.pyc   |  Bin [31m0[m -> [32m5557[m bytes
+ .../network/__pycache__/lazy_wheel.cpython-310.pyc |  Bin [31m0[m -> [32m8443[m bytes
+ .../network/__pycache__/session.cpython-310.pyc    |  Bin [31m0[m -> [32m12445[m bytes
+ .../network/__pycache__/utils.cpython-310.pyc      |  Bin [31m0[m -> [32m1478[m bytes
+ .../network/__pycache__/xmlrpc.cpython-310.pyc     |  Bin [31m0[m -> [32m2088[m bytes
+ .../site-packages/pip/_internal/network/auth.py    |  446 [32m+[m
+ .../site-packages/pip/_internal/network/cache.py   |   69 [32m+[m
+ .../pip/_internal/network/download.py              |  186 [32m+[m
+ .../pip/_internal/network/lazy_wheel.py            |  210 [32m+[m
+ .../site-packages/pip/_internal/network/session.py |  518 [32m++[m
+ .../site-packages/pip/_internal/network/utils.py   |   96 [32m+[m
+ .../site-packages/pip/_internal/network/xmlrpc.py  |   60 [32m+[m
+ .../pip/_internal/operations/__init__.py           |    0
+ .../__pycache__/__init__.cpython-310.pyc           |  Bin [31m0[m -> [32m223[m bytes
+ .../operations/__pycache__/check.cpython-310.pyc   |  Bin [31m0[m -> [32m4051[m bytes
+ .../operations/__pycache__/freeze.cpython-310.pyc  |  Bin [31m0[m -> [32m6228[m bytes
+ .../operations/__pycache__/prepare.cpython-310.pyc |  Bin [31m0[m -> [32m15081[m bytes
+ .../pip/_internal/operations/build/__init__.py     |    0
+ .../build/__pycache__/__init__.cpython-310.pyc     |  Bin [31m0[m -> [32m229[m bytes
+ .../__pycache__/build_tracker.cpython-310.pyc      |  Bin [31m0[m -> [32m4310[m bytes
+ .../build/__pycache__/metadata.cpython-310.pyc     |  Bin [31m0[m -> [32m1462[m bytes
+ .../__pycache__/metadata_editable.cpython-310.pyc  |  Bin [31m0[m -> [32m1496[m bytes
+ .../__pycache__/metadata_legacy.cpython-310.pyc    |  Bin [31m0[m -> [32m2401[m bytes
+ .../build/__pycache__/wheel.cpython-310.pyc        |  Bin [31m0[m -> [32m1252[m bytes
+ .../__pycache__/wheel_editable.cpython-310.pyc     |  Bin [31m0[m -> [32m1476[m bytes
+ .../build/__pycache__/wheel_legacy.cpython-310.pyc |  Bin [31m0[m -> [32m2786[m bytes
+ .../_internal/operations/build/build_tracker.py    |  124 [32m+[m
+ .../pip/_internal/operations/build/metadata.py     |   39 [32m+[m
+ .../operations/build/metadata_editable.py          |   41 [32m+[m
+ .../_internal/operations/build/metadata_legacy.py  |   74 [32m+[m
+ .../pip/_internal/operations/build/wheel.py        |   37 [32m+[m
+ .../_internal/operations/build/wheel_editable.py   |   46 [32m+[m
+ .../pip/_internal/operations/build/wheel_legacy.py |  102 [32m+[m
+ .../pip/_internal/operations/check.py              |  149 [32m+[m
+ .../pip/_internal/operations/freeze.py             |  254 [32m+[m
+ .../pip/_internal/operations/install/__init__.py   |    2 [32m+[m
+ .../install/__pycache__/__init__.cpython-310.pyc   |  Bin [31m0[m -> [32m287[m bytes
+ .../__pycache__/editable_legacy.cpython-310.pyc    |  Bin [31m0[m -> [32m1574[m bytes
+ .../install/__pycache__/legacy.cpython-310.pyc     |  Bin [31m0[m -> [32m3372[m bytes
+ .../install/__pycache__/wheel.cpython-310.pyc      |  Bin [31m0[m -> [32m21173[m bytes
+ .../operations/install/editable_legacy.py          |   47 [32m+[m
+ .../pip/_internal/operations/install/legacy.py     |  120 [32m+[m
+ .../pip/_internal/operations/install/wheel.py      |  738 [32m++[m
+ .../pip/_internal/operations/prepare.py            |  667 [32m++[m
+ .../Lib/site-packages/pip/_internal/pyproject.py   |  174 [32m+[m
+ .../site-packages/pip/_internal/req/__init__.py    |   94 [32m+[m
+ .../req/__pycache__/__init__.cpython-310.pyc       |  Bin [31m0[m -> [32m2630[m bytes
+ .../req/__pycache__/constructors.cpython-310.pyc   |  Bin [31m0[m -> [32m12400[m bytes
+ .../req/__pycache__/req_file.cpython-310.pyc       |  Bin [31m0[m -> [32m13660[m bytes
+ .../req/__pycache__/req_install.cpython-310.pyc    |  Bin [31m0[m -> [32m24417[m bytes
+ .../req/__pycache__/req_set.cpython-310.pyc        |  Bin [31m0[m -> [32m3938[m bytes
+ .../req/__pycache__/req_uninstall.cpython-310.pyc  |  Bin [31m0[m -> [32m19085[m bytes
+ .../pip/_internal/req/constructors.py              |  501 [32m++[m
+ .../site-packages/pip/_internal/req/req_file.py    |  544 [32m++[m
+ .../site-packages/pip/_internal/req/req_install.py |  946 [32m+++[m
+ .../Lib/site-packages/pip/_internal/req/req_set.py |   82 [32m+[m
+ .../pip/_internal/req/req_uninstall.py             |  640 [32m++[m
+ .../pip/_internal/resolution/__init__.py           |    0
+ .../__pycache__/__init__.cpython-310.pyc           |  Bin [31m0[m -> [32m223[m bytes
+ .../resolution/__pycache__/base.cpython-310.pyc    |  Bin [31m0[m -> [32m1075[m bytes
+ .../site-packages/pip/_internal/resolution/base.py |   20 [32m+[m
+ .../pip/_internal/resolution/legacy/__init__.py    |    0
+ .../legacy/__pycache__/__init__.cpython-310.pyc    |  Bin [31m0[m -> [32m230[m bytes
+ .../legacy/__pycache__/resolver.cpython-310.pyc    |  Bin [31m0[m -> [32m14976[m bytes
+ .../pip/_internal/resolution/legacy/resolver.py    |  600 [32m++[m
+ .../_internal/resolution/resolvelib/__init__.py    |    0
+ .../__pycache__/__init__.cpython-310.pyc           |  Bin [31m0[m -> [32m234[m bytes
+ .../resolvelib/__pycache__/base.cpython-310.pyc    |  Bin [31m0[m -> [32m6477[m bytes
+ .../__pycache__/candidates.cpython-310.pyc         |  Bin [31m0[m -> [32m18618[m bytes
+ .../resolvelib/__pycache__/factory.cpython-310.pyc |  Bin [31m0[m -> [32m19098[m bytes
+ .../__pycache__/found_candidates.cpython-310.pyc   |  Bin [31m0[m -> [32m4894[m bytes
+ .../__pycache__/provider.cpython-310.pyc           |  Bin [31m0[m -> [32m7735[m bytes
+ .../__pycache__/reporter.cpython-310.pyc           |  Bin [31m0[m -> [32m3203[m bytes
+ .../__pycache__/requirements.cpython-310.pyc       |  Bin [31m0[m -> [32m7492[m bytes
+ .../__pycache__/resolver.cpython-310.pyc           |  Bin [31m0[m -> [32m8207[m bytes
+ .../pip/_internal/resolution/resolvelib/base.py    |  141 [32m+[m
+ .../_internal/resolution/resolvelib/candidates.py  |  556 [32m++[m
+ .../pip/_internal/resolution/resolvelib/factory.py |  731 [32m++[m
+ .../resolution/resolvelib/found_candidates.py      |  155 [32m+[m
+ .../_internal/resolution/resolvelib/provider.py    |  248 [32m+[m
+ .../_internal/resolution/resolvelib/reporter.py    |   68 [32m+[m
+ .../resolution/resolvelib/requirements.py          |  166 [32m+[m
+ .../_internal/resolution/resolvelib/resolver.py    |  296 [32m+[m
+ .../pip/_internal/self_outdated_check.py           |  242 [32m+[m
+ .../site-packages/pip/_internal/utils/__init__.py  |    0
+ .../utils/__pycache__/__init__.cpython-310.pyc     |  Bin [31m0[m -> [32m218[m bytes
+ .../utils/__pycache__/_log.cpython-310.pyc         |  Bin [31m0[m -> [32m1546[m bytes
+ .../utils/__pycache__/appdirs.cpython-310.pyc      |  Bin [31m0[m -> [32m1644[m bytes
+ .../utils/__pycache__/compat.cpython-310.pyc       |  Bin [31m0[m -> [32m1534[m bytes
+ .../__pycache__/compatibility_tags.cpython-310.pyc |  Bin [31m0[m -> [32m4103[m bytes
+ .../utils/__pycache__/datetime.cpython-310.pyc     |  Bin [31m0[m -> [32m541[m bytes
+ .../utils/__pycache__/deprecation.cpython-310.pyc  |  Bin [31m0[m -> [32m5126[m bytes
+ .../__pycache__/direct_url_helpers.cpython-310.pyc |  Bin [31m0[m -> [32m2109[m bytes
+ .../__pycache__/distutils_args.cpython-310.pyc     |  Bin [31m0[m -> [32m1083[m bytes
+ .../utils/__pycache__/egg_link.cpython-310.pyc     |  Bin [31m0[m -> [32m2189[m bytes
+ .../utils/__pycache__/encoding.cpython-310.pyc     |  Bin [31m0[m -> [32m1331[m bytes
+ .../utils/__pycache__/entrypoints.cpython-310.pyc  |  Bin [31m0[m -> [32m2724[m bytes
+ .../utils/__pycache__/filesystem.cpython-310.pyc   |  Bin [31m0[m -> [32m4507[m bytes
+ .../utils/__pycache__/filetypes.cpython-310.pyc    |  Bin [31m0[m -> [32m968[m bytes
+ .../utils/__pycache__/glibc.cpython-310.pyc        |  Bin [31m0[m -> [32m1697[m bytes
+ .../utils/__pycache__/hashes.cpython-310.pyc       |  Bin [31m0[m -> [32m5248[m bytes
+ .../inject_securetransport.cpython-310.pyc         |  Bin [31m0[m -> [32m1013[m bytes
+ .../utils/__pycache__/logging.cpython-310.pyc      |  Bin [31m0[m -> [32m9743[m bytes
+ .../utils/__pycache__/misc.cpython-310.pyc         |  Bin [31m0[m -> [32m22280[m bytes
+ .../utils/__pycache__/models.cpython-310.pyc       |  Bin [31m0[m -> [32m2014[m bytes
+ .../utils/__pycache__/packaging.cpython-310.pyc    |  Bin [31m0[m -> [32m2106[m bytes
+ .../__pycache__/setuptools_build.cpython-310.pyc   |  Bin [31m0[m -> [32m4625[m bytes
+ .../utils/__pycache__/subprocess.cpython-310.pyc   |  Bin [31m0[m -> [32m5797[m bytes
+ .../utils/__pycache__/temp_dir.cpython-310.pyc     |  Bin [31m0[m -> [32m7341[m bytes
+ .../utils/__pycache__/unpacking.cpython-310.pyc    |  Bin [31m0[m -> [32m6678[m bytes
+ .../utils/__pycache__/urls.cpython-310.pyc         |  Bin [31m0[m -> [32m1611[m bytes
+ .../utils/__pycache__/virtualenv.cpython-310.pyc   |  Bin [31m0[m -> [32m3314[m bytes
+ .../utils/__pycache__/wheel.cpython-310.pyc        |  Bin [31m0[m -> [32m4439[m bytes
+ .../Lib/site-packages/pip/_internal/utils/_log.py  |   38 [32m+[m
+ .../site-packages/pip/_internal/utils/appdirs.py   |   52 [32m+[m
+ .../site-packages/pip/_internal/utils/compat.py    |   63 [32m+[m
+ .../pip/_internal/utils/compatibility_tags.py      |  165 [32m+[m
+ .../site-packages/pip/_internal/utils/datetime.py  |   11 [32m+[m
+ .../pip/_internal/utils/deprecation.py             |  188 [32m+[m
+ .../pip/_internal/utils/direct_url_helpers.py      |   87 [32m+[m
+ .../pip/_internal/utils/distutils_args.py          |   43 [32m+[m
+ .../site-packages/pip/_internal/utils/egg_link.py  |   72 [32m+[m
+ .../site-packages/pip/_internal/utils/encoding.py  |   36 [32m+[m
+ .../pip/_internal/utils/entrypoints.py             |   84 [32m+[m
+ .../pip/_internal/utils/filesystem.py              |  153 [32m+[m
+ .../site-packages/pip/_internal/utils/filetypes.py |   27 [32m+[m
+ .../Lib/site-packages/pip/_internal/utils/glibc.py |   88 [32m+[m
+ .../site-packages/pip/_internal/utils/hashes.py    |  144 [32m+[m
+ .../pip/_internal/utils/inject_securetransport.py  |   35 [32m+[m
+ .../site-packages/pip/_internal/utils/logging.py   |  348 [32m+[m
+ .../Lib/site-packages/pip/_internal/utils/misc.py  |  739 [32m++[m
+ .../site-packages/pip/_internal/utils/models.py    |   39 [32m+[m
+ .../site-packages/pip/_internal/utils/packaging.py |   57 [32m+[m
+ .../pip/_internal/utils/setuptools_build.py        |  195 [32m+[m
+ .../pip/_internal/utils/subprocess.py              |  260 [32m+[m
+ .../site-packages/pip/_internal/utils/temp_dir.py  |  246 [32m+[m
+ .../site-packages/pip/_internal/utils/unpacking.py |  257 [32m+[m
+ .../Lib/site-packages/pip/_internal/utils/urls.py  |   62 [32m+[m
+ .../pip/_internal/utils/virtualenv.py              |  104 [32m+[m
+ .../Lib/site-packages/pip/_internal/utils/wheel.py |  136 [32m+[m
+ .../site-packages/pip/_internal/vcs/__init__.py    |   15 [32m+[m
+ .../vcs/__pycache__/__init__.cpython-310.pyc       |  Bin [31m0[m -> [32m541[m bytes
+ .../vcs/__pycache__/bazaar.cpython-310.pyc         |  Bin [31m0[m -> [32m3507[m bytes
+ .../_internal/vcs/__pycache__/git.cpython-310.pyc  |  Bin [31m0[m -> [32m12571[m bytes
+ .../vcs/__pycache__/mercurial.cpython-310.pyc      |  Bin [31m0[m -> [32m5087[m bytes
+ .../vcs/__pycache__/subversion.cpython-310.pyc     |  Bin [31m0[m -> [32m8479[m bytes
+ .../vcs/__pycache__/versioncontrol.cpython-310.pyc |  Bin [31m0[m -> [32m21170[m bytes
+ .../Lib/site-packages/pip/_internal/vcs/bazaar.py  |  112 [32m+[m
+ .../Lib/site-packages/pip/_internal/vcs/git.py     |  526 [32m++[m
+ .../site-packages/pip/_internal/vcs/mercurial.py   |  163 [32m+[m
+ .../site-packages/pip/_internal/vcs/subversion.py  |  324 [32m+[m
+ .../pip/_internal/vcs/versioncontrol.py            |  705 [32m++[m
+ .../site-packages/pip/_internal/wheel_builder.py   |  382 [32m+[m
+ .../venv/Lib/site-packages/pip/_vendor/__init__.py |  120 [32m+[m
+ .../_vendor/__pycache__/__init__.cpython-310.pyc   |  Bin [31m0[m -> [32m3154[m bytes
+ .../pip/_vendor/__pycache__/six.cpython-310.pyc    |  Bin [31m0[m -> [32m27608[m bytes
+ .../__pycache__/typing_extensions.cpython-310.pyc  |  Bin [31m0[m -> [32m65062[m bytes
+ .../pip/_vendor/cachecontrol/__init__.py           |   18 [32m+[m
+ .../__pycache__/__init__.cpython-310.pyc           |  Bin [31m0[m -> [32m669[m bytes
+ .../cachecontrol/__pycache__/_cmd.cpython-310.pyc  |  Bin [31m0[m -> [32m1607[m bytes
+ .../__pycache__/adapter.cpython-310.pyc            |  Bin [31m0[m -> [32m3183[m bytes
+ .../cachecontrol/__pycache__/cache.cpython-310.pyc |  Bin [31m0[m -> [32m2717[m bytes
+ .../__pycache__/compat.cpython-310.pyc             |  Bin [31m0[m -> [32m783[m bytes
+ .../__pycache__/controller.cpython-310.pyc         |  Bin [31m0[m -> [32m8617[m bytes
+ .../__pycache__/filewrapper.cpython-310.pyc        |  Bin [31m0[m -> [32m2819[m bytes
+ .../__pycache__/heuristics.cpython-310.pyc         |  Bin [31m0[m -> [32m4743[m bytes
+ .../__pycache__/serialize.cpython-310.pyc          |  Bin [31m0[m -> [32m4358[m bytes
+ .../__pycache__/wrapper.cpython-310.pyc            |  Bin [31m0[m -> [32m714[m bytes
+ .../site-packages/pip/_vendor/cachecontrol/_cmd.py |   61 [32m+[m
+ .../pip/_vendor/cachecontrol/adapter.py            |  137 [32m+[m
+ .../pip/_vendor/cachecontrol/cache.py              |   65 [32m+[m
+ .../pip/_vendor/cachecontrol/caches/__init__.py    |    9 [32m+[m
+ .../caches/__pycache__/__init__.cpython-310.pyc    |  Bin [31m0[m -> [32m388[m bytes
+ .../caches/__pycache__/file_cache.cpython-310.pyc  |  Bin [31m0[m -> [32m4988[m bytes
+ .../caches/__pycache__/redis_cache.cpython-310.pyc |  Bin [31m0[m -> [32m1646[m bytes
+ .../pip/_vendor/cachecontrol/caches/file_cache.py  |  188 [32m+[m
+ .../pip/_vendor/cachecontrol/caches/redis_cache.py |   39 [32m+[m
+ .../pip/_vendor/cachecontrol/compat.py             |   32 [32m+[m
+ .../pip/_vendor/cachecontrol/controller.py         |  439 [32m+[m
+ .../pip/_vendor/cachecontrol/filewrapper.py        |  111 [32m+[m
+ .../pip/_vendor/cachecontrol/heuristics.py         |  139 [32m+[m
+ .../pip/_vendor/cachecontrol/serialize.py          |  190 [32m+[m
+ .../pip/_vendor/cachecontrol/wrapper.py            |   33 [32m+[m
+ .../site-packages/pip/_vendor/certifi/__init__.py  |    4 [32m+[m
+ .../site-packages/pip/_vendor/certifi/__main__.py  |   12 [32m+[m
+ .../certifi/__pycache__/__init__.cpython-310.pyc   |  Bin [31m0[m -> [32m331[m bytes
+ .../certifi/__pycache__/__main__.cpython-310.pyc   |  Bin [31m0[m -> [32m481[m bytes
+ .../certifi/__pycache__/core.cpython-310.pyc       |  Bin [31m0[m -> [32m1951[m bytes
+ .../site-packages/pip/_vendor/certifi/cacert.pem   | 4527 [32m+++++++++++[m
+ .../Lib/site-packages/pip/_vendor/certifi/core.py  |  108 [32m+[m
+ .../site-packages/pip/_vendor/chardet/__init__.py  |  115 [32m+[m
+ .../chardet/__pycache__/__init__.cpython-310.pyc   |  Bin [31m0[m -> [32m3199[m bytes
+ .../chardet/__pycache__/big5freq.cpython-310.pyc   |  Bin [31m0[m -> [32m27205[m bytes
+ .../chardet/__pycache__/big5prober.cpython-310.pyc |  Bin [31m0[m -> [32m1183[m bytes
+ .../__pycache__/chardistribution.cpython-310.pyc   |  Bin [31m0[m -> [32m6600[m bytes
+ .../__pycache__/charsetgroupprober.cpython-310.pyc |  Bin [31m0[m -> [32m2450[m bytes
+ .../__pycache__/charsetprober.cpython-310.pyc      |  Bin [31m0[m -> [32m3856[m bytes
+ .../__pycache__/codingstatemachine.cpython-310.pyc |  Bin [31m0[m -> [32m3093[m bytes
+ .../codingstatemachinedict.cpython-310.pyc         |  Bin [31m0[m -> [32m722[m bytes
+ .../__pycache__/cp949prober.cpython-310.pyc        |  Bin [31m0[m -> [32m1190[m bytes
+ .../chardet/__pycache__/enums.cpython-310.pyc      |  Bin [31m0[m -> [32m2683[m bytes
+ .../chardet/__pycache__/escprober.cpython-310.pyc  |  Bin [31m0[m -> [32m2841[m bytes
+ .../chardet/__pycache__/escsm.cpython-310.pyc      |  Bin [31m0[m -> [32m8544[m bytes
+ .../__pycache__/eucjpprober.cpython-310.pyc        |  Bin [31m0[m -> [32m2627[m bytes
+ .../chardet/__pycache__/euckrfreq.cpython-310.pyc  |  Bin [31m0[m -> [32m12089[m bytes
+ .../__pycache__/euckrprober.cpython-310.pyc        |  Bin [31m0[m -> [32m1191[m bytes
+ .../chardet/__pycache__/euctwfreq.cpython-310.pyc  |  Bin [31m0[m -> [32m27209[m bytes
+ .../__pycache__/euctwprober.cpython-310.pyc        |  Bin [31m0[m -> [32m1191[m bytes
+ .../chardet/__pycache__/gb2312freq.cpython-310.pyc |  Bin [31m0[m -> [32m19133[m bytes
+ .../__pycache__/gb2312prober.cpython-310.pyc       |  Bin [31m0[m -> [32m1199[m bytes
+ .../__pycache__/hebrewprober.cpython-310.pyc       |  Bin [31m0[m -> [32m3440[m bytes
+ .../chardet/__pycache__/jisfreq.cpython-310.pyc    |  Bin [31m0[m -> [32m22161[m bytes
+ .../chardet/__pycache__/johabfreq.cpython-310.pyc  |  Bin [31m0[m -> [32m138785[m bytes
+ .../__pycache__/johabprober.cpython-310.pyc        |  Bin [31m0[m -> [32m1190[m bytes
+ .../chardet/__pycache__/jpcntx.cpython-310.pyc     |  Bin [31m0[m -> [32m38011[m bytes
+ .../__pycache__/langbulgarianmodel.cpython-310.pyc |  Bin [31m0[m -> [32m47953[m bytes
+ .../__pycache__/langgreekmodel.cpython-310.pyc     |  Bin [31m0[m -> [32m46143[m bytes
+ .../__pycache__/langhebrewmodel.cpython-310.pyc    |  Bin [31m0[m -> [32m44590[m bytes
+ .../__pycache__/langhungarianmodel.cpython-310.pyc |  Bin [31m0[m -> [32m47913[m bytes
+ .../__pycache__/langrussianmodel.cpython-310.pyc   |  Bin [31m0[m -> [32m61054[m bytes
+ .../__pycache__/langthaimodel.cpython-310.pyc      |  Bin [31m0[m -> [32m44766[m bytes
+ .../__pycache__/langturkishmodel.cpython-310.pyc   |  Bin [31m0[m -> [32m44607[m bytes
+ .../__pycache__/latin1prober.cpython-310.pyc       |  Bin [31m0[m -> [32m4589[m bytes
+ .../__pycache__/macromanprober.cpython-310.pyc     |  Bin [31m0[m -> [32m4730[m bytes
+ .../__pycache__/mbcharsetprober.cpython-310.pyc    |  Bin [31m0[m -> [32m2339[m bytes
+ .../__pycache__/mbcsgroupprober.cpython-310.pyc    |  Bin [31m0[m -> [32m1287[m bytes
+ .../chardet/__pycache__/mbcssm.cpython-310.pyc     |  Bin [31m0[m -> [32m20962[m bytes
+ .../chardet/__pycache__/resultdict.cpython-310.pyc |  Bin [31m0[m -> [32m602[m bytes
+ .../__pycache__/sbcharsetprober.cpython-310.pyc    |  Bin [31m0[m -> [32m3708[m bytes
+ .../__pycache__/sbcsgroupprober.cpython-310.pyc    |  Bin [31m0[m -> [32m1766[m bytes
+ .../chardet/__pycache__/sjisprober.cpython-310.pyc |  Bin [31m0[m -> [32m2665[m bytes
+ .../__pycache__/universaldetector.cpython-310.pyc  |  Bin [31m0[m -> [32m7153[m bytes
+ .../__pycache__/utf1632prober.cpython-310.pyc      |  Bin [31m0[m -> [32m6125[m bytes
+ .../chardet/__pycache__/utf8prober.cpython-310.pyc |  Bin [31m0[m -> [32m2135[m bytes
+ .../chardet/__pycache__/version.cpython-310.pyc    |  Bin [31m0[m -> [32m467[m bytes
+ .../site-packages/pip/_vendor/chardet/big5freq.py  |  386 [32m+[m
+ .../pip/_vendor/chardet/big5prober.py              |   47 [32m+[m
+ .../pip/_vendor/chardet/chardistribution.py        |  261 [32m+[m
+ .../pip/_vendor/chardet/charsetgroupprober.py      |  106 [32m+[m
+ .../pip/_vendor/chardet/charsetprober.py           |  147 [32m+[m
+ .../pip/_vendor/chardet/cli/__init__.py            |    0
+ .../cli/__pycache__/__init__.cpython-310.pyc       |  Bin [31m0[m -> [32m222[m bytes
+ .../cli/__pycache__/chardetect.cpython-310.pyc     |  Bin [31m0[m -> [32m3064[m bytes
+ .../pip/_vendor/chardet/cli/chardetect.py          |  112 [32m+[m
+ .../pip/_vendor/chardet/codingstatemachine.py      |   90 [32m+[m
+ .../pip/_vendor/chardet/codingstatemachinedict.py  |   19 [32m+[m
+ .../pip/_vendor/chardet/cp949prober.py             |   49 [32m+[m
+ .../Lib/site-packages/pip/_vendor/chardet/enums.py |   85 [32m+[m
+ .../site-packages/pip/_vendor/chardet/escprober.py |  102 [32m+[m
+ .../Lib/site-packages/pip/_vendor/chardet/escsm.py |  261 [32m+[m
+ .../pip/_vendor/chardet/eucjpprober.py             |  102 [32m+[m
+ .../site-packages/pip/_vendor/chardet/euckrfreq.py |  196 [32m+[m
+ .../pip/_vendor/chardet/euckrprober.py             |   47 [32m+[m
+ .../site-packages/pip/_vendor/chardet/euctwfreq.py |  388 [32m+[m
+ .../pip/_vendor/chardet/euctwprober.py             |   47 [32m+[m
+ .../pip/_vendor/chardet/gb2312freq.py              |  284 [32m+[m
+ .../pip/_vendor/chardet/gb2312prober.py            |   47 [32m+[m
+ .../pip/_vendor/chardet/hebrewprober.py            |  316 [32m+[m
+ .../site-packages/pip/_vendor/chardet/jisfreq.py   |  325 [32m+[m
+ .../site-packages/pip/_vendor/chardet/johabfreq.py | 2382 [32m++++++[m
+ .../pip/_vendor/chardet/johabprober.py             |   47 [32m+[m
+ .../site-packages/pip/_vendor/chardet/jpcntx.py    |  238 [32m+[m
+ .../pip/_vendor/chardet/langbulgarianmodel.py      | 4649 [32m+++++++++++[m
+ .../pip/_vendor/chardet/langgreekmodel.py          | 4397 [32m++++++++++[m
+ .../pip/_vendor/chardet/langhebrewmodel.py         | 4380 [32m++++++++++[m
+ .../pip/_vendor/chardet/langhungarianmodel.py      | 4649 [32m+++++++++++[m
+ .../pip/_vendor/chardet/langrussianmodel.py        | 5725 [32m+++++++++++++[m
+ .../pip/_vendor/chardet/langthaimodel.py           | 4380 [32m++++++++++[m
+ .../pip/_vendor/chardet/langturkishmodel.py        | 4380 [32m++++++++++[m
+ .../pip/_vendor/chardet/latin1prober.py            |  147 [32m+[m
+ .../pip/_vendor/chardet/macromanprober.py          |  162 [32m+[m
+ .../pip/_vendor/chardet/mbcharsetprober.py         |   95 [32m+[m
+ .../pip/_vendor/chardet/mbcsgroupprober.py         |   57 [32m+[m
+ .../site-packages/pip/_vendor/chardet/mbcssm.py    |  661 [32m++[m
+ .../pip/_vendor/chardet/metadata/__init__.py       |    0
+ .../metadata/__pycache__/__init__.cpython-310.pyc  |  Bin [31m0[m -> [32m227[m bytes
+ .../metadata/__pycache__/languages.cpython-310.pyc |  Bin [31m0[m -> [32m8210[m bytes
+ .../pip/_vendor/chardet/metadata/languages.py      |  352 [32m+[m
+ .../pip/_vendor/chardet/resultdict.py              |   16 [32m+[m
+ .../pip/_vendor/chardet/sbcharsetprober.py         |  162 [32m+[m
+ .../pip/_vendor/chardet/sbcsgroupprober.py         |   88 [32m+[m
+ .../pip/_vendor/chardet/sjisprober.py              |  105 [32m+[m
+ .../pip/_vendor/chardet/universaldetector.py       |  362 [32m+[m
+ .../pip/_vendor/chardet/utf1632prober.py           |  225 [32m+[m
+ .../pip/_vendor/chardet/utf8prober.py              |   82 [32m+[m
+ .../site-packages/pip/_vendor/chardet/version.py   |    9 [32m+[m
+ .../site-packages/pip/_vendor/colorama/__init__.py |    7 [32m+[m
+ .../colorama/__pycache__/__init__.cpython-310.pyc  |  Bin [31m0[m -> [32m505[m bytes
+ .../colorama/__pycache__/ansi.cpython-310.pyc      |  Bin [31m0[m -> [32m3031[m bytes
+ .../__pycache__/ansitowin32.cpython-310.pyc        |  Bin [31m0[m -> [32m8543[m bytes
+ .../__pycache__/initialise.cpython-310.pyc         |  Bin [31m0[m -> [32m2288[m bytes
+ .../colorama/__pycache__/win32.cpython-310.pyc     |  Bin [31m0[m -> [32m4498[m bytes
+ .../colorama/__pycache__/winterm.cpython-310.pyc   |  Bin [31m0[m -> [32m5194[m bytes
+ .../Lib/site-packages/pip/_vendor/colorama/ansi.py |  102 [32m+[m
+ .../pip/_vendor/colorama/ansitowin32.py            |  277 [32m+[m
+ .../pip/_vendor/colorama/initialise.py             |  121 [32m+[m
+ .../pip/_vendor/colorama/tests/__init__.py         |    1 [32m+[m
+ .../tests/__pycache__/__init__.cpython-310.pyc     |  Bin [31m0[m -> [32m225[m bytes
+ .../tests/__pycache__/ansi_test.cpython-310.pyc    |  Bin [31m0[m -> [32m2317[m bytes
+ .../__pycache__/ansitowin32_test.cpython-310.pyc   |  Bin [31m0[m -> [32m11628[m bytes
+ .../__pycache__/initialise_test.cpython-310.pyc    |  Bin [31m0[m -> [32m6925[m bytes
+ .../tests/__pycache__/isatty_test.cpython-310.pyc  |  Bin [31m0[m -> [32m2716[m bytes
+ .../tests/__pycache__/utils.cpython-310.pyc        |  Bin [31m0[m -> [32m1625[m bytes
+ .../tests/__pycache__/winterm_test.cpython-310.pyc |  Bin [31m0[m -> [32m3218[m bytes
+ .../pip/_vendor/colorama/tests/ansi_test.py        |   76 [32m+[m
+ .../pip/_vendor/colorama/tests/ansitowin32_test.py |  294 [32m+[m
+ .../pip/_vendor/colorama/tests/initialise_test.py  |  189 [32m+[m
+ .../pip/_vendor/colorama/tests/isatty_test.py      |   57 [32m+[m
+ .../pip/_vendor/colorama/tests/utils.py            |   49 [32m+[m
+ .../pip/_vendor/colorama/tests/winterm_test.py     |  131 [32m+[m
+ .../site-packages/pip/_vendor/colorama/win32.py    |  180 [32m+[m
+ .../site-packages/pip/_vendor/colorama/winterm.py  |  195 [32m+[m
+ .../site-packages/pip/_vendor/distlib/__init__.py  |   23 [32m+[m
+ .../distlib/__pycache__/__init__.cpython-310.pyc   |  Bin [31m0[m -> [32m1089[m bytes
+ .../distlib/__pycache__/compat.cpython-310.pyc     |  Bin [31m0[m -> [32m31435[m bytes
+ .../distlib/__pycache__/database.cpython-310.pyc   |  Bin [31m0[m -> [32m43175[m bytes
+ .../distlib/__pycache__/index.cpython-310.pyc      |  Bin [31m0[m -> [32m17340[m bytes
+ .../distlib/__pycache__/locators.cpython-310.pyc   |  Bin [31m0[m -> [32m38397[m bytes
+ .../distlib/__pycache__/manifest.cpython-310.pyc   |  Bin [31m0[m -> [32m10257[m bytes
+ .../distlib/__pycache__/markers.cpython-310.pyc    |  Bin [31m0[m -> [32m5061[m bytes
+ .../distlib/__pycache__/metadata.cpython-310.pyc   |  Bin [31m0[m -> [32m26814[m bytes
+ .../distlib/__pycache__/resources.cpython-310.pyc  |  Bin [31m0[m -> [32m11063[m bytes
+ .../distlib/__pycache__/scripts.cpython-310.pyc    |  Bin [31m0[m -> [32m11527[m bytes
+ .../distlib/__pycache__/util.cpython-310.pyc       |  Bin [31m0[m -> [32m51722[m bytes
+ .../distlib/__pycache__/version.cpython-310.pyc    |  Bin [31m0[m -> [32m20176[m bytes
+ .../distlib/__pycache__/wheel.cpython-310.pyc      |  Bin [31m0[m -> [32m28158[m bytes
+ .../site-packages/pip/_vendor/distlib/compat.py    | 1116 [32m+++[m
+ .../site-packages/pip/_vendor/distlib/database.py  | 1350 [32m+++[m
+ .../Lib/site-packages/pip/_vendor/distlib/index.py |  508 [32m++[m
+ .../site-packages/pip/_vendor/distlib/locators.py  | 1300 [32m+++[m
+ .../site-packages/pip/_vendor/distlib/manifest.py  |  393 [32m+[m
+ .../site-packages/pip/_vendor/distlib/markers.py   |  152 [32m+[m
+ .../site-packages/pip/_vendor/distlib/metadata.py  | 1076 [32m+++[m
+ .../site-packages/pip/_vendor/distlib/resources.py |  358 [32m+[m
+ .../site-packages/pip/_vendor/distlib/scripts.py   |  437 [32m+[m
+ .../Lib/site-packages/pip/_vendor/distlib/t32.exe  |  Bin [31m0[m -> [32m97792[m bytes
+ .../site-packages/pip/_vendor/distlib/t64-arm.exe  |  Bin [31m0[m -> [32m182784[m bytes
+ .../Lib/site-packages/pip/_vendor/distlib/t64.exe  |  Bin [31m0[m -> [32m108032[m bytes
+ .../Lib/site-packages/pip/_vendor/distlib/util.py  | 1932 [32m+++++[m
+ .../site-packages/pip/_vendor/distlib/version.py   |  739 [32m++[m
+ .../Lib/site-packages/pip/_vendor/distlib/w32.exe  |  Bin [31m0[m -> [32m91648[m bytes
+ .../site-packages/pip/_vendor/distlib/w64-arm.exe  |  Bin [31m0[m -> [32m168448[m bytes
+ .../Lib/site-packages/pip/_vendor/distlib/w64.exe  |  Bin [31m0[m -> [32m101888[m bytes
+ .../Lib/site-packages/pip/_vendor/distlib/wheel.py | 1082 [32m+++[m
+ .../site-packages/pip/_vendor/distro/__init__.py   |   54 [32m+[m
+ .../site-packages/pip/_vendor/distro/__main__.py   |    4 [32m+[m
+ .../distro/__pycache__/__init__.cpython-310.pyc    |  Bin [31m0[m -> [32m942[m bytes
+ .../distro/__pycache__/__main__.cpython-310.pyc    |  Bin [31m0[m -> [32m296[m bytes
+ .../distro/__pycache__/distro.cpython-310.pyc      |  Bin [31m0[m -> [32m42090[m bytes
+ .../Lib/site-packages/pip/_vendor/distro/distro.py | 1399 [32m++++[m
+ .../Lib/site-packages/pip/_vendor/idna/__init__.py |   44 [32m+[m
+ .../idna/__pycache__/__init__.cpython-310.pyc      |  Bin [31m0[m -> [32m874[m bytes
+ .../_vendor/idna/__pycache__/codec.cpython-310.pyc |  Bin [31m0[m -> [32m2845[m bytes
+ .../idna/__pycache__/compat.cpython-310.pyc        |  Bin [31m0[m -> [32m774[m bytes
+ .../_vendor/idna/__pycache__/core.cpython-310.pyc  |  Bin [31m0[m -> [32m9703[m bytes
+ .../idna/__pycache__/idnadata.cpython-310.pyc      |  Bin [31m0[m -> [32m38410[m bytes
+ .../idna/__pycache__/intranges.cpython-310.pyc     |  Bin [31m0[m -> [32m2011[m bytes
+ .../idna/__pycache__/package_data.cpython-310.pyc  |  Bin [31m0[m -> [32m238[m bytes
+ .../idna/__pycache__/uts46data.cpython-310.pyc     |  Bin [31m0[m -> [32m152425[m bytes
+ .../Lib/site-packages/pip/_vendor/idna/codec.py    |  112 [32m+[m
+ .../Lib/site-packages/pip/_vendor/idna/compat.py   |   13 [32m+[m
+ .../Lib/site-packages/pip/_vendor/idna/core.py     |  400 [32m+[m
+ .../Lib/site-packages/pip/_vendor/idna/idnadata.py | 2151 [32m+++++[m
+ .../site-packages/pip/_vendor/idna/intranges.py    |   54 [32m+[m
+ .../site-packages/pip/_vendor/idna/package_data.py |    2 [32m+[m
+ .../site-packages/pip/_vendor/idna/uts46data.py    | 8600 [32m++++++++++++++++++++[m
+ .../site-packages/pip/_vendor/msgpack/__init__.py  |   57 [32m+[m
+ .../msgpack/__pycache__/__init__.cpython-310.pyc   |  Bin [31m0[m -> [32m1472[m bytes
+ .../msgpack/__pycache__/exceptions.cpython-310.pyc |  Bin [31m0[m -> [32m1835[m bytes
+ .../msgpack/__pycache__/ext.cpython-310.pyc        |  Bin [31m0[m -> [32m6343[m bytes
+ .../msgpack/__pycache__/fallback.cpython-310.pyc   |  Bin [31m0[m -> [32m25510[m bytes
+ .../pip/_vendor/msgpack/exceptions.py              |   48 [32m+[m
+ .../Lib/site-packages/pip/_vendor/msgpack/ext.py   |  193 [32m+[m
+ .../site-packages/pip/_vendor/msgpack/fallback.py  | 1010 [32m+++[m
+ .../pip/_vendor/packaging/__about__.py             |   26 [32m+[m
+ .../pip/_vendor/packaging/__init__.py              |   25 [32m+[m
+ .../__pycache__/__about__.cpython-310.pyc          |  Bin [31m0[m -> [32m617[m bytes
+ .../packaging/__pycache__/__init__.cpython-310.pyc |  Bin [31m0[m -> [32m473[m bytes
+ .../__pycache__/_manylinux.cpython-310.pyc         |  Bin [31m0[m -> [32m7327[m bytes
+ .../__pycache__/_musllinux.cpython-310.pyc         |  Bin [31m0[m -> [32m4639[m bytes
+ .../__pycache__/_structures.cpython-310.pyc        |  Bin [31m0[m -> [32m2732[m bytes
+ .../packaging/__pycache__/markers.cpython-310.pyc  |  Bin [31m0[m -> [32m9314[m bytes
+ .../__pycache__/requirements.cpython-310.pyc       |  Bin [31m0[m -> [32m4002[m bytes
+ .../__pycache__/specifiers.cpython-310.pyc         |  Bin [31m0[m -> [32m21554[m bytes
+ .../packaging/__pycache__/tags.cpython-310.pyc     |  Bin [31m0[m -> [32m12217[m bytes
+ .../packaging/__pycache__/utils.cpython-310.pyc    |  Bin [31m0[m -> [32m3602[m bytes
+ .../packaging/__pycache__/version.cpython-310.pyc  |  Bin [31m0[m -> [32m12952[m bytes
+ .../pip/_vendor/packaging/_manylinux.py            |  301 [32m+[m
+ .../pip/_vendor/packaging/_musllinux.py            |  136 [32m+[m
+ .../pip/_vendor/packaging/_structures.py           |   61 [32m+[m
+ .../site-packages/pip/_vendor/packaging/markers.py |  304 [32m+[m
+ .../pip/_vendor/packaging/requirements.py          |  146 [32m+[m
+ .../pip/_vendor/packaging/specifiers.py            |  802 [32m++[m
+ .../site-packages/pip/_vendor/packaging/tags.py    |  487 [32m++[m
+ .../site-packages/pip/_vendor/packaging/utils.py   |  136 [32m+[m
+ .../site-packages/pip/_vendor/packaging/version.py |  504 [32m++[m
+ .../pip/_vendor/pkg_resources/__init__.py          | 3296 [32m++++++++[m
+ .../__pycache__/__init__.cpython-310.pyc           |  Bin [31m0[m -> [32m99903[m bytes
+ .../__pycache__/py31compat.cpython-310.pyc         |  Bin [31m0[m -> [32m687[m bytes
+ .../pip/_vendor/pkg_resources/py31compat.py        |   23 [32m+[m
+ .../pip/_vendor/platformdirs/__init__.py           |  342 [32m+[m
+ .../pip/_vendor/platformdirs/__main__.py           |   46 [32m+[m
+ .../__pycache__/__init__.cpython-310.pyc           |  Bin [31m0[m -> [32m10612[m bytes
+ .../__pycache__/__main__.cpython-310.pyc           |  Bin [31m0[m -> [32m1263[m bytes
+ .../__pycache__/android.cpython-310.pyc            |  Bin [31m0[m -> [32m4353[m bytes
+ .../platformdirs/__pycache__/api.cpython-310.pyc   |  Bin [31m0[m -> [32m5229[m bytes
+ .../platformdirs/__pycache__/macos.cpython-310.pyc |  Bin [31m0[m -> [32m3217[m bytes
+ .../platformdirs/__pycache__/unix.cpython-310.pyc  |  Bin [31m0[m -> [32m6919[m bytes
+ .../__pycache__/version.cpython-310.pyc            |  Bin [31m0[m -> [32m317[m bytes
+ .../__pycache__/windows.cpython-310.pyc            |  Bin [31m0[m -> [32m6537[m bytes
+ .../pip/_vendor/platformdirs/android.py            |  120 [32m+[m
+ .../site-packages/pip/_vendor/platformdirs/api.py  |  156 [32m+[m
+ .../pip/_vendor/platformdirs/macos.py              |   64 [32m+[m
+ .../site-packages/pip/_vendor/platformdirs/unix.py |  181 [32m+[m
+ .../pip/_vendor/platformdirs/version.py            |    4 [32m+[m
+ .../pip/_vendor/platformdirs/windows.py            |  184 [32m+[m
+ .../site-packages/pip/_vendor/pygments/__init__.py |   82 [32m+[m
+ .../site-packages/pip/_vendor/pygments/__main__.py |   17 [32m+[m
+ .../pygments/__pycache__/__init__.cpython-310.pyc  |  Bin [31m0[m -> [32m2975[m bytes
+ .../pygments/__pycache__/__main__.cpython-310.pyc  |  Bin [31m0[m -> [32m615[m bytes
+ .../pygments/__pycache__/cmdline.cpython-310.pyc   |  Bin [31m0[m -> [32m15630[m bytes
+ .../pygments/__pycache__/console.cpython-310.pyc   |  Bin [31m0[m -> [32m1910[m bytes
+ .../pygments/__pycache__/filter.cpython-310.pyc    |  Bin [31m0[m -> [32m2681[m bytes
+ .../pygments/__pycache__/formatter.cpython-310.pyc |  Bin [31m0[m -> [32m3037[m bytes
+ .../pygments/__pycache__/lexer.cpython-310.pyc     |  Bin [31m0[m -> [32m24398[m bytes
+ .../pygments/__pycache__/modeline.cpython-310.pyc  |  Bin [31m0[m -> [32m1219[m bytes
+ .../pygments/__pycache__/plugin.cpython-310.pyc    |  Bin [31m0[m -> [32m2547[m bytes
+ .../pygments/__pycache__/regexopt.cpython-310.pyc  |  Bin [31m0[m -> [32m2983[m bytes
+ .../pygments/__pycache__/scanner.cpython-310.pyc   |  Bin [31m0[m -> [32m3585[m bytes
+ .../pygments/__pycache__/sphinxext.cpython-310.pyc |  Bin [31m0[m -> [32m4569[m bytes
+ .../pygments/__pycache__/style.cpython-310.pyc     |  Bin [31m0[m -> [32m4606[m bytes
+ .../pygments/__pycache__/token.cpython-310.pyc     |  Bin [31m0[m -> [32m4698[m bytes
+ .../pygments/__pycache__/unistring.cpython-310.pyc |  Bin [31m0[m -> [32m31232[m bytes
+ .../pygments/__pycache__/util.cpython-310.pyc      |  Bin [31m0[m -> [32m9174[m bytes
+ .../site-packages/pip/_vendor/pygments/cmdline.py  |  668 [32m++[m
+ .../site-packages/pip/_vendor/pygments/console.py  |   70 [32m+[m
+ .../site-packages/pip/_vendor/pygments/filter.py   |   71 [32m+[m
+ .../pip/_vendor/pygments/filters/__init__.py       |  940 [32m+++[m
+ .../filters/__pycache__/__init__.cpython-310.pyc   |  Bin [31m0[m -> [32m29635[m bytes
+ .../pip/_vendor/pygments/formatter.py              |   94 [32m+[m
+ .../pip/_vendor/pygments/formatters/__init__.py    |  143 [32m+[m
+ .../__pycache__/__init__.cpython-310.pyc           |  Bin [31m0[m -> [32m4397[m bytes
+ .../__pycache__/_mapping.cpython-310.pyc           |  Bin [31m0[m -> [32m3957[m bytes
+ .../formatters/__pycache__/bbcode.cpython-310.pyc  |  Bin [31m0[m -> [32m3112[m bytes
+ .../formatters/__pycache__/groff.cpython-310.pyc   |  Bin [31m0[m -> [32m4425[m bytes
+ .../formatters/__pycache__/html.cpython-310.pyc    |  Bin [31m0[m -> [32m29157[m bytes
+ .../formatters/__pycache__/img.cpython-310.pyc     |  Bin [31m0[m -> [32m17589[m bytes
+ .../formatters/__pycache__/irc.cpython-310.pyc     |  Bin [31m0[m -> [32m4615[m bytes
+ .../formatters/__pycache__/latex.cpython-310.pyc   |  Bin [31m0[m -> [32m13825[m bytes
+ .../formatters/__pycache__/other.cpython-310.pyc   |  Bin [31m0[m -> [32m4831[m bytes
+ .../__pycache__/pangomarkup.cpython-310.pyc        |  Bin [31m0[m -> [32m2131[m bytes
+ .../formatters/__pycache__/rtf.cpython-310.pyc     |  Bin [31m0[m -> [32m4161[m bytes
+ .../formatters/__pycache__/svg.cpython-310.pyc     |  Bin [31m0[m -> [32m6359[m bytes
+ .../__pycache__/terminal.cpython-310.pyc           |  Bin [31m0[m -> [32m4026[m bytes
+ .../__pycache__/terminal256.cpython-310.pyc        |  Bin [31m0[m -> [32m9276[m bytes
+ .../pip/_vendor/pygments/formatters/_mapping.py    |   23 [32m+[m
+ .../pip/_vendor/pygments/formatters/bbcode.py      |  108 [32m+[m
+ .../pip/_vendor/pygments/formatters/groff.py       |  170 [32m+[m
+ .../pip/_vendor/pygments/formatters/html.py        |  989 [32m+++[m
+ .../pip/_vendor/pygments/formatters/img.py         |  645 [32m++[m
+ .../pip/_vendor/pygments/formatters/irc.py         |  179 [32m+[m
+ .../pip/_vendor/pygments/formatters/latex.py       |  521 [32m++[m
+ .../pip/_vendor/pygments/formatters/other.py       |  161 [32m+[m
+ .../pip/_vendor/pygments/formatters/pangomarkup.py |   83 [32m+[m
+ .../pip/_vendor/pygments/formatters/rtf.py         |  146 [32m+[m
+ .../pip/_vendor/pygments/formatters/svg.py         |  188 [32m+[m
+ .../pip/_vendor/pygments/formatters/terminal.py    |  127 [32m+[m
+ .../pip/_vendor/pygments/formatters/terminal256.py |  338 [32m+[m
+ .../site-packages/pip/_vendor/pygments/lexer.py    |  882 [32m++[m
+ .../pip/_vendor/pygments/lexers/__init__.py        |  335 [32m+[m
+ .../lexers/__pycache__/__init__.cpython-310.pyc    |  Bin [31m0[m -> [32m9083[m bytes
+ .../lexers/__pycache__/_mapping.cpython-310.pyc    |  Bin [31m0[m -> [32m58910[m bytes
+ .../lexers/__pycache__/python.cpython-310.pyc      |  Bin [31m0[m -> [32m29869[m bytes
+ .../pip/_vendor/pygments/lexers/_mapping.py        |  541 [32m++[m
+ .../pip/_vendor/pygments/lexers/python.py          | 1204 [32m+++[m
+ .../site-packages/pip/_vendor/pygments/modeline.py |   43 [32m+[m
+ .../site-packages/pip/_vendor/pygments/plugin.py   |   88 [32m+[m
+ .../site-packages/pip/_vendor/pygments/regexopt.py |   91 [32m+[m
+ .../site-packages/pip/_vendor/pygments/scanner.py  |  104 [32m+[m
+ .../pip/_vendor/pygments/sphinxext.py              |  155 [32m+[m
+ .../site-packages/pip/_vendor/pygments/style.py    |  197 [32m+[m
+ .../pip/_vendor/pygments/styles/__init__.py        |   97 [32m+[m
+ .../styles/__pycache__/__init__.cpython-310.pyc    |  Bin [31m0[m -> [32m3398[m bytes
+ .../site-packages/pip/_vendor/pygments/token.py    |  213 [32m+[m
+ .../pip/_vendor/pygments/unistring.py              |  153 [32m+[m
+ .../Lib/site-packages/pip/_vendor/pygments/util.py |  308 [32m+[m
+ .../pip/_vendor/pyparsing/__init__.py              |  331 [32m+[m
+ .../pyparsing/__pycache__/__init__.cpython-310.pyc |  Bin [31m0[m -> [32m7156[m bytes
+ .../pyparsing/__pycache__/actions.cpython-310.pyc  |  Bin [31m0[m -> [32m7206[m bytes
+ .../pyparsing/__pycache__/common.cpython-310.pyc   |  Bin [31m0[m -> [32m10132[m bytes
+ .../pyparsing/__pycache__/core.cpython-310.pyc     |  Bin [31m0[m -> [32m176483[m bytes
+ .../__pycache__/exceptions.cpython-310.pyc         |  Bin [31m0[m -> [32m9090[m bytes
+ .../pyparsing/__pycache__/helpers.cpython-310.pyc  |  Bin [31m0[m -> [32m35367[m bytes
+ .../pyparsing/__pycache__/results.cpython-310.pyc  |  Bin [31m0[m -> [32m24808[m bytes
+ .../pyparsing/__pycache__/testing.cpython-310.pyc  |  Bin [31m0[m -> [32m12124[m bytes
+ .../pyparsing/__pycache__/unicode.cpython-310.pyc  |  Bin [31m0[m -> [32m10085[m bytes
+ .../pyparsing/__pycache__/util.cpython-310.pyc     |  Bin [31m0[m -> [32m8632[m bytes
+ .../site-packages/pip/_vendor/pyparsing/actions.py |  207 [32m+[m
+ .../site-packages/pip/_vendor/pyparsing/common.py  |  424 [32m+[m
+ .../site-packages/pip/_vendor/pyparsing/core.py    | 5814 [32m+++++++++++++[m
+ .../pip/_vendor/pyparsing/diagram/__init__.py      |  642 [32m++[m
+ .../diagram/__pycache__/__init__.cpython-310.pyc   |  Bin [31m0[m -> [32m16608[m bytes
+ .../pip/_vendor/pyparsing/exceptions.py            |  267 [32m+[m
+ .../site-packages/pip/_vendor/pyparsing/helpers.py | 1088 [32m+++[m
+ .../site-packages/pip/_vendor/pyparsing/results.py |  760 [32m++[m
+ .../site-packages/pip/_vendor/pyparsing/testing.py |  331 [32m+[m
+ .../site-packages/pip/_vendor/pyparsing/unicode.py |  352 [32m+[m
+ .../site-packages/pip/_vendor/pyparsing/util.py    |  235 [32m+[m
+ .../pip/_vendor/pyproject_hooks/__init__.py        |   23 [32m+[m
+ .../__pycache__/__init__.cpython-310.pyc           |  Bin [31m0[m -> [32m613[m bytes
+ .../__pycache__/_compat.cpython-310.pyc            |  Bin [31m0[m -> [32m364[m bytes
+ .../__pycache__/_impl.cpython-310.pyc              |  Bin [31m0[m -> [32m11416[m bytes
+ .../pip/_vendor/pyproject_hooks/_compat.py         |    8 [32m+[m
+ .../pip/_vendor/pyproject_hooks/_impl.py           |  330 [32m+[m
+ .../pyproject_hooks/_in_process/__init__.py        |   18 [32m+[m
+ .../__pycache__/__init__.cpython-310.pyc           |  Bin [31m0[m -> [32m851[m bytes
+ .../__pycache__/_in_process.cpython-310.pyc        |  Bin [31m0[m -> [32m9733[m bytes
+ .../pyproject_hooks/_in_process/_in_process.py     |  353 [32m+[m
+ .../site-packages/pip/_vendor/requests/__init__.py |  182 [32m+[m
+ .../requests/__pycache__/__init__.cpython-310.pyc  |  Bin [31m0[m -> [32m4043[m bytes
+ .../__pycache__/__version__.cpython-310.pyc        |  Bin [31m0[m -> [32m577[m bytes
+ .../__pycache__/_internal_utils.cpython-310.pyc    |  Bin [31m0[m -> [32m1592[m bytes
+ .../requests/__pycache__/adapters.cpython-310.pyc  |  Bin [31m0[m -> [32m16926[m bytes
+ .../requests/__pycache__/api.cpython-310.pyc       |  Bin [31m0[m -> [32m6681[m bytes
+ .../requests/__pycache__/auth.cpython-310.pyc      |  Bin [31m0[m -> [32m8149[m bytes
+ .../requests/__pycache__/certs.cpython-310.pyc     |  Bin [31m0[m -> [32m836[m bytes
+ .../requests/__pycache__/compat.cpython-310.pyc    |  Bin [31m0[m -> [32m1398[m bytes
+ .../requests/__pycache__/cookies.cpython-310.pyc   |  Bin [31m0[m -> [32m18718[m bytes
+ .../__pycache__/exceptions.cpython-310.pyc         |  Bin [31m0[m -> [32m5768[m bytes
+ .../requests/__pycache__/help.cpython-310.pyc      |  Bin [31m0[m -> [32m2894[m bytes
+ .../requests/__pycache__/hooks.cpython-310.pyc     |  Bin [31m0[m -> [32m1021[m bytes
+ .../requests/__pycache__/models.cpython-310.pyc    |  Bin [31m0[m -> [32m24293[m bytes
+ .../requests/__pycache__/packages.cpython-310.pyc  |  Bin [31m0[m -> [32m535[m bytes
+ .../requests/__pycache__/sessions.cpython-310.pyc  |  Bin [31m0[m -> [32m19601[m bytes
+ .../__pycache__/status_codes.cpython-310.pyc       |  Bin [31m0[m -> [32m4700[m bytes
+ .../__pycache__/structures.cpython-310.pyc         |  Bin [31m0[m -> [32m4465[m bytes
+ .../requests/__pycache__/utils.cpython-310.pyc     |  Bin [31m0[m -> [32m24363[m bytes
+ .../pip/_vendor/requests/__version__.py            |   14 [32m+[m
+ .../pip/_vendor/requests/_internal_utils.py        |   48 [32m+[m
+ .../site-packages/pip/_vendor/requests/adapters.py |  584 [32m++[m
+ .../Lib/site-packages/pip/_vendor/requests/api.py  |  157 [32m+[m
+ .../Lib/site-packages/pip/_vendor/requests/auth.py |  315 [32m+[m
+ .../site-packages/pip/_vendor/requests/certs.py    |   24 [32m+[m
+ .../site-packages/pip/_vendor/requests/compat.py   |   67 [32m+[m
+ .../site-packages/pip/_vendor/requests/cookies.py  |  561 [32m++[m
+ .../pip/_vendor/requests/exceptions.py             |  141 [32m+[m
+ .../Lib/site-packages/pip/_vendor/requests/help.py |  131 [32m+[m
+ .../site-packages/pip/_vendor/requests/hooks.py    |   33 [32m+[m
+ .../site-packages/pip/_vendor/requests/models.py   | 1034 [32m+++[m
+ .../site-packages/pip/_vendor/requests/packages.py |   16 [32m+[m
+ .../site-packages/pip/_vendor/requests/sessions
