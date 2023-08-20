@@ -1,1 +1,1 @@
-dbt-bigquery==1.5.3
+dbt-bigquery==1.6.1
