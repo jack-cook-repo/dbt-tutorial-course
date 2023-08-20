@@ -11,7 +11,6 @@ SELECT
 	-- Other columns
 	cost,
 	retail_price,
-	department,
-	brand
+	department
 
 FROM source
