@@ -14,7 +14,7 @@ models:
     # Set this model to be a part of the sales group we define above
     # We don't need to define the group and the model in the same yml file!
     config:
-      +group: sales
+      group: sales
     # 3 settings:
     # Private - only other models in the same (sales) group can ref() this model
     # Protected - only other models in the same group or project can ref() this model
