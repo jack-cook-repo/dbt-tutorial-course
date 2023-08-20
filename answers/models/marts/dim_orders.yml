@@ -1,8 +1,26 @@
 version: 2
 
+groups:
+  - name: sales
+    owner:
+      # 'name' or 'email' is required; additional properties allowed
+      email: sales@my-company.com
+      slack: sales-data
+      github: sales-data-team
+
 models:
   - name: dim_orders
     description: "Table of order level information"
+    # Set this model to be a part of the sales group we define above
+    # We don't need to define the group and the model in the same yml file!
+    config:
+      group: sales
+    # 3 settings:
+    # Private - only other models in the same (sales) group can ref() this model
+    # Protected - only other models in the same group or project can ref() this model
+    # Public - any other model can ref() this model
+    access: private
+
     columns:
 
     # Columns from stg_ecommerce__orders
