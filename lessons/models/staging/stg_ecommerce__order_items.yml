@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__order_items
+    description: "Table of 1 row per order per line item"
+    columns:
+      - name: order_item_id
+        description: "The primary key for stg_ecommerce__order_items showing line item details"
+        tests:
+          - unique
+          - not_null
+
+      - name: order_id
+        description: "ID of the order"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__orders')
+              field: order_id
+
+      - name: user_id
+        description: "ID of the user"
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "ID of the product"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__products')
+              field: product_id
+
+      - name: item_sale_price
+        description: "Total amount of the line item"
+        tests:
+          - not_null
