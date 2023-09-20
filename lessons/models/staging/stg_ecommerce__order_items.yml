@@ -7,8 +7,8 @@ models:
       - name: order_item_id
         description: "The primary key for stg_ecommerce__order_items showing line item details"
         tests:
-          - unique
-          - not_null
+          - primary_key:
+              severity: error
 
       - name: order_id
         description: "ID of the order"
@@ -35,3 +35,5 @@ models:
         description: "Total amount of the line item"
         tests:
           - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
