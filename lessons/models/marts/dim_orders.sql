@@ -10,6 +10,12 @@ order_items_products as (
 	from {{ ref('int_ecommerce__order_items_products')}}
 ),
 
+first_order_created as (
+	select *
+
+	from {{ ref('int_ecommerce__first_order_created') }}
+),
+
 order_items_measures as (
 	select
 		order_id,
@@ -26,6 +32,7 @@ order_items_measures as (
 final as (
 	select
 		o.order_id,
+		o.user_id,
 		o.created_at as order_created_at,
 		o.returned_at as order_returned_at,
 		o.shipped_at as order_shipped_at,
@@ -35,11 +42,14 @@ final as (
 		oim.total_sale_price,
 		oim.total_product_cost,
 		oim.total_profit,
-		oim.total_discount
+		oim.total_discount,
+		TIMESTAMP_DIFF(o.created_at, foc.first_order_created_at, DAY) AS days_since_first_order
 
 	from orders o
 	left join order_items_measures oim
 		on oim.order_id = o.order_id
+	left join first_order_created foc
+		on o.user_id = foc.user_id
 )
 
 select * from final

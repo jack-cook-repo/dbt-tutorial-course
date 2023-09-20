@@ -42,3 +42,9 @@ tests:
   lessons:
     +severity: warn
 
+seeds:
+  lessons:
+    +persist_docs:
+      relation: true
+      columns: true
+

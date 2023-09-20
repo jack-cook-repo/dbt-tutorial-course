@@ -10,6 +10,7 @@ models:
     # as we've already tested them in the staging model. But feel free
     # to add your own tests here!
       - name: order_id
+        description: "The primary key for dim_orders showing unique orders"
         tests:
           # Generic test that we define in tests/generic/test_primary_key.sql
           # Takes arguments for model & column_name, both of which are automatically passed to it
@@ -34,6 +35,7 @@ models:
       - name: order_status
         # Best practice would be to use doc() references for all common columns
         # However, for simplicity in this project we just use one
+        description: "{{ doc('status') }}"
 
       - name: num_items_ordered
         description: "Number of items in the order"
@@ -65,6 +67,13 @@ models:
 
       - name: total_discount
         description: "Sum of (product_retail_price - item_sale_price) for the whole order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: days_since_first_order
+        description: "How many days there were between a user's first order and this one"
         tests:
           - not_null
           - dbt_expectations.expect_column_values_to_be_between:

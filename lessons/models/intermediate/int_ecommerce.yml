@@ -60,3 +60,12 @@ models:
           - not_null
           - dbt_utils.expression_is_true:
               expression: "= (product_retail_price - item_sale_price)"
+
+  - name: int_ecommerce__first_order_created
+    description: "Ephemeral table showing user's first order created date"
+    columns:
+      - name: user_id
+        description: "Unique identifier for an user"
+        tests:
+          - unique
+          - not_null
