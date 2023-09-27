@@ -15,6 +15,6 @@ SELECT
         shipped_at,
         delivered_at,
         returned_at,
-        sale_price
+        sale_price AS item_sale_price
 
 FROM source

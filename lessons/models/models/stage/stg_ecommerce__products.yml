@@ -6,9 +6,15 @@ models:
     columns:
       - name: product_id
         description: ""
+        tests:
+         - not_null
+         - unique
 
       - name: cost
         description: ""
+        tests:
+         - not_null
+         
 
       - name: category
         description: ""
@@ -21,6 +27,9 @@ models:
 
       - name: retail_price
         description: ""
+        tests:
+         - not_null
+         - unique
 
       - name: department
         description: ""

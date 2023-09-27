@@ -6,15 +6,30 @@ models:
     columns:
       - name: order_item_id
         description: ""
+        tests:
+         - not_null
+         - unique
 
       - name: order_id
         description: ""
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__orders')
+              field: order_id
 
       - name: user_id
         description: ""
-
+        tests:
+         - not_null
+       
       - name: product_id
         description: ""
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__products')
+              field: product_id
 
       - name: inventory_item_id
         description: ""
@@ -36,3 +51,5 @@ models:
 
       - name: sale_price
         description: ""
+        tests:
+         - not_null

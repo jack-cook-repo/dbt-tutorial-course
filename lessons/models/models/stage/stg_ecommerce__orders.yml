@@ -12,6 +12,9 @@ models:
 
       - name: user_id
         description: ""
+        tests:
+         - not_null
+         - unique
 
       - name: status
         description: ""
@@ -27,15 +30,30 @@ models:
 
       - name: created_at
         description: ""
+        tests:
+         - not_null
+         - unique
 
       - name: returned_at
         description: ""
+        tests:
+         - not_null:
+            where : "status != 'Returned'"
 
       - name: shipped_at
         description: ""
+        tests:
+         - not_null:
+            where : "delivered_at IS NOT NULL or status = 'Shipped'"
 
       - name: delivered_at
         description: ""
+        tests:
+         - not_null:
+            where : "returned_at IS NOT NULL OR status = 'Complete'"
 
       - name: num_of_item
         description: ""
+        tests:
+         - not_null
+      
