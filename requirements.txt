@@ -1,1 +1,13 @@
 dbt-bigquery
+dbt-core
+google-api-core
+google-auth
+google-auth-oauthlib
+google-cloud-bigquery
+google-cloud-bigquery-storage
+google-cloud-core
+google-cloud-dataproc
+google-cloud-storage
+google-crc32c
+google-resumable-media
+googleapis-common-protos
