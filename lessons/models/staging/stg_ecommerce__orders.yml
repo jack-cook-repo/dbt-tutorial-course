@@ -19,6 +19,8 @@ models:
       - name: status
         # Look in documents/ecommerce/doc_ecommerce__status.md for this definition
         # We can reuse this definition in any column
+        # https://docs.getdbt.com/reference/dbt-jinja-functions/doc
+        description: "{{ doc('status') }}"
         tests:
           - not_null
           - accepted_values:
@@ -29,7 +31,6 @@ models:
                 - Shipped
                 - Complete
                 - Returned
-
 
       - name: created_at
         description: "When the order was created"
