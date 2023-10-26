@@ -1,0 +1,30 @@
+version: 2
+
+# using command `dbt seed` to load seeds to warehouse
+
+seeds:
+  - name: seed_distribution_centers_new # name to match the csv file
+    description: "Using CSV file to load data into your warehouse"
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal:
+          value: 2
+
+    # Column names, descriptions, and tests can all be done as normal
+    columns:
+      - name: id
+        tests:
+          - primary_key:
+              severity: error
+      - name: name
+        description: "Distribution center name"
+      - name: latitude
+      - name: longitude
+
+    # If you want to enforce datatypes, you can do so here
+    # Otherwise, BigQuery will do it for you!
+    config:
+      column_types:
+        id: INTEGER
+        name: STRING
+        latitude: FLOAT
+        longitude: FLOAT

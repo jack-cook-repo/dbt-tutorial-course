@@ -1,5 +1,10 @@
 version: 2
 
+# `groups` created here for demo.
+# To restructure this should be part of seperate yml file.
+# https://docs.getdbt.com/docs/collaborate/govern/about-model-governance
+
+# https://docs.getdbt.com/docs/collaborate/govern/model-access
 groups:
   - name: sales
     owner:
@@ -7,15 +12,18 @@ groups:
       email: sales@my-company.com
       slack: sales-data
       github: sales-data-team
+  - name: marketing
+    owner:
+      email: marketing@my-company.com
 
 models:
   - name: dim_orders
     description: "Table of order level information"
+
     # Set this model to be a part of the sales group we define above
-    # We don't need to define the group and the model in the same yml file!
     config:
       group: sales
-    # 3 settings:
+    # Access: 3 settings:
     # Private - only other models in the same (sales) group can ref() this model
     # Protected - only other models in the same group or project can ref() this model
     # Public - any other model can ref() this model
@@ -49,7 +57,8 @@ models:
         description: "When the order was shipped"
 
       - name: order_status
-        description: ""
+      # https://docs.getdbt.com/reference/dbt-jinja-functions/doc
+        description: "{{ doc('status') }}"
 
       - name: num_items_ordered
         description: "Number of items in the order"

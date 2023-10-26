@@ -4,7 +4,7 @@ sources:
   - name: thelook_ecommerce
     database: bigquery-public-data
     tables:
-    - name: events
+      - name: events
         # https://docs.getdbt.com/reference/resource-properties/freshness
         freshness:
           warn_after: {count: 12, period: hour}
@@ -16,3 +16,4 @@ sources:
       - name: orders
       - name: products
       - name: users
+      - name: distribution_centers

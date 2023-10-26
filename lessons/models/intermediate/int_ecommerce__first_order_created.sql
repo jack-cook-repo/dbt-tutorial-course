@@ -17,11 +17,10 @@
 		to run a view
 	- Incremental: when your table models start getting very slow when you are doing a drop & replace
 #}
+
 {{
 	config(materialized='ephemeral')
 }}
-
-
 SELECT
 	user_id,
 	MIN(created_at) AS first_order_created_at

@@ -11,6 +11,7 @@ SELECT
     cost,
     retail_price,
     department,
+    {# Adding new column compared to previous version v1 #}
     brand,
 
     {# category,

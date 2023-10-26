@@ -3,6 +3,20 @@ version: 2
 models:
   - name: stg_ecommerce__products
     description: "Table of products on the online store"
+
+    # https://docs.getdbt.com/docs/collaborate/govern/model-versions#how-to-create-a-new-version-of-a-model
+    latest_version: 2
+    versions:
+      - v: 1
+        columns:
+          - include: all
+            exclude: [brand]
+      - v: 2
+        config:
+          alias: stg_ecommerce__products
+        columns:
+          - include: all
+
     columns:
       - name: product_id
         tests:
@@ -50,3 +64,6 @@ models:
               quote: true
               # https://docs.getdbt.com/reference/resource-configs/severity
               severity: error
+
+      - name: brand
+
