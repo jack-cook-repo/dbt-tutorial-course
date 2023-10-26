@@ -6,8 +6,12 @@ models:
     columns:
       - name: product_id
         tests:
-          - not_null
-          - unique
+          - not_null:
+              # https://docs.getdbt.com/reference/resource-configs/severity
+              severity: error
+          - unique:
+              # https://docs.getdbt.com/reference/resource-configs/severity
+              severity: error
 
       - name: cost
         description: "How much the product cost the business to purchase"
@@ -26,7 +30,9 @@ models:
           - accepted_values:
               values:
                 - "Men"
-                - "Women"
+                # - "Women"
               # quote defaults to true, but this just shows how you could set it to
               # false if you wanted to have non-string values (e.g. numbers or a TRUE/FALSE column)
               quote: true
+              # https://docs.getdbt.com/reference/resource-configs/severity
+              severity: error
