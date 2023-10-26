@@ -6,10 +6,8 @@ models:
     columns:
       - name: product_id
         tests:
-          - not_null:
-              # https://docs.getdbt.com/reference/resource-configs/severity
-              severity: error
-          - unique:
+          # Generic test
+          - primary_key:
               # https://docs.getdbt.com/reference/resource-configs/severity
               severity: error
 
@@ -32,6 +30,12 @@ models:
           - dbt_utils.expression_is_true:
               name: retail_price_greater_than_cost
               expression: ">= cost"
+          # Generic test
+          - col_greater_than:
+              name: col_greater_than_30
+              value: 30
+              severity: warn
+
 
       - name: department
         description: "Whether the item is Menswear or Womenswear"
