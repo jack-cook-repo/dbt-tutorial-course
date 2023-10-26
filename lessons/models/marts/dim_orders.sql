@@ -49,5 +49,6 @@ SELECT
 FROM {{ ref('stg_ecommerce__orders') }} AS od
 LEFT JOIN order_item_measures AS om
 	ON od.order_id = om.order_id
+{# ephemeral reference #}
 LEFT JOIN {{ ref('int_ecommerce__first_order_created') }} AS user_data
 	ON od.user_id = user_data.user_id
