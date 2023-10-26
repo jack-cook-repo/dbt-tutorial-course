@@ -29,12 +29,12 @@ models:
     # to add your own tests here!
       - name: order_id
         tests:
-          - unique:
+          - primary_key:
               severity: error
           - relationships:
               to: ref('stg_ecommerce__orders')
               field: order_id
-              # severity: error
+              severity: error
 
       - name: order_created_at
         description: "When the order was created"

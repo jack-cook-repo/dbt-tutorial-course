@@ -33,7 +33,7 @@ models:
           # Generic test
           - col_greater_than:
               name: col_greater_than_30
-              value: 30
+              value: 0
               severity: warn
 
 
@@ -44,7 +44,7 @@ models:
           - accepted_values:
               values:
                 - "Men"
-                # - "Women"
+                - "Women"
               # quote defaults to true, but this just shows how you could set it to
               # false if you wanted to have non-string values (e.g. numbers or a TRUE/FALSE column)
               quote: true
