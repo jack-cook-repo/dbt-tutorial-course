@@ -3,17 +3,21 @@ version: 2
 models:
   - name: stg_ecommerce__products
     description: "Table of products on the online store"
+    config:
+      materialized: table
 
     # https://docs.getdbt.com/docs/collaborate/govern/model-versions#how-to-create-a-new-version-of-a-model
-    latest_version: 2
+    latest_version: 1
     versions:
       - v: 1
+        config:
+          alias: stg_ecommerce__products_v1
         columns:
           - include: all
             exclude: [brand]
       - v: 2
         config:
-          alias: stg_ecommerce__products
+          alias: stg_ecommerce__products_v2
         columns:
           - include: all
 
