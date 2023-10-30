@@ -39,6 +39,8 @@ models:
     # Table deletes 168 hours (7 days) after creation
     # Note, for incremental models this does not reset each run!
     +hours_to_expiration: 168
+    intermediate:
+      +tags: ['my_tag']
 
 tests:
   lessons:
