@@ -30,8 +30,22 @@ clean-targets:         # directories to be removed by `dbt clean`
 # In this example config, we tell dbt to build all models in the example/
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
+
 models:
   lessons:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    # Config indicated by "+"" and applies to all files under models/example/
+    # It would still work without the "+", but it's useful to distinguish from a resource path
+    +materialized: table # Default to table materialisation
+    +persist_docs:
+      relation: true
+      columns: true
+     # Table deletes 168 hours (7 days) after creation
+    +hours_to_expiration: 168
+
+tests:
+  lessons:
+    +severity: warn # All tests in our lesson project default to warn
+    #mart:
+    #  +severity: error
+    #  +warn_if: >10
+    #  +error_if: >100
