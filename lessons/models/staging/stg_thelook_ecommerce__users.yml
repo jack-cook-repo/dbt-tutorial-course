@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: stg_thelook_ecommerce__users
+    description: "This table contains details for users"
+    columns:
+      - name: user_id
+        description: ""
+
+      - name: first_name
+        description: ""
+
+      - name: last_name
+        description: ""
+
+      - name: email
+        description: ""
+
+      - name: age
+        description: ""
+
+      - name: gender
+        description: ""
+
+      - name: state
+        description: ""
+
+      - name: street_address
+        description: ""
+
+      - name: postal_code
+        description: ""
+
+      - name: city
+        description: ""
+
+      - name: country
+        description: ""
+
+      - name: latitude
+        description: ""
+
+      - name: longitude
+        description: ""
+
+      - name: traffic_source
+        description: ""
+
+      - name: created_at
+        description: ""

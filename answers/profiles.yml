@@ -18,7 +18,7 @@ answers: # this needs to match the profile: in your dbt_project.yml file
       type: bigquery
       method: oauth
       database: "{{ env_var('BIGQUERY_PROJECT') }}"
-      schema: dbt_production
+      schema: analytics_shashank
       threads: 64
       timeout_seconds: 300
       location: US
