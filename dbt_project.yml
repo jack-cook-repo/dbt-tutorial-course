@@ -1,0 +1,57 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'answers'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'answers'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+# At the start of any dbt process, this will run the get_brand_name() macro in macros/macro_get_brand_name.sql
+# which will create a User Defined Function (UDF) in our schema in BigQuery
+on-run-start:
+  - "{{ get_brand_name() }}"
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/ directory
+# as tables. These settings can be overridden in the individual model files
+# using the `{{ config(...) }}` macro.
+models:
+  answers:
+    # Config indicated by "+"" and applies to all files under models/example/
+    # It would still work without the "+", but it's useful to distinguish from a resource path
+    +materialized: table # Default to table materialisation
+    +persist_docs: # Writes all of our column descriptions into BigQuery!
+      relation: true
+      columns: true
+    # Table deletes 168 hours (7 days) after creation
+    # Note, for incremental models this does not reset each run!
+    +hours_to_expiration: 168
+
+    marts:
+      # In reality this would only be useful if we had subfolders within marts/staging/intermediate
+      # but this is an illustration how you would apply a group to a folder
+      +group: sales
+
+tests:
+  answers:
+    +severity: warn
