@@ -1,13 +1,12 @@
-
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'answers'
-version: '1.0.0'
+name: "answers"
+version: "1.0.0"
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'answers'
+profile: "answers"
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -19,8 +18,8 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
-target-path: "target"  # directory which will store compiled SQL files
-clean-targets:         # directories to be removed by `dbt clean`
+target-path: "target" # directory which will store compiled SQL files
+clean-targets: # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
@@ -47,10 +46,11 @@ models:
     # Note, for incremental models this does not reset each run!
     +hours_to_expiration: 168
 
-    marts:
-      # In reality this would only be useful if we had subfolders within marts/staging/intermediate
-      # but this is an illustration how you would apply a group to a folder
-      +group: sales
+    # marts:
+    #   # In reality this would only be useful if we had subfolders within marts/staging/intermediate
+    #   # but this is an illustration how you would apply a group to a folder
+    #   # +group: sales
+    #   +group: null
 
 tests:
   answers:
