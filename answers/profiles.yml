@@ -7,7 +7,7 @@ answers: # this needs to match the profile: in your dbt_project.yml file
       # To use this, first run (in your terminal): export BIGQUERY_PROJECT="your_project_name"
       # Then dbt will recognise the variable
       database: "{{ env_var('BIGQUERY_PROJECT') }}"
-      schema: dbt_test # Replace this with dbt_your_name, e.g. dbt_bob
+      schema: gkalwani_dbt_test # Replace this with dbt_your_name, e.g. dbt_bob
       threads: 64 # Max number of concurrent things running at once
       timeout_seconds: 300
       location: US
@@ -18,7 +18,7 @@ answers: # this needs to match the profile: in your dbt_project.yml file
       type: bigquery
       method: oauth
       database: "{{ env_var('BIGQUERY_PROJECT') }}"
-      schema: dbt_production
+      schema: gkalwani_dbt_production
       threads: 64
       timeout_seconds: 300
       location: US
