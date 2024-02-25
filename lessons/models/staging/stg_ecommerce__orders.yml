@@ -14,7 +14,7 @@ models:
         description: ""
 
       - name: status
-        description: "Verify Ordered status among the following"
+        description: "{{doc('status')}}"
         tests : 
           - not_null
           - accepted_values :

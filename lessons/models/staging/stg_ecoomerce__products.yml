@@ -6,6 +6,8 @@ models:
     columns:
       - name: id
         description: ""
+        tests: 
+          - primary_key
 
       - name: cost
         description: ""
@@ -21,6 +23,12 @@ models:
 
       - name: retail_price
         description: ""
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              severity: error 
+              min_value: 0
+          - dbt_utils.expression_is_true:
+              expression: ">= cost"
 
       - name: department
         description: ""

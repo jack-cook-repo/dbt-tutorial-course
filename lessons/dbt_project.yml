@@ -39,3 +39,13 @@ models:
     +persist_docs:
       relation: true
       columns: true
+    # This is for the tables to expire within 7 days 
+    +hours_to_expiration: 168 
+
+
+# Making all the files as severity warn 
+# There are two types of serverity warn & error 
+
+tests:
+  lessons:
+    +severity: warn 
