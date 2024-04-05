@@ -19,7 +19,7 @@ with source_data as (
 
 select *
 from source_data
-
+----abc
 /*
     Uncomment the line below to remove records with null `id` values
 */
