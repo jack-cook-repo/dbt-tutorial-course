@@ -6,6 +6,8 @@ This repository (repo) contains the structure you'll need to get started on the 
 
 ---
 
+Test test test
+
 ## The structure
 This repo has 2 main areas:
 1. **The top level** - everything you can see without clicking into a folder. This contains things that are used both in the model answers and in your lessons - such as the python packages you'll need and VSCode configuration.
