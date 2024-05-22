@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../materials"
+		},
+		{
+			"name": "dbt-tutorial-course",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
