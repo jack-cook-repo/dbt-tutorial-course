@@ -5,7 +5,7 @@ Welcome to my course!
 This repository (repo) contains the structure you'll need to get started on the dbt course ([link here](https://www.udemy.com/course/mastering-dbt-data-build-tool-bootcamp/?referralCode=FFF494163B7B9E5E846F)).
 
 ---
-
+# This is a good start
 ## The structure
 This repo has 2 main areas:
 1. **The top level** - everything you can see without clicking into a folder. This contains things that are used both in the model answers and in your lessons - such as the python packages you'll need and VSCode configuration.
