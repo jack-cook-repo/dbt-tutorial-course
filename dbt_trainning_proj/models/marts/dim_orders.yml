@@ -31,6 +31,7 @@ models:
         description: "When the order was shipped"
 
       - name: order_status
+        description: "{{ doc('status') }}"
 
 
       - name: num_items_ordered
