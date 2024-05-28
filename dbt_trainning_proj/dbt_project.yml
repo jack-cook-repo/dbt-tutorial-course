@@ -35,3 +35,12 @@ models:
     +persist_docs:
       relation: true
       columns: true
+    +hours_to_expiration: 168
+
+tests:
+  dbt_trainning_proj:
+    +severity: warn
+   # marts:
+    #  +severity: error
+
+
