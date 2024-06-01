@@ -2,4 +2,4 @@
 .user.yml
 /logs
 logs
-DS_Store
+.DS_Store
