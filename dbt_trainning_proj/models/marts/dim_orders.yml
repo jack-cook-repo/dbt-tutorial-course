@@ -1,8 +1,17 @@
 version: 2
 
+groups:
+  - name: sales
+    owner:
+      email: tiago@testing.com
+
 models:
   - name: dim_orders
     description: "Table of order level information"
+    config:
+      group: sales
+
+    access: protected
     columns:
 
     # Columns from stg_ecommerce__orders
