@@ -1,0 +1,13 @@
+lessons:
+  outputs:
+    dev:
+      dataset: dbt_random_test
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: sbox-ujjal-ci-cd-capabilities
+      threads: 60
+      type: bigquery
+  target: dev

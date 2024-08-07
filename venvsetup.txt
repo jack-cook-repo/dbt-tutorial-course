@@ -1,0 +1,17 @@
+python3 -m venv dbt-venv
+source dbt-venv/bin/activate
+
+to run dbt package installation
+
+dbt deps
+
+dbt run -s stg_ecommerce__orders --profiles-dir .  -> To run specific models
+
+dbt run  --profiles-dir .  -> This will run all models available
+
+
+
+Step1 
+dbt init. -> To initialise directory
+
+dbt debug --config-dir   -> to view profile yaml created
