@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__orders
+    description: >
+      Table of 1  row per order.
+
+      if we use ">" then we can create multiple lime descriptions ,just like this
+
+    columns:
+      - name: order_id
+        description: ""
+        tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        description: ""
+
+      - name: status
+        description: ""
+        tests:
+          - accepted_values:
+              name: unexpected_order_status # We can name our tests to make it easier to give more meaningful errors,so when it fials it show the name of test that failed
+              values:
+                - Processing
+                - Cancelled
+                - Shipped
+                - Complete
+                - Returned
+
+      - name: gender
+        description: ""
+
+      - name: created_at
+        description: ""
+
+      - name: returned_at
+        description: ""
+
+      - name: shipped_at
+        description: ""
+
+      - name: delivered_at
+        description: ""
+
+      - name: num_of_item
+        description: ""
