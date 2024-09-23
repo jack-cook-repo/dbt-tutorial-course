@@ -1,4 +1,4 @@
-/venv
+/dbt_env
 .user.yml
 /logs
 logs
