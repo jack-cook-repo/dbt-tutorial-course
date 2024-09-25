@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__order_items
+    description: ""
+    columns:
+      - name: order_item_id
+        description: ""
+        tests:
+         - not_null
+         - unique
+
+      - name: order_id
+        description: ""
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__orders')
+              field: order_id
+
+      - name: user_id
+        description: ""
+        tests:
+         - not_null
+       
+      - name: product_id
+        description: ""
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__products')
+              field: product_id
+
+      - name: inventory_item_id
+        description: ""
+
+      - name: status
+        description: ""
+
+      - name: created_at
+        description: ""
+
+      - name: shipped_at
+        description: ""
+
+      - name: delivered_at
+        description: ""
+
+      - name: returned_at
+        description: ""
+
+      - name: sale_price
+        description: ""
+        tests:
+         - not_null
