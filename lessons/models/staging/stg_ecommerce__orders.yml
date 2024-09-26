@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__orders
+    description: "1 order per row order"
+    columns:
+      - name: order_id
+        description: ""
+        tests :
+          - not_null
+          - unique 
+
+      - name: user_id
+        description: ""
+
+      - name: status
+        description: "{{doc('status')}}"
+        tests : 
+          - not_null
+          - accepted_values :
+              name : "Un-Accpeted Values"
+              values :
+                - Processing 
+                - Cancelled 
+                - Complete 
+                - Returned 
+                - Shipped 
+
+      - name: gender
+        description: ""
+
+      - name: created_at
+        description: ""
+
+      - name: returned_at
+        description: ""
+
+      - name: shipped_at
+        description: ""
+
+      - name: delivered_at
+        description: ""
+
+      - name: num_of_item
+        description: ""
