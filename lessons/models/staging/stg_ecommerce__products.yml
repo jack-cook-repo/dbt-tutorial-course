@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__products
+    description: "Table of 1 row per product"
+    columns:
+      - name: product_id
+        description: "The primary key for stg_ecommerce__products showing each product details."
+        tests:
+          - primary_key:
+              severity: error
+
+      - name: cost
+        description: "How much a product costs"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: brand
+        description: "Brand of the product"
+
+      - name: retail_price
+        description: "The actual price at retail stores"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+          - dbt_utils.expression_is_true:
+              expression: ">= cost"
+
+      - name: department
+        description: "Department of the product"
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - Men
+                - Women
