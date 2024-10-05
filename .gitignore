@@ -2,4 +2,4 @@
 .user.yml
 /logs
 logs
-credentials.json
+/lessons/credentials.json
