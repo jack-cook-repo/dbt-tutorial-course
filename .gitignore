@@ -1,5 +1,4 @@
 /venv
 .user.yml
 /logs
-logs
 /lessons/credentials.json
