@@ -2,6 +2,6 @@
 .user.yml
 /logs
 logs
-/lessons/credentials.json
+credentials.json
 
 
