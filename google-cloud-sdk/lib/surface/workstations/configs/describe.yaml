@@ -1,0 +1,24 @@
+- release_tracks: [ALPHA, BETA]
+
+  help_text:
+    brief: |
+      Describe a config.
+    description: |
+      Describe a config.
+    examples: |
+      To describe a config, run:
+
+        $ {command} CONFIG
+
+  arguments:
+    resource:
+      spec: !REF googlecloudsdk.command_lib.workstations.resources:config
+      help_text: |
+        The name of the config to display.
+
+  request:
+    api_version: v1beta
+    collection: workstations.projects.locations.workstationClusters.workstationConfigs
+
+  output:
+    format: json

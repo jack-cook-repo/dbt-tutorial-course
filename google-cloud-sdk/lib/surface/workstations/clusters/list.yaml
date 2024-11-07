@@ -1,0 +1,28 @@
+- release_tracks: [ALPHA, BETA]
+
+  help_text:
+    brief: |
+      List workstation clusters.
+    description: |
+      List all workstation clusters under the specified project and region.
+    examples: |
+      To list workstation clusters, run:
+
+        $ {command}
+
+  arguments:
+    resource:
+      spec: !REF googlecloudsdk.command_lib.workstations.resources:region
+      help_text: |
+        The region of the clusters to display.
+
+  request:
+    api_version: v1beta
+    collection: workstations.projects.locations.workstationClusters
+
+  output:
+    format: |
+      table(
+        name.basename():sort=1,
+        createTime.date()
+      )

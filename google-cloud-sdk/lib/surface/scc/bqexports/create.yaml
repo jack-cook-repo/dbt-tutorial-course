@@ -1,0 +1,71 @@
+- release_tracks: [GA]
+
+  help_text:
+    brief: Create a Cloud Security Command Center BigQuery export.
+    description: Create a Cloud Security Command Center BigQuery export.
+    examples: |
+      To create a BigQuery export ``my-bq-export'' given organization ``123'' with a dataset abc in project 234 and filter on category that equals to ``XSS_SCRIPTING'', run:
+
+        $ {command} my-bq-export --organization=organizations/123 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} my-bq-export --organization=123 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} organizations/123/bigQueryExports/my-bq-export --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+
+      To create a BigQuery export ``my-bq-export'' given folder ``456'' with a dataset abc in project 234 and filter on category that equals to ``XSS_SCRIPTING'', run:
+
+        $ {command} my-bq-export --folder=folders/456 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} my-bq-export --folder=456 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} folders/456/bigQueryExports/my-bq-export --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+
+      To create a BigQuery export ``my-bq-export'' given project ``789'' with a dataset abc in project 234 and filter on category that equals to ``XSS_SCRIPTING'', run:
+
+        $ {command} my-bq-export --project=projects/789 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} my-bq-export --project=789 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} projects/789/bigQueryExports/my-bq-export --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+
+  request:
+    collection: securitycenter.organizations.bigQueryExports
+    disable_resource_check: true
+    api_version: v1
+    modify_request_hooks:
+    - googlecloudsdk.command_lib.scc.bqexports.request_hooks:CreateBigQueryExportReqHook
+
+  arguments:
+
+    params:
+    - arg_name: big_query_export
+      api_field: bigQueryExportId
+      is_positional: true
+      required: true
+      help_text: |
+        ID of the BigQuery export or the full resource name of the BigQuery export.
+
+    - group:
+        mutex: true
+        params:
+        - arg_name: organization
+          api_field: parent
+          help_text: |
+            Organization where the BigQuery export resides. Formatted as ``organizations/123'' or just ``123''.
+
+        - arg_name: folder
+          api_field: parent
+          help_text: |
+            Folder where the BigQuery export resides. Formatted as ``folders/456'' or just ``456''.
+
+        - arg_name: project
+          api_field: parent
+          help_text: |
+            Project (id or number) where the BigQuery export resides. Formatted as ``projects/789'' or just ``789''.
+
+    - arg_name: dataset
+      api_field: googleCloudSecuritycenterV1BigQueryExport.dataset
+      is_positional: false
+      required: true
+      help_text: |
+        The dataset to write findings updates to.
+
+    - !REF googlecloudsdk.command_lib.scc.bqexports.flags:description
+    - !REF googlecloudsdk.command_lib.scc.bqexports.flags:filter
+
+  output:
+    format: yaml
