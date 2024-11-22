@@ -2,28 +2,53 @@ version: 2
 
 models:
   - name: stg_ecommerce__orders
-    description: ""
+    description: "Table of 1 row per order"
     columns:
       - name: order_id
         description: ""
+        tests:
+          - not_null
+          - unique
 
       - name: user_id
         description: ""
 
       - name: status
         description: ""
+        tests:
+          - accepted_values:
+              name : unexpected_order_status
+              values:
+                - Processing
+                - Cancelled
+                - Shipped
+                - Complete
+                - Returned
 
       - name: created_at
-        description: ""
+        description: "When the order was created"
+        tests:
+          - not_null
 
       - name: returned_at
-        description: ""
+        description: "When the order was returned"
+        tests:
+          - not_null:
+              where: "status = 'Returned'"
 
       - name: shipped_at
-        description: ""
+        description: "When the order was shipped"
+        tests:
+          - not_null:
+              where: "delivered_at IS NOT NULL OR status = 'Shipped'"
 
       - name: delivered_at
-        description: ""
+        description: "When the order was delivered"
+        tests:
+          - not_null:
+              where: "returned_at IS NOT NULL OR status = 'Complete'"
 
-      - name: num_of_item
-        description: ""
+      - name: num_items_ordered
+        description: "Number of items in the order"
+        tests:
+          - not_null
