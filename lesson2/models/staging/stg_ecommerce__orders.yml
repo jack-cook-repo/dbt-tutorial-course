@@ -35,6 +35,9 @@ models:
         tests:
           - not_null:
               where: "status = 'Returned'"
+          - dbt_utils.expression_is_true:
+              expression: ">=delivered_at"
+              where: "delivered_at IS NOT NULL AND returned_at IS NOT NULL"
 
       - name: shipped_at
         description: "When the order was shipped"

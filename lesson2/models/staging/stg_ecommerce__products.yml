@@ -3,18 +3,26 @@ version: 2
 models:
   - name: stg_ecommerce__products
     description: "Table of products on the online store"
+    # tests:
+    #   - dbt_utils.expression_is_true:
+    #       expression: "retail_price >= cost"
     columns:
       - name: product_id
         tests:
-          - not_null:
+          - primary_key:
               severity: error
-          - unique:
-              severity: error
+              # where: "department = 'Men'"
+          # - not_null:
+          #     severity: error
+          # - unique:
+          #     severity: error
 
       - name: cost
         description: "How much the product cost the business to purchase"
         tests:
           - not_null
+              # warn_if: ">10"
+              # error_if: ">100"
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
 
@@ -25,7 +33,9 @@ models:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
           - dbt_utils.expression_is_true:
+              name: retail_price_greater_then_cost
               expression: ">= cost"
+              where: "retail_price IS NOT NULL"
 
       - name: department
         description: "Whether the item is Menswear or Womenswear"
