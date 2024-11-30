@@ -14,7 +14,7 @@ models:
         description: ""
 
       - name: status
-        description: ""
+        description: "{{ doc('status') }}"
         tests:
           - accepted_values:
               name : unexpected_order_status

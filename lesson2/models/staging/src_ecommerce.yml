@@ -15,3 +15,4 @@ sources:
       - name: orders
       - name: products
       - name: users
+      - name: distribution_centers
