@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__orders
+    description: ""
+    columns:
+      - name: order_id
+        description: ""
+
+      - name: user_id
+        description: ""
+
+      - name: status
+        description: ""
+
+      - name: created_at
+        description: ""
+
+      - name: returned_at
+        description: ""
+
+      - name: shipped_at
+        description: ""
+
+      - name: delivered_at
+        description: ""
+
+      - name: num_of_item
+        description: ""
