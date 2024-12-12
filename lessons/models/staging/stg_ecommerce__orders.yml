@@ -2,16 +2,28 @@ version: 2
 
 models:
   - name: stg_ecommerce__orders
-    description: ""
+    description: "Table of 1 row per order"
     columns:
       - name: order_id
         description: ""
+        tests: 
+          - not_null
+          - unique
 
       - name: user_id
         description: ""
 
       - name: status
         description: ""
+        tests:
+          - accepted_values:
+              name: unexpected_order_status
+              values:
+                - Processing
+                - Cancelled
+                - Shipped
+                - Complete
+                - Returned
 
       - name: created_at
         description: ""
