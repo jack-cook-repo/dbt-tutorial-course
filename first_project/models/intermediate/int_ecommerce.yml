@@ -13,7 +13,9 @@ models:
     columns:
       - name: order_item_id
         tests:
-          - primary_key:
+          - not_null:
+              severity: error
+          - unique:
               severity: error
 
       - name: order_id
@@ -64,3 +66,14 @@ models:
           - not_null
           - dbt_utils.expression_is_true:
               expression: "= (product_retail_price - item_sale_price)"
+
+
+  - name: int_ecommerce__first_order_created
+    columns:
+      # The * allows you to reference the YML anchor above for &user_id
+      # This will bring through everything under that anchor: name, description, tests etc.
+      - *user_id
+      # If you didn't want to bring everything through from the anchor you could do this:
+      # - <<: *user_id
+      #   description: "New description"
+      # This would keep the name & tests defined in the anchor, but overwrite the description
