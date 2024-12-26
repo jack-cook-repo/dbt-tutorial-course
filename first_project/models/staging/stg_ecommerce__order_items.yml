@@ -2,12 +2,12 @@ version: 2
 
 models:
   - name: stg_ecommerce__order_items
-    description: "Table qui contient toutes les lignes de commandes pour chaque commande"
+    description: "Line items from orders"
     columns:
       - name: order_item_id
         tests:
-          - not_null
-          - unique
+          - primary_key:
+              severity: error
 
       - name: order_id
         tests:
@@ -28,6 +28,8 @@ models:
               field: product_id
 
       - name: item_sale_price
-        description: ""
+        description: "How much the item sold for"
         tests:
           - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
