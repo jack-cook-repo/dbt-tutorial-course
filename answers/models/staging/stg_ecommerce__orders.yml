@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name:  
+  - name: stg_ecommerce__orders
     columns:
       - name: order_id
         tests:
