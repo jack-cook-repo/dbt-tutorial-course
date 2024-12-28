@@ -1,0 +1,47 @@
+models:
+  - name: stg_ecommerce__products
+    description: "The stg_ecommerce__products model is a staging model that represents the products in an ecommerce business. It includes columns for product_id, cost, category, name, brand, retail_price, department, sku, and distribution_center_id. The data is sourced from the 'products' table in the 'thelook_ecommerce' dataset of the 'bigquery-public-data' project."
+    columns:
+      - name: product_id
+        data_type: int64
+        description: "The unique identifier for each product in the ecommerce store. This is an integer value."
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+
+
+      - name: cost
+        data_type: float64
+        description: "The cost of the product to the ecommerce store. This is a floating point number that represents the amount in dollars."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: category
+        data_type: string
+        description: "The category to which the product belongs. This is a string value."
+
+      - name: name
+        data_type: string
+        description: "The 'name' column represents the name of the product in the ecommerce store. It is a string type column."
+
+      - name: brand
+        data_type: string
+        description: "The 'brand' column represents the brand of the product. It is a string type column and can be used to group products by their manufacturers."
+
+      - name: retail_price
+        data_type: float64
+        description: "The 'retail_price' column represents the retail price of the product. It is a float type column and can be used to calculate total sales, discounts, and other financial metrics."
+
+      - name: department
+        data_type: string
+        description: "The department column represents the department in which the product is categorized within the ecommerce store. This is a string data type."
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - "Men"
+                - "Women"
