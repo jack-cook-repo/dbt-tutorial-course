@@ -7,6 +7,10 @@ sources:
     tables:
       - name: distribution_centers
       - name: events
+        freshness:
+          warn_after: { count: 12, period: hour }
+          error_after: { count: 24, period: hour }
+        loaded_at_field: created_at
       - name: inventory_items
       - name: order_items
       - name: orders

@@ -5,9 +5,7 @@ models:
     columns:
       - name: order_id
         tests:
-          - not_null:
-              severity: error
-          - unique:
+          - primary_key:
               severity: error
 
       - name: user_id

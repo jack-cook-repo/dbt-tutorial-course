@@ -10,9 +10,7 @@ models:
         data_type: int64
         description: "The unique identifier for each order item. This is a primary key in the stg_ecommerce__order_items model."
         tests:
-          - not_null:
-              severity: error
-          - unique:
+          - primary_key:
               severity: error
 
       - name: order_id
@@ -51,6 +49,6 @@ models:
         data_type: timestamp
         description: "The timestamp when the order item was created in the system."
 
-      - name: sale_price
+      - name: item_sale_price
         data_type: float64
         description: "This column represents the sale price of the order item. It is of float64 data type, which means it can hold decimal values."

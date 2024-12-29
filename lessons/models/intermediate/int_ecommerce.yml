@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: int_ecommerce__order_items_products
+    description: "The int_ecommerce__order_items_products model is a transformation of the stg_ecommerce__order_items and stg_ecommerce__products staging tables. It combines information about order items and products in an e-commerce setting. The model includes details such as the order item id, order id, user id, product id, item sale price, product department, product cost, product retail price, item profit, and item discount. The item profit is calculated as the difference between the item sale price and the product cost. The item discount is calculated as the difference between the product retail price and the item sale price."
+    columns:
+      - name: order_item_id
+        data_type: int64
+        description: "Unique identifier for each item in an order. This is a primary key in the int_ecommerce__order_items_products model."
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+
+      - name: order_id
+        data_type: int64
+        description: "Unique identifier for each order. This is a foreign key that links to the order_id in the orders table."
+        tests:
+          - not_null
+
+      - &user_id
+        name: user_id
+        data_type: int64
+        description: "Unique identifier for each user. This is a foreign key that links to the user_id in the users table."
+        tests:
+          - not_null
+
+      - name: product_id
+        data_type: int64
+        description: "The unique identifier for each product sold on the ecommerce platform. This is an integer value."
+        tests:
+          - not_null
+
+      - name: item_sale_price
+        data_type: float64
+        description: "The price at which the item was sold to the customer. This is a floating point number that represents the sale price in dollars."
+        tests:
+          - not_null
+
+      - name: product_department
+        data_type: string
+        description: "The department to which the product belongs. This is a string value that represents the department name."
+        tests:
+          - not_null
+
+      - name: product_cost
+        data_type: float64
+        description: "The cost of the product as provided by the supplier. This is the amount the ecommerce platform pays to acquire the product."
+        tests:
+          - not_null
+
+      - name: product_retail_price
+        data_type: float64
+        description: "The retail price of the product. This is the price at which the product is listed for sale on the ecommerce platform."
+        tests:
+          - not_null
+
+      - name: item_profit
+        data_type: float64
+        description: "The profit made on the sale of the item. It is calculated as the difference between the item's sale price and the product's cost."
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "= (item_sale_price - product_cost)"
+
+      - name: item_discount
+        data_type: float64
+        description: "The item_discount column represents the discount applied to the item. It is calculated by subtracting the item's sale price from the product's retail price. The value is a float64 type."
+
+  - name: int_ecommerce__first_order_created
+    columns:
+      # The * allows you to reference the YML anchor above for &user_id
+      # This will bring through everything under that anchor: name, description, tests etc.
+      - *user_id
+      # If you didn't want to bring everything through from the anchor you could do this:
+      # - <<: *user_id
+      #   description: "New description"
+      # This would keep the name & tests defined in the anchor, but overwrite the description

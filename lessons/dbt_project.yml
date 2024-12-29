@@ -30,3 +30,8 @@ models:
     +persist_docs: # Writes all of our column descriptions into BigQuery!
       relation: true
       columns: true
+    +hours_to_expiration: 168 
+
+tests:
+  lessons:
+    +severity: warn

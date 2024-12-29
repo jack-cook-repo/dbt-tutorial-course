@@ -6,11 +6,8 @@ models:
         data_type: int64
         description: "The unique identifier for each product in the ecommerce store. This is an integer value."
         tests:
-          - not_null:
+          - primary_key:
               severity: error
-          - unique:
-              severity: error
-
 
       - name: cost
         data_type: float64
@@ -19,6 +16,7 @@ models:
           - not_null
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
+              max_value: 100000000
 
       - name: category
         data_type: string
@@ -35,6 +33,11 @@ models:
       - name: retail_price
         data_type: float64
         description: "The 'retail_price' column represents the retail price of the product. It is a float type column and can be used to calculate total sales, discounts, and other financial metrics."
+        tests:        
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+          - dbt_utils.expression_is_true:
+              expression: ">= cost"
 
       - name: department
         data_type: string
@@ -45,3 +48,4 @@ models:
               values:
                 - "Men"
                 - "Women"
+              severity: error
