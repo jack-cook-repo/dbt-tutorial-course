@@ -28,7 +28,7 @@ models:
 
       - name: brand
         data_type: string
-        description: "The 'brand' column represents the brand of the product. It is a string type column and can be used to group products by their manufacturers."
+        description: "Brand"
 
       - name: retail_price
         data_type: float64
@@ -49,3 +49,23 @@ models:
                 - "Men"
                 - "Women"
               severity: error
+
+      - name: sku
+        data_type: string
+
+    latest_version: 2
+    versions:
+        # Matches what's above -- nothing more needed
+        - v: 1
+          columns:
+              # This means: use the 'columns' list from above, but exclude "brand" as we added it in v2
+          - include: all
+            exclude: [sku]
+
+            # We added a new column
+        - v: 2
+          config:
+            alias: stg_ecommerce__products
+          columns:
+            # This means: use the 'columns' list from above
+              - include: all

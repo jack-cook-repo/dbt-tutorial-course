@@ -8,6 +8,11 @@ order_item_measures AS (
 		SUM(product_cost) AS total_product_cost,
 		SUM(item_profit) AS total_profit,
 		SUM(item_discount) AS total_discount,
+
+	   {% for departament in dbt_utils.get_column_values(table=ref('int_ecommerce__order_items_products'), column='product_department') %}
+	    SUM(IF(product_department='{{ departament }}',item_sale_price,0)) as totam_sales_price_{{departament.lower()}}{{"," if not loop.last }}
+	   {%- endfor %}
+
 	FROM {{ ref('int_ecommerce__order_items_products') }}
 	GROUP BY 1
 )
@@ -18,6 +23,7 @@ SELECT
 	od.shipped_at AS order_shipped_at,
 	od.delivered_at AS order_delivered_at,
 	od.returned_at AS order_returned_at,
+	{{ is_weekend('od.created_at') }} as order_created_at_weekend,
 	od.status AS order_status,
 	om.total_sale_price,
 	om.total_product_cost,

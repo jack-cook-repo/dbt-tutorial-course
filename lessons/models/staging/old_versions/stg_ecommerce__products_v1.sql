@@ -9,6 +9,5 @@ SELECT
         name,
         brand,
         retail_price,
-        department,
-        sku
+        department
 FROM source
