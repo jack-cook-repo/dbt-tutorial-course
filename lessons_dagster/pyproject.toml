@@ -1,0 +1,26 @@
+[project]
+name = "lessons_dagster"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9,<3.13"
+dependencies = [
+    "dagster",
+    "dagster-cloud",
+    "dagster-dbt",
+    "dbt-bigquery<1.9",
+    "dbt-bigquery<1.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "dagster-webserver", 
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.dagster]
+module_name = "lessons_dagster.definitions"
+code_location_name = "lessons_dagster"

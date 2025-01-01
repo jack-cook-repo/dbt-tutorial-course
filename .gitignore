@@ -3,3 +3,6 @@
 .user.yml
 /logs
 logs
+/lessons_dagster/lessons_dagster.egg-info
+/lessons_dagster/tmp*
+/lessons_dagster/lessons_dagster/__py*
