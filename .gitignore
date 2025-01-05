@@ -8,3 +8,4 @@ logs
 /lessons_dagster/tmp*
 /lessons_dagster/lessons_dagster/__py*
 lessons_dagster/lessons_dagster/partitions/__pycache__/__init__.cpython-310.pyc
+/tmp*
