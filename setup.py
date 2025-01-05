@@ -3,7 +3,6 @@ from setuptools import find_packages, setup
 setup(
     name="lessons_dagster",
     version="0.0.1",
-    working_directory = "lessons_dagster",
     packages=find_packages(where="lessons_dagster"),
     package_data={
         "lessons_dagster": [
@@ -14,7 +13,7 @@ setup(
         "dagster",
         "dagster-cloud",
         "dagster-dbt",
-        "dbt-core==1.8.9"
+        "dbt-core==1.8.9",
         "dbt-bigquery==1.8.3"
     ],
     extras_require={
