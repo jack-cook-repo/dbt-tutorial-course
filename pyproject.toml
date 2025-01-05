@@ -3,6 +3,5 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.dagster]
-module_name = "lessons_dagster.lessons_dagster.definitions"
 code_location_name = "lessons_dagster"
-working_directory = "."
+working_directory = "lessons_dagster"
