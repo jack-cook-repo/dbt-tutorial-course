@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="lessons_dagster",
-    packages=find_packages(where="."),
+    packages=find_packages(exclude=["lessons_dagster_tests"]),
     install_requires=[
         "dagster",
         "dagster-cloud",
