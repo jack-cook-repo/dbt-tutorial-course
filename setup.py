@@ -4,7 +4,7 @@ setup(
     name="lessons_dagster",
     version="0.0.1",
     working_directory = "lessons_dagster",
-    packages=find_packages(),
+    packages=find_packages(where="lessons_dagster"),
     package_data={
         "lessons_dagster": [
             "dbt-project/**/*",
