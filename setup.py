@@ -14,7 +14,8 @@ setup(
         "dagster",
         "dagster-cloud",
         "dagster-dbt",
-        "dbt-bigquery<1.9"
+        "dbt-core==1.8.9"
+        "dbt-bigquery==1.8.3"
     ],
     extras_require={
         "dev": [
