@@ -3,6 +3,10 @@ from dagster_dbt import DbtCliResource, dbt_assets, DagsterDbtTranslator
 
 from .project import lessons_project
 from .constants import *
+from .partitions import monthly_partition
+
+import json
+INCREMENTAL_SELECTOR = "config.materialized:incremental"
 
 class CustomizedDagsterDbtTranslator(DagsterDbtTranslator):
 
@@ -15,10 +19,26 @@ class CustomizedDagsterDbtTranslator(DagsterDbtTranslator):
         else:
             return super().get_group_name(dbt_resource_props)
 
-@dbt_assets(manifest=lessons_project.manifest_path, dagster_dbt_translator=CustomizedDagsterDbtTranslator())
+@dbt_assets(manifest=lessons_project.manifest_path, dagster_dbt_translator=CustomizedDagsterDbtTranslator(), exclude=INCREMENTAL_SELECTOR )
 def lessons_dbt_assets(context: AssetExecutionContext, dbt: DbtCliResource):
     yield from dbt.cli(["build", "--target", "qa"], context=context).stream()
 
+@dbt_assets(
+    manifest=lessons_project.manifest_path,
+    dagster_dbt_translator=CustomizedDagsterDbtTranslator(),
+    select=INCREMENTAL_SELECTOR,     # select only models with INCREMENTAL_SELECTOR
+    partitions_def=monthly_partition   # partition those models using monthly_partition
+)
+def incremental_dbt_models(
+    context: AssetExecutionContext,
+    dbt: DbtCliResource
+):
+    time_window = context.partition_time_window
+    dbt_vars = {
+        "min_date": time_window.start.strftime('%Y-%m-%d'),
+        "max_date": time_window.end.strftime('%Y-%m-%d')
+    }  
+    yield from dbt.cli(["build", "--target", "qa", "--vars", json.dumps(dbt_vars)], context=context).stream()
 
 @asset(
     deps=["dim_orders"],description="This asset processes some important data"
