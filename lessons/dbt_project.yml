@@ -32,6 +32,23 @@ models:
       columns: true
     +hours_to_expiration: 150
 
+  elementary:
+    +schema: 'elementary'
+
 tests:
+  +tags:
+    - "job_id=2"
+    
   lessons:
     +severity: warn
+    +meta:
+      job_id: "1234"    
+
+
+
+flags:
+  require_explicit_package_overrides_for_builtin_materializations: false
+
+dispatch:
+  - macro_namespace: elementary
+    search_order: ['lessons', 'elementary']  

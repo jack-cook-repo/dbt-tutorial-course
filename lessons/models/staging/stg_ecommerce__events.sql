@@ -29,7 +29,7 @@ FROM source
 
 {# The {{ this }} macro is essentially a {{ ref('') }} macro that allows for a circular reference #}
 {# WHERE created_at > (SELECT MAX(created_at) FROM {{ this }}) #}
-WHERE created_at between "{{ var("min_date") }}" and "{{ var("max_date") }}"
+ WHERE created_at between "{{ var("min_date") }}" and "{{ var("max_date") }}" 
 
 {% endif %}
 
