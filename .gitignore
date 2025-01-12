@@ -4,3 +4,7 @@
 logs
 .venv
 .vscode
+target
+/target
+dbt_packages
+/dbt_packages
