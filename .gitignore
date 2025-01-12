@@ -2,3 +2,5 @@
 .user.yml
 /logs
 logs
+.venv
+.vscode
