@@ -1,0 +1,54 @@
+- release_tracks: [ALPHA, GA]
+
+  help_text:
+    brief: Bulk mute Security Command Center findings based on a filter.
+    description: Bulk mute Security Command Center findings based on a filter.
+    examples: |
+      To bulk mute findings given organization ``123'' based on a filter on category that equals ``XSS_SCRIPTING'', run:
+
+        $ {command} --organization=organizations/123 --filter="category=\"XSS_SCRIPTING\""
+        $ {command} --organization=123 --filter="category=\"XSS_SCRIPTING\""
+
+      To bulk mute findings given folder ``123'' based on a filter on category that equals ``XSS_SCRIPTING'', run:
+
+        $ {command} --folder=folders/123 --filter="category=\"XSS_SCRIPTING\""
+        $ {command} --folder=123 --filter="category=\"XSS_SCRIPTING\""
+
+      To bulk mute findings given project ``123'' based on a filter on category that equals ``XSS_SCRIPTING'', run:
+
+        $ {command} --project=projects/123 --filter="category=\"XSS_SCRIPTING\""
+        $ {command} --project=123 --filter="category=\"XSS_SCRIPTING\""
+
+  request:
+    collection: securitycenter.organizations.findings
+    disable_resource_check: true
+    api_version: v1
+    method: bulkMute
+    modify_request_hooks:
+    - googlecloudsdk.command_lib.scc.findings.request_hooks:BulkMuteFindingsReqHook
+
+  arguments:
+    params:
+    - group:
+        mutex: true
+        required: true
+        params:
+        - arg_name: organization
+          api_field: parent
+          help_text: |
+            Organization where the findings reside. Formatted as ``organizations/123'' or just ``123''.
+
+        - arg_name: folder
+          api_field: parent
+          help_text: |
+            Folder where the findings reside. Formatted as ``folders/456'' or just ``456''.
+
+        - arg_name: project
+          api_field: parent
+          help_text: |
+            Project (id or number) where the findings reside. Formatted as ``projects/789'' or just ``789''.
+
+    - arg_name: filter
+      api_field: bulkMuteFindingsRequest.filter
+      help_text: |
+        The filter string which will applied to findings being muted.

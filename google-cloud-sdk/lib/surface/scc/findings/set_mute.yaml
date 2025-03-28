@@ -1,0 +1,80 @@
+- release_tracks: [ALPHA, GA]
+
+  help_text:
+    brief: Update a Cloud Security Command Center finding's mute state.
+    description: Update a Cloud Security Command Center finding's mute state.
+    examples: |
+      To update finding's mute state to ``MUTED'', given finding organizations/123/sources/456/findings/789, run:
+
+        $ {command} 789 --organization=organizations/123 --source=456 --mute=MUTED
+        $ {command} 789 --organization=123 --source=456 --mute=MUTED
+        $ {command} organizations/123/sources/456/findings/789 --mute=MUTED
+
+      To update finding's mute state to ``UNMUTED'', given finding organizations/123/sources/456/findings/789, run:
+
+        $ {command} 789 --organization=organizations/123 --source=456 --mute=UNMUTED
+        $ {command} 789 --organization=123 --source=456 --mute=UNMUTED
+        $ {command} organizations/123/sources/456/findings/789 --mute=UNMUTED
+
+      To update finding's mute state to ``MUTED'', given finding folders/123/sources/456/findings/789, run:
+
+        $ {command} 789 --folder=folders/123 --source=456 --mute=MUTED
+        $ {command} 789 --folder=123 --source=456 --mute=MUTED
+        $ {command} folders/123/sources/456/findings/789 --mute=MUTED
+
+      To update finding's mute state to ``MUTED'', given finding projects/123/sources/456/findings/789, run:
+
+        $ {command} 789 --project=projects/123 --source=456 --mute=MUTED
+        $ {command} 789 --project=123 --source=456 --mute=MUTED
+        $ {command} projects/123/sources/456/findings/789 --mute=MUTED
+
+  request:
+    collection: securitycenter.organizations.sources.findings
+    disable_resource_check: true
+    api_version: v1
+    method: setMute
+    modify_request_hooks:
+    - googlecloudsdk.command_lib.scc.findings.request_hooks:SetMuteReqHook
+
+  arguments:
+    params:
+    - arg_name: finding
+      api_field: name
+      is_positional: true
+      required: true
+      help_text: |
+        ID of the finding or the full resource name of the finding.
+
+    - group:
+        mutex: true
+        params:
+        - arg_name: organization
+          api_field: name
+          help_text: |
+            Organization where the finding resides. Formatted as ``organizations/123'' or just ``123''.
+
+        - arg_name: folder
+          api_field: name
+          help_text: |
+            Folder where the finding resides. Formatted as ``folders/456'' or just ``456''.
+
+        - arg_name: project
+          api_field: name
+          help_text: |
+            Project (id or number) where the finding resides. Formatted as ``projects/789'' or just ``789''.
+
+    - arg_name: source
+      api_field: name
+      help_text: |
+        ID of the source.
+
+    - arg_name: mute
+      api_field: setMuteRequest.mute
+      required: true
+      choices:
+      - arg_value: muted
+        enum_value: MUTED
+      - arg_value: unmuted
+        enum_value: UNMUTED
+      help_text: |
+        Desired mute state of the finding.

@@ -1,0 +1,74 @@
+- release_tracks: [GA]
+
+  help_text:
+    brief: Update a Cloud Security Command Center BigQuery export.
+    description: Update a Cloud Security Command Center BigQuery export.
+    examples: |
+      Update a BigQuery export with id ``test-bq-export'' under organization ``123'' with a dataset abc in project 234 and a filter on category that equals to XSS_SCRIPTING:
+
+        $ {command} test-bq-export --organization=organizations/123 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} test-bq-export --organization=123 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} organizations/123/bigQueryExports/test-bq-export --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+
+      Update a BigQuery export with id ``test-bq-export'' under folder ``456'' with a dataset abc in project 234 and a filter on category that equals to XSS_SCRIPTING:
+
+        $ {command} test-bq-export --folder=folders/456 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} test-bq-export --folder=456 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} folders/456/bigQueryExports/test-bq-export --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+
+      Update a BigQuery export with id ``test-bq-export'' under project ``789'' with a dataset abc in project 234 and a filter on category that equals to XSS_SCRIPTING:
+
+        $ {command} test-bq-export --project=projects/789 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} test-bq-export --project=789 --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} projects/789/bigQueryExports/test-bq-export --dataset=projects/234/datasets/abc --description="This is a test BigQuery export" --filter="category=\"XSS_SCRIPTING\""
+
+  request:
+    collection: securitycenter.organizations.bigQueryExports
+    disable_resource_check: true
+    api_version: v1
+    modify_request_hooks:
+    - googlecloudsdk.command_lib.scc.bqexports.request_hooks:UpdateBigQueryExportReqHook
+
+  arguments:
+
+    params:
+    - arg_name: big_query_export
+      api_field: name
+      is_positional: true
+      required: true
+      help_text: |
+        ID of the BigQuery export or the full resource name of the BigQuery export.
+
+    - group:
+        mutex: true
+        params:
+        - arg_name: organization
+          api_field: name
+          help_text: |
+            Organization where the BigQuery export resides. Formatted as ``organizations/123'' or just ``123''.
+
+        - arg_name: folder
+          api_field: name
+          help_text: |
+            Folder where the BigQuery export resides. Formatted as ``folders/456'' or just ``456''.
+
+        - arg_name: project
+          api_field: name
+          help_text: |
+            Project (id or number) where the BigQuery export resides. Formatted as ``projects/789'' or just ``789''.
+
+    - arg_name: dataset
+      api_field: googleCloudSecuritycenterV1BigQueryExport.dataset
+      is_positional: false
+      required: false
+      help_text: |
+        The dataset to write findings updates to.
+
+    - !REF googlecloudsdk.command_lib.scc.bqexports.flags:description
+    - !REF googlecloudsdk.command_lib.scc.bqexports.flags:filter
+
+    - arg_name: update-mask
+      api_field: updateMask
+      help_text: |
+        Optional: If left unspecified (default), an update-mask is automatically created using the
+        flags specified in the command and only those values are updated.

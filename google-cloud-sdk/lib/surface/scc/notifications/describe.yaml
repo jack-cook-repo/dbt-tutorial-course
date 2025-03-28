@@ -1,0 +1,60 @@
+- release_tracks: [ALPHA, BETA, GA]
+
+  help_text:
+    brief: Describe a Cloud Security Command Center notification config.
+    description: Describe a Cloud Security Command Center notification config.
+    examples: |
+      Describe notification config 'my-config' from organization 123
+
+          $ {command} notifications describe my-config \
+              --organization=123
+          $ {command} notifications describe \
+              organizations/123/notificationConfigs/my-config
+
+      Describe notification config 'my-config' from folder 456
+
+          $ {command} notifications describe my-config \
+              --folder=456
+          $ {command} notifications describe \
+              folders/456/notificationConfigs/my-config
+
+      Describe notification config 'my-config' from project 789
+
+          $ {command} notifications describe my-config \
+              --project=789
+          $ {command} notifications describe \
+              projects/789/notificationConfigs/my-config
+
+  request:
+    collection: securitycenter.organizations.notificationConfigs
+    disable_resource_check: true
+    api_version: v1
+    modify_request_hooks:
+    - googlecloudsdk.command_lib.scc.notifications.request_hooks:DescribeNotificationReqHook
+
+  arguments:
+    params:
+    - arg_name: notificationConfigId
+      is_positional: true
+      required: true
+      help_text: |
+        The ID of the notification config. Formatted as "organizations/123/notificationConfigs/456" or just "456".
+
+    - group:
+        mutex: true
+        required: false
+        params:
+        - arg_name: organization
+          required: false
+          help_text: |
+            Organization where the notification config resides. Formatted as ``organizations/123'' or just ``123''.
+
+        - arg_name: folder
+          required: false
+          help_text: |
+            Folder where the notification config resides. Formatted as ``folders/456'' or just ``456''.
+
+        - arg_name: project
+          required: false
+          help_text: |
+            Project (ID or number) where the notification config resides. Formatted as ``projects/789'' or just ``789''.

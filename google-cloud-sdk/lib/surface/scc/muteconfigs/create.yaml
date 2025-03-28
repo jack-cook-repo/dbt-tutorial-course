@@ -1,0 +1,64 @@
+- release_tracks: [ALPHA, GA]
+
+  help_text:
+    brief: Create a Cloud Security Command Center mute config.
+    description: Create a Cloud Security Command Center mute config.
+    examples: |
+      To create a mute config ``my-mute-config'' given organization ``123'' with a filter on category that equals to ``XSS_SCRIPTING'', run:
+
+        $ {command} my-mute-config --organization=organizations/123 --description="This is a test mute config" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} my-mute-config --organization=123 --description="This is a test mute config" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} organizations/123/muteConfigs/my-mute-config --description="This is a test mute config" --filter="category=\"XSS_SCRIPTING\""
+
+      To create a mute config ``my-mute-config'' given folder ``456'' with a filter on category that equals to ``XSS_SCRIPTING'', run:
+
+        $ {command} my-mute-config --folder=folders/456 --description="This is a test mute config" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} my-mute-config --folder=456 --description="This is a test mute config" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} folders/456/muteConfigs/my-mute-config --description="This is a test mute config" --filter="category=\"XSS_SCRIPTING\""
+
+      To create a mute config ``my-mute-config'' given project ``789'' with a filter on category that equals to ``XSS_SCRIPTING'', run:
+
+        $ {command} my-mute-config --project=projects/789 --description="This is a test mute config" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} my-mute-config --project=789 --description="This is a test mute config" --filter="category=\"XSS_SCRIPTING\""
+        $ {command} projects/789/muteConfigs/my-mute-config --description="This is a test mute config" --filter="category=\"XSS_SCRIPTING\""
+
+  request:
+    collection: securitycenter.organizations.muteConfigs
+    disable_resource_check: true
+    api_version: v1
+    modify_request_hooks:
+    - googlecloudsdk.command_lib.scc.muteconfigs.request_hooks:CreateMuteConfigReqHook
+
+  arguments:
+
+    params:
+    - arg_name: mute_config
+      api_field: muteConfigId
+      is_positional: true
+      required: true
+      help_text: |
+        ID of the mute config or the full resource name of the mute config.
+
+    - group:
+        mutex: true
+        params:
+        - arg_name: organization
+          api_field: parent
+          help_text: |
+            Organization where the mute config resides. Formatted as ``organizations/123'' or just ``123''.
+
+        - arg_name: folder
+          api_field: parent
+          help_text: |
+            Folder where the mute config resides. Formatted as ``folders/456'' or just ``456''.
+
+        - arg_name: project
+          api_field: parent
+          help_text: |
+            Project (id or number) where the mute config resides. Formatted as ``projects/789'' or just ``789''.
+
+    - !REF googlecloudsdk.command_lib.scc.muteconfigs.flags:description
+    - !REF googlecloudsdk.command_lib.scc.muteconfigs.flags:filter
+
+  output:
+    format: yaml

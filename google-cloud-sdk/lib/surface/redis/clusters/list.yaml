@@ -1,0 +1,38 @@
+- release_tracks: [ALPHA]
+
+  help_text:
+    brief: |
+      List Memorystore Cluster for Redis instances.
+    description: |
+      List all clusters under the specified project and region.
+
+      To specify the maximum number of clusters to list, use the --limit flag.
+
+    examples: |
+      To list up to five clusters, run:
+
+        $ {command} --limit=5
+
+  arguments:
+    resource:
+      spec: !REF googlecloudsdk.command_lib.redis.resources:region
+      help_text: |
+        The region of the clusters to display.
+
+  request:
+    ALPHA:
+      api_version: v1alpha1
+    collection: redis.projects.locations.clusters
+
+  response:
+    id_field: name
+
+  output:
+    format: |
+      table(
+        name.basename():label=CLUSTER_NAME:sort=2,
+        state:label=STATUS,
+        sizeGb:label=SIZE_GB,
+        replicaCount:label=REPLICA_COUNT,
+        createTime.date()
+      )
