@@ -1,0 +1,25 @@
+lessons:
+  target: dev
+  outputs:
+    dev:
+      dataset: dbt_ep
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: dbt-test-445518
+      threads: 60
+      type: bigquery
+
+    qa:
+      dataset: dbt_ep_test
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: dbt-test-445518
+      threads: 60
+      type: bigquery
+

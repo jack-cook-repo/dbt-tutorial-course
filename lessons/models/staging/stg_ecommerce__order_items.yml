@@ -1,0 +1,54 @@
+models:
+  - name: stg_ecommerce__order_items
+    description: "The stg_ecommerce__order_items model is a staging model that represents the order items in an e-commerce platform. It contains information about each order item, including its ID, the order ID it belongs to, the user who placed the order, the product ID of the item, the inventory item ID, the status of the order item, the timestamps for when it was created, shipped, delivered, and returned, and the sale price of the item. The data for this model is sourced from the 'order_items' table in the 'thelook_ecommerce' dataset of the 'bigquery-public-data' project."
+    config:
+      contract:
+        enforced: true
+
+    columns:
+      - name: order_item_id
+        data_type: int64
+        description: "The unique identifier for each order item. This is a primary key in the stg_ecommerce__order_items model."
+        tests:
+          - primary_key:
+              severity: error
+
+      - name: order_id
+        data_type: int64
+        description: "The unique identifier for each order. This is a foreign key that links to the orders table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__orders')
+              field: order_id
+
+      - name: user_id
+        data_type: int64
+        description: "The unique identifier for each user. This is a foreign key that links to the users table."
+        tests:
+          - not_null
+
+      - name: product_id
+        data_type: int64
+        description: "The unique identifier for each product. This is a foreign key that links to the product table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__products')
+              field: product_id
+
+      - name: inventory_item_id
+        data_type: int64
+        description: "The unique identifier for each inventory item. This is a foreign key that links to the inventory table."
+
+      - name: status
+        data_type: string
+        description: "The current status of the order item. Possible values include 'created', 'shipped', 'delivered', and 'returned'."
+
+      - name: created_at
+        data_type: timestamp
+        description: "The timestamp when the order item was created in the system."
+
+      - name: item_sale_price
+        data_type: float64
+        description: "This column represents the sale price of the order item. It is of float64 data type, which means it can hold decimal values."
