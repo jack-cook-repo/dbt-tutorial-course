@@ -1,1 +1,12 @@
-dbt-bigquery==1.6.1
+dbt-bigquery
+google-api-core
+google-auth
+google-auth-oauthlib
+google-cloud-bigquery
+google-cloud-core
+google-cloud-dataproc
+google-cloud-storage
+google-crc32c
+google-resumable-media
+googleapis-common-protos
+
