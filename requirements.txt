@@ -1,2 +1,6 @@
 dbt-bigquery==1.9.1
+<<<<<<< Updated upstream
 dbt-core==1.9.1
+=======
+dbt-core==1.9.4
+>>>>>>> Stashed changes
