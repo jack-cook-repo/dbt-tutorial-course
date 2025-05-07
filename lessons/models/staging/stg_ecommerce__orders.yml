@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__orders
+    description: "Table of 1 row per order"
+    columns:
+      - name: order_id
+        description: "The primary key for stg_ecommer__orders showing unique order ID"
+        tests:
+          - primary_key:
+              severity: error
+
+      - name: user_id
+        description: "ID of the user who made the order"
+        tests:
+          - not_null
+
+      - name: status
+        description: "{{ doc('status') }}"
+        tests:
+          - accepted_values:
+              values:
+                - Shipped
+                - Complete
+                - Returned
+                - Cancelled
+                - Processing
+
+      - name: gender
+        description: "Gender of the user"
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - M
+                - F
+
+      - name: created_at
+        description: "Timestamp showing when the order has been created"
+        tests:
+          - not_null
+
+      - name: returned_at
+        description: "Timestamp showing when the order was returned"
+        tests:
+          - not_null:
+              where: "status='returned'"
+          - dbt_utils.expression_is_true:
+              expression: ">= delivered_at"
+              where: "delivered_at IS NOT NULL AND returned_at IS NOT NULL"
+
+      - name: shipped_at
+        description: "Timestamp showing when the order was shipped"
+        tests:
+          - not_null:
+              where: "returned_at is not null or status='complete'"
+          - dbt_utils.expression_is_true:
+              expression: ">= created_at"
+              where: "shipped_at IS NOT NULL"
+
+      - name: delivered_at
+        description: "Timestamp showing when the order was delivered"
+        tests:
+          - not_null:
+              where: "delivered_at is not null or status='shipped'"
+          - dbt_utils.expression_is_true:
+              expression: ">= shipped_at"
+              where: "delivered_at IS NOT NULL AND shipped_at IS NOT NULL"
+
+      - name: num_of_item
+        description: "Order quantity"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
