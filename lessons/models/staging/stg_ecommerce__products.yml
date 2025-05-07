@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__products
+    description: "Table of products on the online store"
+    columns:
+      - name: product_id
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+
+      - name: cost
+        description: "How much the product cost the business to purchase"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: retail_price
+        description: "How much the product retails for on the online store"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+          - dbt_utils.expression_is_true:
+              expression: ">= cost"
+
+      - name: department
+        description: "Whether the item is Menswear or Womenswear"
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - "Men"
+                - "Women"
+              # quote defaults to true, but this just shows how you could set it to
+              # false if you wanted to have non-string values (e.g. numbers or a TRUE/FALSE column)
+              quote: true
+
+      - name: brand
+        description: "Brand of the product"
+
+    # If you don't specify the latest, version, dbt will either look
+    # for the unversioned file name (e.g. stg_ecommerce__products.sql), or reference the
+    # latest version. In this case, it'd reference version 2 automatically, but this shows you
+    # how you could do a pre-release version (e.g. create version 2, but by default dbt points at version 1)
+    # using latest_version: 1
+    latest_version: 2
+    versions:
+        # Matches what's above -- nothing more needed
+        - v: 1
+          columns:
+          # This means: use the 'columns' list from above, but exclude "brand" as we added it in v2
+          - include: all
+            exclude: [brand]
+
+        # We added a new brand column
+        - v: 2
+          # Makes this table stay as stg_ecommerce__products in our database!
+          config:
+            alias: stg_ecommerce__products
+          columns:
+          # This means: use the 'columns' list from above
+          - include: all
