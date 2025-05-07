@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: dim_orders
+    description: ""
+    columns:
+      - name: order_id
+        description: ""
+
+      - name: order_created_at
+        description: ""
+
+      - name: order_was_created_on_weekend
+        description: ""
+
+      - name: order_shipped_at
+        description: ""
+
+      - name: order_delivered_at
+        description: ""
+
+      - name: order_returned_at
+        description: ""
+
+      - name: order_status
+        description: ""
+
+      - name: num_items_ordered
+        description: ""
+
+      - name: total_sale_price
+        description: ""
+
+      - name: total_product_cost
+        description: ""
+
+      - name: total_profit
+        description: ""
+
+      - name: total_discount
+        description: ""
+
+      - name: total_sold_menswear
+        description: ""
+
+      - name: total_sold_womenswear
+        description: ""
+
+      - name: days_since_first_order
+        description: ""
