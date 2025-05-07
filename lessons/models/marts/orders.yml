@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: orders
+    description: "Table of order level information"
+    columns:
+
+    # Columns from stg_ecommerce__orders
+    # We don't test these columns, other than the primary key,
+    # as we've already tested them in the staging model. But feel free
+    # to add your own tests here!
+      - name: order_id
+        tests:
+          # Generic test that we define in tests/generic/test_primary_key.sql
+          # Takes arguments for model & column_name, both of which are automatically passed to it
+          - unique
+          - relationships:
+              to: ref('stg_ecommerce__orders')
+              field: order_id
+
+      - name: order_created_at
+        description: "When the order was created"
+
+      - name: order_returned_at
+        description: "When the order was returned"
+
+      - name: order_delivered_at
+        description: "When the order was delivered"
+
+      - name: order_shipped_at
+        description: "When the order was shipped"
+
+      - name: order_status
+
+
+      - name: num_items_ordered
+        description: "Number of items in the order"
+
+
+    # Columns from int_ecommerce__order_items_product
+    # We should test these columns as they're new
+      - name: total_sale_price
+        description: "Sum of item_sale_price for the whole order"
+        tests:
+          - not_null
+
+      - name: total_product_cost
+        description: "Sum of product_cost for the whole order"
+        tests:
+          - not_null
+
+      - name: total_profit
+        description: "Sum of (item_sale_price - product_cost) for the whole order"
+        tests:
+          - not_null
+
+      - name: total_discount
+        description: "Sum of (product_retail_price - item_sale_price) for the whole order"
+        tests:
+          - not_null
