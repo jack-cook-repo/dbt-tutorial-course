@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__order_items
+    description: ""
+    columns:
+      - name: id
+        description: ""
+        tests:
+          - unique
+          - not_null 
+
+      - name: order_id
+        description: ""
+
+      - name: user_id
+        description: ""
+
+      - name: product_id
+        description: ""
+
+      - name: inventory_item_id
+        description: ""
+
+      - name: status
+        description: ""
+
+      - name: created_at
+        description: ""
+
+      - name: shipped_at
+        description: ""
+
+      - name: delivered_at
+        description: ""
+
+      - name: returned_at
+        description: ""
+
+      - name: sale_price
+        description: ""

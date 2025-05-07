@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__products
+    description: ""
+    columns:
+      - name: id
+        description: ""
+        tests: 
+          - primary_key
+
+      - name: cost
+        description: ""
+
+      - name: category
+        description: ""
+
+      - name: name
+        description: ""
+
+      - name: brand
+        description: ""
+
+      - name: retail_price
+        description: ""
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              severity: error 
+              min_value: 0
+          - dbt_utils.expression_is_true:
+              expression: ">= cost"
+
+      - name: department
+        description: ""
+
+      - name: sku
+        description: ""
+
+      - name: distribution_center_id
+        description: ""
+
