@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: stg_thelook_ecommerce__products
+    description: "Table of products on the online store"
+    columns:
+      - name: product_id
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+          - primary_key: # Custom test defined in test folder
+              severity: error
+              #where: "department = 'men'"
+
+      - name: cost
+        description: "How much the product cost the business to purchase"
+        tests:
+          - not_null:
+              severity: error
+              warn_if: ">10"
+              error_if: ">100"
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 2000
+              severity: error
+
+      - name: retail_price
+        description: "How much the product retails for on the online store"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+          - dbt_utils.expression_is_true:
+              name: retail_price_greater_than_cost # We can give customize name to test cases.
+              expression: ">= cost"
+              where: "retail_price is not null"
+
+      - name: department
+        description: "Whether the item is Menswear or Womenswear"
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - "Men"
+                - "Women"
+              # quote defaults to true, but this just shows how you could set it to
+              # false if you wanted to have non-string values (e.g. numbers or a TRUE/FALSE column)
+              quote: true
+              severity: error
