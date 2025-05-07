@@ -1,0 +1,49 @@
+- release_tracks: [GA]
+
+  help_text:
+    brief: List Cloud Security Command Center BigQuery exports.
+    description: List Cloud Security Command Center BigQuery exports.
+    examples: |
+      List BigQuery exports under organization ``123'':
+
+        $ {command} --organization=organizations/123
+        $ {command} --organization=123
+
+      List BigQuery exports under folder ``456'':
+
+        $ {command} --folder=folders/456
+        $ {command} --folder=456
+
+      List BigQuery exports under project ``789'':
+
+        $ {command} --project=projects/789
+        $ {command} --project=789
+
+  request:
+    collection: securitycenter.organizations.bigQueryExports
+    disable_resource_check: true
+    api_version: v1
+    modify_request_hooks:
+    - googlecloudsdk.command_lib.scc.bqexports.request_hooks:ListBigQueryExportsReqHook
+
+  arguments:
+
+    params:
+    - group:
+        required: true
+        mutex: true
+        params:
+        - arg_name: organization
+          api_field: parent
+          help_text: |
+            Organization where the BigQuery export resides. Formatted as ``organizations/123'' or just ``123''.
+
+        - arg_name: folder
+          api_field: parent
+          help_text: |
+            Folder where the BigQuery export resides. Formatted as ``folders/456'' or just ``456''.
+
+        - arg_name: project
+          api_field: parent
+          help_text: |
+            Project (id or number) where the BigQuery export resides. Formatted as ``projects/789'' or just ``789''.

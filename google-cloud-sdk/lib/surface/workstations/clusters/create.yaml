@@ -1,0 +1,48 @@
+- release_tracks: [ALPHA, BETA]
+
+  help_text:
+    brief: |
+      Create a workstation cluster.
+    description: |
+      Create a workstation cluster.
+    examples: |
+      To create a public cluster `my-cluster` in region `us-central1`, run:
+
+        $ {command} my-cluster --region=us-central1
+
+      To create a private cluster 'my-private-cluster' associated with network 'my-network' and
+      subnetwork 'my-subnetwork'. run:
+
+        $ {command} my-private-cluster --region=us-central1 --enable-private-endpoint
+          --network='my-network' --subnetwork='my-subnetwork'
+
+  arguments:
+    resource:
+      spec: !REF googlecloudsdk.command_lib.workstations.resources:cluster
+      help_text: |
+        Arguments and flags that specify the cluster to create.
+    params:
+    - arg_name: network
+      api_field: workstationCluster.network
+      help_text: |
+        The network that instances created under the cluster will be associated with.
+    - arg_name: subnetwork
+      api_field: workstationCluster.subnetwork
+      help_text: |
+        The subnetwork that instances created under the cluster will be associated with.
+    - arg_name: enable-private-endpoint
+      api_field: workstationCluster.privateClusterConfig.enablePrivateEndpoint
+      type: bool
+      default: false
+      help_text: |
+        Default is false.
+        If specified, the cluster will be assigned an internal IP address to the Cluster Gateway.
+        This isolates the cluster's workstations from public networks, but requires additional
+        configuration. Learn more: https://cloud.google.com/workstations/docs.
+
+  request:
+    api_version: v1beta
+    collection: workstations.projects.locations.workstationClusters
+
+  async:
+    collection: workstations.projects.locations.operations

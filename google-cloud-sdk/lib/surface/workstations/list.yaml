@@ -1,0 +1,30 @@
+- release_tracks: [ALPHA, BETA]
+
+  help_text:
+    brief: |
+      List workstations.
+    description: |
+      List all workstations under the specified configuration.
+    examples: |
+      To list workstations, run:
+
+        $ {command}
+
+  arguments:
+    resource:
+      spec: !REF googlecloudsdk.command_lib.workstations.resources:config
+      help_text: |
+        The configuration of the workstations to display.
+
+  request:
+    api_version: v1beta
+    collection: workstations.projects.locations.workstationClusters.workstationConfigs.workstations
+
+  output:
+    format: |
+      table(
+        name.basename():sort=1,
+        name.scope(workstationConfigs).segment(0):label='CONFIG',
+        state.sub("STATE_", ""),
+        createTime.date()
+      )

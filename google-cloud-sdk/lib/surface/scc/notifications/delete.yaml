@@ -1,0 +1,58 @@
+- release_tracks: [ALPHA, BETA, GA]
+
+  help_text:
+    brief: Delete a Cloud Security Command Center notification config.
+    description: Delete a Cloud Security Command Center notification config.
+    examples: |
+      Delete notification config 'my-config' from organization 123
+
+        $ {command} my-config --organization=123
+        $ {command} organizations/123/notificationConfigs/my-config
+
+      Delete notification config 'my-config' from folder 456
+
+        $ {command} my-config --folder=456
+        $ {command} folders/456/notificationConfigs/my-config
+
+      Delete notification config 'my-config' from project 789
+
+        $ {command} my-config --project=789
+        $ {command} projects/789/notificationConfigs/my-config
+  request:
+    collection: securitycenter.organizations.notificationConfigs
+    disable_resource_check: true
+    api_version: v1
+    modify_request_hooks:
+    - googlecloudsdk.command_lib.scc.notifications.request_hooks:DeleteNotificationReqHook
+
+  arguments:
+    params:
+    - arg_name: notificationConfigId
+      api_field: name
+      is_positional: true
+      required: true
+      help_text: |
+        The ID of the notification config. Formatted as "organizations/123/notificationConfigs/456" or just "456".
+
+    - group:
+        mutex: true
+        required: false
+        params:
+        - arg_name: organization
+          required: false
+          help_text: |
+            Organization where the notification config resides. Formatted as ``organizations/123'' or just ``123''.
+
+        - arg_name: folder
+          required: false
+          help_text: |
+            Folder where the notification config resides. Formatted as ``folders/456'' or just ``456''.
+
+        - arg_name: project
+          required: false
+          help_text: |
+            Project (ID or number) where the notification config resides. Formatted as ``projects/789'' or just ``789''.
+
+  input:
+    confirmation_prompt: |
+      Are you sure you want to delete a notification config?

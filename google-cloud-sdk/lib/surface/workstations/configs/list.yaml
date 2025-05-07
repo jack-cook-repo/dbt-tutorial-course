@@ -1,0 +1,31 @@
+- release_tracks: [ALPHA, BETA]
+
+  help_text:
+    brief: |
+      List workstation configurations.
+    description: |
+      List all workstation configurations under the specified cluster.
+    examples: |
+      To list workstation configurations, run:
+
+        $ {command}
+
+  arguments:
+    resource:
+      spec: !REF googlecloudsdk.command_lib.workstations.resources:cluster
+      help_text: |
+        The cluster of the configurations to display.
+
+  request:
+    api_version: v1beta
+    collection: workstations.projects.locations.workstationClusters.workstationConfigs
+
+  output:
+    format: |
+      table(
+        name.basename():sort=1,
+        name.scope(workstationClusters).segment(0):label='Cluster',
+        createTime.date(),
+        host.gceInstance.machine_type:label='Machine Type',
+        container.image:label='Image'
+      )

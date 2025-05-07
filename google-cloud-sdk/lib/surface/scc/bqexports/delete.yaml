@@ -1,0 +1,62 @@
+- release_tracks: [GA]
+
+  help_text:
+    brief: Delete a Cloud Security Command Center BigQuery export.
+    description: Delete a Cloud Security Command Center BigQuery export.
+    examples: |
+      To delete a BigQuery export given organization ``123'' with id ``my-bq-export'', run:
+
+        $ {command} my-bq-export --organization=organizations/123
+        $ {command} my-bq-export --organization=123
+        $ {command} organizations/123/bigQueryExports/my-bq-export
+
+      To delete a BigQuery export given folder ``456'' with id ``my-bq-export'', run:
+
+        $ {command} my-bq-export --folder=folders/456
+        $ {command} my-bq-export --folder=456
+        $ {command} folders/456/bigQueryExports/my-bq-export
+
+      To delete a BigQuery export given project ``789'' with id ``my-bq-export'', run:
+
+        $ {command} my-bq-export --project=projects/789
+        $ {command} my-bq-export --project=789
+        $ {command} projects/789/bigQueryExports/my-bq-export
+
+  request:
+    collection: securitycenter.organizations.bigQueryExports
+    disable_resource_check: true
+    api_version: v1
+    modify_request_hooks:
+    - googlecloudsdk.command_lib.scc.bqexports.request_hooks:DeleteBigQueryExportReqHook
+
+  arguments:
+
+    params:
+    - arg_name: big_query_export
+      api_field: name
+      is_positional: true
+      required: true
+      help_text: |
+        ID of the BigQuery export or the full resource name of the BigQuery export.
+
+    - group:
+        mutex: true
+        params:
+        - arg_name: organization
+          api_field: name
+          help_text: |
+            Organization where the BigQuery export resides. Formatted as ``organizations/123'' or just ``123''.
+
+        - arg_name: folder
+          api_field: name
+          help_text: |
+            Folder where the BigQuery export resides. Formatted as ``folders/456'' or just ``456''.
+
+        - arg_name: project
+          api_field: name
+          help_text: |
+            Project (id or number) where the BigQuery export resides. Formatted as ``projects/789'' or just ``789''.
+
+  input:
+    confirmation_prompt: |
+      Are you sure you want to delete a BigQuery export?
