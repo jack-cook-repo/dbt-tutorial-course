@@ -1,0 +1,21 @@
+source venv/bin/activate
+export BIGQUERY_PROJECT="handy-platform-428201-h4"
+dbt run -s stg_ecommerce__products --profiles-dir .
+
+// makes sql file
+dbt run-operation generate_base_model --args '{"source_name": "thelook_ecommerce", "table_name": "products"}'
+
+// makes yml file 
+dbt run-operation generate_model_yaml --args '{"model_names": ["int_ecommerce__orders_items_products"]}'
+
+dbt test -s stg_ecommerce__orders 
+
+dbt build // does the run and the test... same as: dbt run && dbt test
+
+staging: for renaming fields and recasting columns (select our own fields)
+intermediate: for joining data together but not showing end users
+marts: holds the dimension tables... the final results of staging and intermediate
+
+{{% %}}  // function where you're doing something
+{{ }}  // variable
+{{# #}} // comment
