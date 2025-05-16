@@ -1,0 +1,13 @@
+lessons:
+  outputs:
+    dev:
+      dataset: dbt_ankit
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: inbound-centaur-459918-j8
+      threads: 60
+      type: bigquery
+  target: dev
