@@ -1,0 +1,22 @@
+{
+    "sourceFile": "answers/profiles.yml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1747744506277,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747744565874,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n answers: # this needs to match the profile: in your dbt_project.yml file\r\n   target: dev # The default for any dbt commands\r\n   outputs:\r\n     dev:\r\n-      type: bigqueryxx\r\n+      type: bigquery\r\n       method: oauth\r\n       # To use this, first run (in your terminal): export BIGQUERY_PROJECT=\"your_project_name\"\r\n       # Then dbt will recognise the variable\r\n       database: \"{{ env_var('BIGQUERY_PROJECT') }}\"\r\n"
+                }
+            ],
+            "date": 1747744506277,
+            "name": "Commit-0",
+            "content": "answers: # this needs to match the profile: in your dbt_project.yml file\r\n  target: dev # The default for any dbt commands\r\n  outputs:\r\n    dev:\r\n      type: bigqueryxx\r\n      method: oauth\r\n      # To use this, first run (in your terminal): export BIGQUERY_PROJECT=\"your_project_name\"\r\n      # Then dbt will recognise the variable\r\n      database: \"{{ env_var('BIGQUERY_PROJECT') }}\"\r\n      schema: dbt_test # Replace this with dbt_your_name, e.g. dbt_bob\r\n      threads: 64 # Max number of concurrent things running at once\r\n      timeout_seconds: 300\r\n      location: US\r\n      priority: interactive # BigQuery can use \"batch\" or \"interactive\". https://cloud.google.com/bigquery/docs/running-queries\r\n\r\n    # You won't use this, but an example of using a different target\r\n    production:\r\n      type: bigquery\r\n      method: oauth\r\n      database: \"{{ env_var('BIGQUERY_PROJECT') }}\"\r\n      schema: dbt_production\r\n      threads: 60\r\n      timeout_seconds: 300\r\n      location: US\r\n      priority: interactive\r\n"
+        }
+    ]
+}
