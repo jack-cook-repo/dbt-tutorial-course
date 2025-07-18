@@ -1,0 +1,32 @@
+Metadata-Version: 2.4
+Name: dbt-protos
+Version: 1.0.339
+Summary: Public proto bindings for dbt
+Home-page: https://github.com/dbt-labs/proto-python-public
+Author: dbt Labs, Inc.
+Author-email: info@dbtlabs.com
+License: Apache-2.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: protobuf>=3.17.1
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# dbt public protos
+
+Central public protos repository for use in dbt.
+
+This repository and library are 100% generated.
