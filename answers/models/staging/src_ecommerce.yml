@@ -5,7 +5,7 @@ sources:
   - name: thelook_ecommerce
     # database <> project are interchangeable in dbt-bigquery
     # project is specific to just dbt-bigquery, whereas database can be used with anything - e.g. Snowflake
-    database: bigquery-public-data
+    database: burner-swapacha #bigquery-public-data
     tables:
       - name: distribution_centers
       - name: events
