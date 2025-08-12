@@ -1,0 +1,5 @@
+models:
+  - name: int_ecommerce_first_order_created
+    description: "Order item data joined to product data"
+
+	

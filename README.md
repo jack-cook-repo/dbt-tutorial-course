@@ -7,7 +7,9 @@ This repository (repo) contains the structure you'll need to get started on the 
 ---
 
 ## The structure
+
 This repo has 2 main areas:
+
 1. **The top level** - everything you can see without clicking into a folder. This contains things that are used both in the model answers and in your lessons - such as the python packages you'll need and VSCode configuration.
 
 2. **The answers folder**. This is how your project should look like at the end of the course. Feel free to use this for reference throughout the lessons if you're stuck, but remember - this will contain the final versions of everything so it may be several lessons ahead!
@@ -15,7 +17,9 @@ This repo has 2 main areas:
 In the course, you'll be creating a 3rd area - `/lessons` - that will, by the end of the course, be (nearly) identical to the answers folder
 
 ---
+
 ## A note on forking vs. cloning
+
 > **Don't clone this repo, fork it!**
 
 Cloning the repo means that if you want to save your changes locally and push them remotely (to GitHub), it will attempt to overwrite the repo itself (the master branch) - or, you'll have to create your own version of code (a developer branch).
@@ -31,7 +35,37 @@ Your (forked) repo should have an untouched `/answers` folder, and use the `/les
 If I update this repository, and you want to update your forked repository with my changes, then you'll want to [follow these steps to sync my changes to your repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork).
 
 3 things that are really important here:
+
 1. Do all of your work in a separate `/lessons` folder. If you make all of your changes in a brand new folder that isn't in this repository, then when you sync my changes to your forked repository it won't have any conflicts!
 2. Linked the above, don't make changes to the `/answers` folder - or if you do, make sure you delete them afterwards. If I update the repository it's very likely I'll be updating this folder and it'll make things a lot harder for you!
 3. **If you've made changes, and you sync your fork with my changes, don't discard your commits!** This will get rid of all of your progress. I'd advise creating a new branch before syncing in case this happens
 
+## Create virtual env (so there is no conflicts between dependencies)
+
+- python3 -m venv venv
+- Activate the virtual env: 'source venv/bin/activate'
+- nstall the dependencies : 'pip install -r requirements.txt'
+
+## Authenticate to google CLi (wolfproptrack account)
+
+'gcloud auth application-default login \
+ --scopes=https://www.googleapis.com/auth/bigquery,\
+https://www.googleapis.com/auth/drive.readonly,\
+https://www.googleapis.com/auth/iam.test'
+
+## Create a table in the BQ by running a dbt model
+
+- cd to answers folder which has dbt profiles.yml file.
+- run `dbt deps`.
+- export variable for name of the project (`export BIGQUERY_PROJECT="astute-acolyte-451021-b3"`)
+- run a model and direct to the profiles `dbt run -s stg_ecommerce__orders --profiles-dir .`. This will create a table under dbt_test dataset.
+
+## Do your own project:
+
+`dbt init`
+
+- ![alt text](image.png)
+- this has created a folder called dbtlesson, under project astute-acolyte-451021-b3 and dataset name as dbt_sonali.
+
+- to get profiles.yml data, ```run dbt --config-dir``` debug command then to view ```open /Users/sonali.cornelio/.dbt```
+- 

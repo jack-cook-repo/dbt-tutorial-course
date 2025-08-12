@@ -1,0 +1,41 @@
+models:
+  - name: stg_ecommerce_products
+    description: ""
+    columns:
+      - name: product_id
+        description: ""
+        tests:
+          - not_null
+
+      - name: cost
+        description: ""
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: category
+        description: ""
+
+      - name: name
+        description: ""
+
+
+      - name: brand
+        description: ""
+
+      - name: retail_price
+        description: ""
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: department
+        description: ""
+
+      - name: sku
+        description: ""
+
+      - name: distribution_center_id
+        description: ""

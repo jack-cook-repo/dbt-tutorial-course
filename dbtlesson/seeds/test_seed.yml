@@ -1,0 +1,22 @@
+seeds:
+  - name: test_seed
+    description: "An example of using a CSV file to load data into your warehouse"
+    tests:
+      - dbt_expectations.expect_table_column_count_to_equal:
+         value: 4
+      - dbt_expectations.expect_table_row_count_to_equal:
+         value: 2
+
+    columns:
+     - name: id
+       description: "The id for each row"
+     - name: name
+     - name: latitude
+     - name: longitude
+
+    config:
+      column_types:
+        id: INTEGER
+        name: STRING
+        latitude: FLOAT
+        longitude: FLOAT
