@@ -1,0 +1,13 @@
+lessons:
+  outputs:
+    dev:
+      dataset: dbt_minas
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: local-snow-464514-v3
+      threads: 60
+      type: bigquery
+  target: dev

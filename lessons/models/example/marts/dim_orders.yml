@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: dim_orders
+    description: "Table of order level information"
+    columns:
+      # Columns from stg_ecommerce__orders
+      - name: order_id
+        tests:
+          - unique:
+              severity: error
+          - relationships:
+              to: ref('stg_ecommerce__orders')
+              field: order_id
+              severity: error
+
+      - name: order_created_at
+        description: "When the order was created"
+
+      - name: order_returned_at
+        description: "When the order was returned"
+
+      - name: order_delivered_at
+        description: "When the order was delivered"
+
+      - name: order_shipped_at
+        description: "When the order was shipped"
+
+      - name: status
+        description: "{{ doc('status') }}"
+
+      - name: num_of_item
+        description: "Number of items in the order"
+
+      # Columns from int_ecommerce__order_items_products
+      - name: total_sale_price
+        description: "Sum of item_sale_price for the whole order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              
+
+      - name: total_product_cost
+        description: "Sum of product cost for the whole order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: total_profit
+        description: "Sum of (item_sale_price - product_cost) for the whole order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: total_discount
+        description: "Sum of (product_retail_price - item_sale_price) for the whole order"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0

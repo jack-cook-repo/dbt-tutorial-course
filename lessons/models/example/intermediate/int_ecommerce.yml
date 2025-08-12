@@ -1,0 +1,85 @@
+version: 2
+
+models:
+  - name: int_ecommerce__order_items_products
+    description: "Order item data joined to product data"
+    columns:
+      - name: order_item_id
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+
+      - name: order_id
+        tests:
+          - not_null
+
+      # The "&" is a YML anchor which you can reference later in the file
+      - &user_id
+        name: user_id
+        description: "Unique identifier for a user"
+        tests:
+          - not_null
+
+      - name: product_id
+        tests:
+          - not_null
+
+      - name: sale_price
+        description: "How much the item sold for"
+        tests:
+          - not_null
+
+      - name: product_department
+        description: "Whether the item is Menswear or Womenswear"
+        tests:
+          - not_null
+
+      - name: product_cost
+        description: "How much the product cost the business to purchase"
+        tests:
+          - not_null
+
+      - name: product_retail_price
+        description: "How much the product retails for on the online store"
+        tests:
+          - not_null
+
+      - name: item_profit
+        description: "sale_price minus product_cost"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "= (sale_price - product_cost)"
+
+      - name: item_discount
+        description: "product_retail_price minus sale_price"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "= (product_retail_price - sale_price)"
+
+  - name: int_ecommerce__first_order_created
+    columns:
+      # Reference the YML anchor for &user_id
+      - *user_id
+      # Example of overriding the description (commented out)
+      # - <<: *user_id
+      #   description: "New description"
+
+
+unit_tests:
+  - name: test_profit_and_discounts
+    description: "Check that we're calculating profit and discounts correctly"
+    model: int_ecommerce__order_items_products
+    given:
+      - input: ref('stg_ecommerce__products')
+        rows:
+          - {product_id: 1234, cost: 5, retail_price: 10}
+      - input: ref('stg_ecommerce__order_items')
+        rows:
+          - {product_id: 1234, sale_price: 7}
+    expect:
+      rows:
+        - {item_profit: 2, item_discount: 3}
