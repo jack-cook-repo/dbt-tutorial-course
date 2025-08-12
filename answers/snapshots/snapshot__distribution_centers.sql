@@ -9,6 +9,6 @@
     )
 }}
 
-SELECT * FROM {{ source('thelook_ecommerce', 'distribution_centers') }}
+SELECT * FROM {{ source('dbt_arihant', 'distribution_centers') }}
 
 {% endsnapshot %}

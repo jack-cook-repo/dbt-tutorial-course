@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: dbt_arihant
+    database: "{{ env_var('BIGQUERY_PROJECT') }}"
+    schema: "{{ target.schema }}"
+    tables:
+      - name: seed_distribution_centers
+        description: "An example of using a CSV file to load data into your warehouse"
+        identifier: seed_distribution_centers

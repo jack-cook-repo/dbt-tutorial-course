@@ -1,0 +1,1 @@
+{% test_primary_key(model,columns) %}

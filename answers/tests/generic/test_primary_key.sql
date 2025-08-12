@@ -1,10 +1,3 @@
-{#
-	This test is basically a "not_null" and "unique"
-	rolled into one.
-
-	It fails if a column is NULL or occurs more than once
-#}
-
 {% test primary_key(model, column_name) %}
 
 WITH validation AS (
