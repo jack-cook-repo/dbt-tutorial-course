@@ -1,0 +1,35 @@
+lessons:
+  outputs:
+    dev:
+      dataset: dbt_test
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: mytestproj-473118
+      threads: 60
+      type: bigquery
+  
+  production:
+      dataset: dbt_tproduction
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: mytestproj-473118
+      threads: 60
+      type: bigquery
+  target: dev
+
+my_dbt_project:
+  outputs:
+    dev:
+      password: PASSWORD
+      port: 3306
+      schema: lib_mngmt_system
+      server: 127.0.0.1
+      type: mysql
+      user: root
+  target: dev
