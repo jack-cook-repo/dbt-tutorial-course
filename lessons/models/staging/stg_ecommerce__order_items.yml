@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__order_items
+    description: "The table contains the order items data for all the orders placed on the e-commerce platform"
+    columns:
+      - name: order_item_id
+        description: " Order item id"
+        tests:
+         - not_null
+         - unique 
+      - name: order_id
+        description: " Order id of the order item"
+        tests:
+         - not_null
+      - name: product_id
+        description: " Product id of the order item"  
+        tests:
+         - not_null
+      - name: item_sale_price
+        description: " Price of the product in the order item"
+        data_type: FLOAT64
+        tests:
+        - dbt_utils.expression_is_true:
+            expression: " >= 0"
+
+
+

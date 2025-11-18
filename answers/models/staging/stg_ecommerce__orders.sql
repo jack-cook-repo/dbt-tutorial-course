@@ -22,5 +22,4 @@ SELECT
 	{#- Unused columns:
 		- gender
 	#}
-
-FROM source
+FROM source 

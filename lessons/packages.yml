@@ -1,0 +1,10 @@
+packages:
+  - package: dbt-labs/dbt_utils
+    version: 1.0.0
+
+  - package: metaplane/dbt_expectations
+    version: 0.10.9
+
+
+  - package: dbt-labs/codegen
+    version: 0.9.0

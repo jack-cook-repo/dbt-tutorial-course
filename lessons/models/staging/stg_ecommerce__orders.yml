@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__orders
+  
+    description: 
+      "This is a test for above
+                  multiline description."
+    tests:
+      - dbt_utils.expression_is_true: 
+          expression: "status in ('Cancelled', 'Complete', 'Processing', 'Returned', 'Shipped')"
+          config:
+            warn_if: ">= 20"          # warn if ≥20 rows fail this predicate
+            error_if: ">= 50"         # error if ≥50 rows fail          
+    columns:
+      - name: order_id
+        description: "Order Id of the order. Always unique"
+        tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        description: "This is teh user id of the user who placed the order"
+
+      - name: created_at
+        description: " Created timestamp of the order"
+
+      - name: returned_at
+        description: "When the order was returned"
+
+      - name: delivered_at
+        description: "when the order was delivered"
+
+      - name: shipped_at
+        description: "whenb the order was shipped "
+
+      - name: status
+        description: " different status of the order  "
+        tests:
+          - not_null
+          - accepted_values:
+              name: accepted_order_status
+              values: 
+              - Cancelled
+              - Complete  
+              - Processing  
+              - Returned 
+              - Shipped 
+
+      - name: num_items_ordered
+        description: " Number of items ordered in the order"  
+        tests:
+          - not_null:
+              warn_if:  "> 20"
+              error_if: "> 50"
+        
