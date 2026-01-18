@@ -1,0 +1,88 @@
+Metadata-Version: 2.1
+Name: pydata-google-auth
+Version: 1.9.1
+Summary: PyData helpers for authenticating to Google APIs
+Home-page: https://github.com/pydata/pydata-google-auth
+Author: The PyData Development Team
+Author-email: pydata@googlegroups.com
+License: BSD License
+Keywords: data
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Scientific/Engineering
+Classifier: License :: OSI Approved :: BSD License
+Requires-Python: >=3.9
+License-File: LICENSE.txt
+License-File: AUTHORS.md
+Requires-Dist: setuptools
+Requires-Dist: google-auth<3.0dev,>=1.25.0
+Requires-Dist: google-auth-oauthlib>=0.4.0
+
+pydata-google-auth
+==================
+
+|Build Status| |Version Status| |Coverage Status|
+
+**pydata-google-auth** is a package providing helpers for authenticating to Google APIs.
+
+
+Installation
+------------
+
+
+Install latest release version via conda
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: shell
+
+   $ conda install pydata-google-auth --channel conda-forge
+
+Install latest release version via pip
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: shell
+
+   $ pip install pydata-google-auth
+
+Install latest development version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: shell
+
+    $ pip install git+https://github.com/pydata/pydata-google-auth.git
+
+
+Usage
+-----
+
+Use the ``pydata_google_auth.get_user_credentials()`` function to
+authenticate to Google APIs with user credentials.
+
+.. code-block:: python
+
+    import pydata_google_auth
+    credentials = pydata_google_auth.get_user_credentials(
+        ['https://www.googleapis.com/auth/cloud-platform'],
+    )
+
+    # Use the credentials in other libraries, such as the Google BigQuery
+    # client library.
+    from google.cloud import bigquery
+    client = bigquery.Client(project='YOUR-PROJECT-ID', credentials=credentials)
+
+See the `pydata-google-auth documentation <https://pydata-google-auth.readthedocs.io/>`_ for more details.
+
+.. |Build Status| image:: https://circleci.com/gh/pydata/pydata-google-auth/tree/master.svg?style=svg
+   :target: https://circleci.com/gh/pydata/pydata-google-auth/tree/master
+.. |Version Status| image:: https://img.shields.io/pypi/v/pydata-google-auth.svg
+   :target: https://pypi.python.org/pypi/pydata-google-auth/
+.. |Coverage Status| image:: https://img.shields.io/codecov/c/github/pydata/pydata-google-auth.svg
+   :target: https://codecov.io/gh/pydata/pydata-google-auth/

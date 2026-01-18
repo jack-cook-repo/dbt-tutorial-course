@@ -1,0 +1,7 @@
+#!/Users/xabier_laibarra/Desktop/2025/Coding/dbt_udemy_course/dbt_course_repo/dbt-tutorial-course/venv310/bin/python3.10
+import sys
+from rsa.cli import sign
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(sign())
