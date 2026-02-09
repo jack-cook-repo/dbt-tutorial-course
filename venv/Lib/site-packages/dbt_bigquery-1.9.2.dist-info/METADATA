@@ -1,0 +1,78 @@
+Metadata-Version: 2.4
+Name: dbt-bigquery
+Version: 1.9.2
+Summary: The BigQuery adapter plugin for dbt
+Project-URL: Homepage, https://github.com/dbt-labs/dbt-adapters/tree/main/dbt-bigquery
+Project-URL: Documentation, https://docs.getdbt.com
+Project-URL: Repository, https://github.com/dbt-labs/dbt-adapters.git#subdirectory=dbt-bigquery
+Project-URL: Issues, https://github.com/dbt-labs/dbt-adapters/issues
+Project-URL: Changelog, https://github.com/dbt-labs/dbt-adapters/blob/main/dbt-bigquery/CHANGELOG.md
+Author-email: dbt Labs <info@dbtlabs.com>
+Maintainer-email: dbt Labs <info@dbtlabs.com>
+License-File: LICENSE
+Keywords: adapter,adapters,bigquery,database,dbt,dbt Cloud,dbt Core,dbt Labs,dbt-core,elt,google
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.9.0
+Requires-Dist: dbt-adapters<2.0,>=1.7
+Requires-Dist: dbt-common<2.0,>=1.10
+Requires-Dist: dbt-core>=1.8.0
+Requires-Dist: google-api-core>=2.11.0
+Requires-Dist: google-cloud-aiplatform>=1.72.0
+Requires-Dist: google-cloud-bigquery[pandas]<4.0,>=3.0
+Requires-Dist: google-cloud-dataproc~=5.0
+Requires-Dist: google-cloud-storage<3.2,>=2.4
+Requires-Dist: nbformat>=5.10.4
+Description-Content-Type: text/markdown
+
+<p align="center">
+    <img
+        src="https://raw.githubusercontent.com/dbt-labs/dbt/ec7dee39f793aa4f7dd3dae37282cc87664813e4/etc/dbt-logo-full.svg"
+        alt="dbt logo"
+        width="500"
+    />
+</p>
+
+<p align="center">
+    <a href="https://pypi.org/project/dbt-bigquery/">
+        <img src="https://badge.fury.io/py/dbt-bigquery.svg" />
+    </a>
+    <a target="_blank" href="https://pypi.org/project/dbt-bigquery/" style="background:none">
+        <img src="https://img.shields.io/pypi/pyversions/dbt-bigquery">
+    </a>
+    <a href="https://github.com/psf/black">
+        <img src="https://img.shields.io/badge/code%20style-black-000000.svg" />
+    </a>
+    <a href="https://github.com/python/mypy">
+        <img src="https://www.mypy-lang.org/static/mypy_badge.svg" />
+    </a>
+    <a href="https://pepy.tech/project/dbt-bigquery">
+        <img src="https://static.pepy.tech/badge/dbt-bigquery/month" />
+    </a>
+</p>
+
+# dbt
+
+**[dbt](https://www.getdbt.com/)** enables data analysts and engineers to transform their data using the same practices that software engineers use to build applications.
+
+dbt is the T in ELT. Organize, cleanse, denormalize, filter, rename, and pre-aggregate the raw data in your warehouse so that it's ready for analysis.
+
+## dbt-bigquery
+
+`dbt-bigquery` enables dbt to work with Google BigQuery.
+For more information on using dbt with BigQuery, consult [the docs](https://docs.getdbt.com/docs/profile-bigquery).
+
+# Getting started
+
+Review the repository [README.md](/README.md) as most of that information pertains to `dbt-bigquery`.
+
+## Contribute
+
+- Want to help us build `dbt-bigquery`? Check out the [Contributing Guide](CONTRIBUTING.md).
