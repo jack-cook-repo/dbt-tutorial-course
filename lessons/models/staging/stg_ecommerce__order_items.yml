@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__order_items
+    description: "Line items from orders"
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: order_item_id
+        # Model tests (run AFTER model is built)
+        tests:
+          - not_null:
+              severity: error
+          - unique:
+              severity: error
+        # Model contract (run BEFORE model is built)
+        data_type: INTEGER
+        constraints:
+          # Note - we could get rid of the not_null check above as it basically duplicates the contract
+          - type: not_null
+
+      - name: order_id
+        data_type: INTEGER
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__orders')
+              field: order_id
+
+      - name: user_id
+        data_type: INTEGER
+        tests:
+          - not_null
+
+      - name: product_id
+        data_type: INTEGER
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__products')
+              field: product_id
+
+      - name: item_sale_price
+        data_type: FLOAT64
+        description: "How much the item sold for"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
