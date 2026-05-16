@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__distribution_centers
+    description: ""
+    columns:
+      - name: id
+        description: "Distribution center unique identifier"
+
+      - name: name
+        description: "Distribution center name"
+
+      - name: latitude
+        description: "Distribution center latitude"
+
+      - name: longitude
+        description: "Distribution center longitude"
+
+      - name: distribution_center_geom
+        description: "Distribution center geography point"

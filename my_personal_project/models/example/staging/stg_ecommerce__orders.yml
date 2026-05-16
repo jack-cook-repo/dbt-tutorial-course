@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__orders
+    description: "Table of 1 per order"
+    columns:
+      - name: order_id
+        description: "ID of the order"
+        tests:
+          - unique
+          - not_null
+
+      - name: user_id
+        description: "ID of the user who placed the order"
+        tests:
+          - not_null
+
+      - name: status
+        description: "Status of the order"
+        tests:
+          - not_null
+          - accepted_values:
+              name: unexpected_order_status # We can name our tests to make it easier to give more meaningful errors
+              values: ['Processing','Cancelled','Shipped', 'Complete','Returned']
+              quote: true
+
+      - name: created_at
+        description: "When the order was created"
+        tests:
+          - not_null
+
+      - name: returned_at
+        description: "When the order was returned, if applicable"
+        tests:
+          - not_null:
+              where: "status = 'Returned'"
+
+      - name: shipped_at
+        description: "When the order was shipped, if applicable"
+
+      - name: delivered_at
+        description: "When the order was delivered, if applicable"
+
+      - name: num_of_item
+        description: "Number of items in the order"

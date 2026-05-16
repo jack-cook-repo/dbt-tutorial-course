@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__products
+    description: ""
+    columns:
+      - name: product_id
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: cost
+        description: ""
+        tests:
+          - not_null
+
+      - name: category
+        description: ""
+        tests:
+          - not_null
+
+      - name: name
+        description: ""
+        tests:
+          - not_null
+
+      - name: brand
+        description: ""
+
+      - name: retail_price
+        description: ""
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+          - dbt_utils.expression_is_true:
+              expression: "retail_price >= cost"
+
+      - name: department
+        description: ""
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - "Men"
+                # - "Women"
+
+      - name: sku
+        description: ""
+        tests:
+          - not_null
+
+      - name: distribution_center_id
+        description: ""
+        tests:
+          - not_null

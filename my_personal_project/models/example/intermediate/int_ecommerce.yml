@@ -1,0 +1,69 @@
+version: 2
+
+# An example of putting 2 models in the same YML file
+# This has some advantages in being able to use YML anchors (more on that below) that let you
+# reuse descriptions, names, tests etc. across multiple models, whereas
+# dbt document blocks https://docs.getdbt.com/docs/collaborate/documentation#using-docs-blocks
+# can only be used for descriptions.
+# However, a disadvantage is that YML anchors can't be reused across files.
+
+models:
+  - name: int_ecommerce__order_items_products
+    description: "Order item data joined to product data"
+    columns:
+      - name: order_item_id
+        tests:
+          - not_null
+          - unique
+
+      - name: order_id
+        tests:
+          - not_null
+
+      # The "&" is a YML anchor which you can reference later in the file
+      - &user_id
+        name: user_id
+        description: "Unique identifier for a user"
+        tests:
+          - not_null
+
+
+      - name: sale_price
+        description: "How much the item sold for"
+        tests:
+          - not_null
+
+      - name: department
+        description: "Whether the item is Menswear or Womenswear"
+        tests:
+          - not_null
+
+      - name: cost
+        description: "How much the product cost the business to purchase"
+        tests:
+          - not_null
+
+      - name: retail_price
+        description: "How much the product retails for on the online store"
+        tests:
+          - not_null
+
+      - name: profit
+        description: "sale_price minus cost"
+        tests:
+          - not_null
+
+      - name: item_discount
+        description: "retail_price minus sale_price"
+        tests:
+          - not_null
+
+  - name: int_ecommerce__orders_users
+    description: "Order data joined to user data"
+    columns:
+      - *user_id
+
+      - name: first_order_created_at
+        description: "Timestamp of the user's first ever order"
+        tests:
+          - not_null

@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: thelook_ecommerce   # nombre lógico de la fuente
+    database: bigquery-public-data  # opcional: nombre de la BD (si aplica)
+    tables:
+      - name: inventory_items
+      - name: order_items
+      - name: orders
+      - name: products
+      - name: users
+      - name: distribution_centers

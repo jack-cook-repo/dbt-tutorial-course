@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: stg_ecommerce__order_items
+    description: ""
+    columns:
+      - name: order_item_id
+        description: ""
+        tests:
+          - unique
+          - not_null
+
+      - name: order_id
+        description: ""
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_ecommerce__orders')
+              field: order_id
+
+      - name: user_id
+        description: ""
+        tests:
+          - not_null
+
+      - name: product_id
+        description: ""
+        tests:
+          - not_null
+
+      - name: inventory_item_id
+        description: ""
+        tests:
+          - not_null
+
+      - name: status
+        description: ""
+        tests:
+          - not_null
+          - accepted_values:
+              name: unexpected_order_status # We can name our tests to make it easier to give more meaningful errors
+              values:
+                - Processing
+                - Cancelled
+                - Shipped
+                - Complete
+                - Returned
+
+      - name: created_at
+        description: ""
+
+      - name: shipped_at
+        description: ""
+
+      - name: delivered_at
+        description: ""
+
+      - name: returned_at
+        description: ""
+
+      - name: sale_price
+        description: ""
+        tests:
+          - not_null
